@@ -1,0 +1,18 @@
+.avatar img {
+    height: 100%;
+    object-fit: cover;
+}
+
+.modal-body img {
+    height: 150px;
+    width: 150px;
+    object-fit: cover;
+}
+
+.table-user img {
+    object-fit: cover;
+}
+
+/* table.profile-table tr {
+    margin-bottom: 100px !important;
+} */
