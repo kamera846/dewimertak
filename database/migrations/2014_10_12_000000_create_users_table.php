@@ -19,11 +19,11 @@ return new class extends Migration
             $table->string('slug');
             $table->string('image')->nullable();
             $table->enum('role', ['admin', 'super-admin']);
-            $table->text('bio')->nullable();
             $table->string('email')->unique();
-            $table->string('telephone')->nullable();
-            $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('telephone')->nullable();
+            $table->text('address');
+            $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

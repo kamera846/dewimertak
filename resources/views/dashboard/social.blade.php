@@ -28,6 +28,7 @@
                         </ol>
                     </nav>
                 </div>
+                @if($socials->count() < 5)
                 <div class="col-lg-6 col-5 text-right">
                     <a
                         href="/dashboard/socials/create"
@@ -39,6 +40,7 @@
                         <span class="btn-inner--text"> Baru</span>
                     </a>
                 </div>
+                @endif
             </div>
 
             {{-- Flash Message --}}

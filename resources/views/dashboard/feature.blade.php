@@ -31,6 +31,7 @@
                         </ol>
                     </nav>
                 </div>
+                @if($features->count() < 4)
                 <div class="col-lg-6 col-5 text-right">
                     <a
                         href="/dashboard/features/create"
@@ -42,6 +43,7 @@
                         <span class="btn-inner--text"> Baru</span>
                     </a>
                 </div>
+                @endif
             </div>
 
             {{-- Flash Message --}}

@@ -78,7 +78,6 @@
                     <tr>
                         <th>Foto</th>
                         <th>Keterangan</th>
-                        <th>Ditangkap pada</th>
                         <th>Opsi</th>
                     </tr>
                 </thead>
@@ -98,12 +97,6 @@
                             </td>
                             <td>
                                 {{ $gallery->caption ? $gallery->caption : '-' }}
-                            </td>
-                            <td>
-                                {{ $gallery->capture_at }}
-                                {{-- {{ Carbon::createFromFormat('Y-m-d', $gallery->capture_at)
-                                                                    ->format('m/d/Y') }}
-                                {{ $gallery->created_at->isoFormat(('dddd, D MMM Y')) }} --}}
                             </td>
                             <td class="table-actions">
                                 <a
@@ -129,7 +122,7 @@
                     @else
                         
                         <tr >
-                            <td colspan="4" class="text-center">Belum ada data.</td>
+                            <td colspan="3" class="text-center">Belum ada data.</td>
                         </tr>
 
                     @endif

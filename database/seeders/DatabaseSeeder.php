@@ -30,7 +30,8 @@ class DatabaseSeeder extends Seeder
             'slug' => 'admin-desa',
             'email' => 'admin@gmail.com',
             'password' => Hash::make('kosongin'),
-            'role' => 'super-admin'
+            'role' => 'super-admin',
+            'address' => 'Desa ini itu'
         ]);
 
         Profile::create([
