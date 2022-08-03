@@ -46,7 +46,6 @@ class GalleryController extends Controller
     {
         $validated = $request->validate([
             'image' => 'required|file|image|max:2048',
-            'capture_at' => 'required|date',
             'caption' => 'max:255'
         ]);
         
@@ -94,7 +93,6 @@ class GalleryController extends Controller
     {
         $validated = $request->validate([
             'image' => 'file|image|max:2048',
-            'capture_at' => 'required|date',
             'caption' => 'max:255'
         ]);
 

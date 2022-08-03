@@ -559,8 +559,16 @@
                                     aria-expanded="false"
                                 >
                                     <div class="media align-items-center">
+                                        <div
+                                            class="media-body d-none d-lg-block"
+                                        >
+                                            <span
+                                                class="mb-0 text-sm font-weight-bold"
+                                                >{{ ucwords(Auth::user()->name) }}</span
+                                            >
+                                        </div>
                                         <span
-                                            class="avatar avatar-sm rounded-circle"
+                                            class="avatar avatar-sm ml-2 rounded-circle"
                                         >
                                             <img
                                                 alt="Image placeholder"
@@ -571,14 +579,6 @@
                                                 @endif
                                             />
                                         </span>
-                                        <div
-                                            class="media-body ml-2 d-none d-lg-block"
-                                        >
-                                            <span
-                                                class="mb-0 text-sm font-weight-bold"
-                                                >{{ ucwords(Auth::user()->name) }}</span
-                                            >
-                                        </div>
                                     </div>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right">
@@ -635,12 +635,8 @@
                             <div class="col-8">{{ Auth::user()->telephone ? Auth::user()->telephone : '-' }}</div>
                         </div>
                         <div class="row mb-3">
-                            <div class="col-4 font-weight-bold text-right">Bio</div>
-                            @if(Auth::user()->bio)
-                                <div class="col-8">{{ Auth::user()->bio }}</div>
-                            @else
-                                <div class="col-8">-</div>
-                            @endif
+                            <div class="col-4 font-weight-bold text-right">Alamat</div>
+                            <div class="col-8">{{ Auth::user()->address }}</div>
                         </div>
                     </div>
                     <div class="modal-footer text-end">

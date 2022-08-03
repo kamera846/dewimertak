@@ -79,27 +79,6 @@
                                     />
                                 </div>
                             </div>
-        
-                            <div class="form-group row">
-                                <label
-                                    for="capture_at"
-                                    class="col-md-3 col-form-label form-control-label text-md-right"
-                                    >Ditangkap Pada <span class="text-danger">*</span></label
-                                >
-                                <div class="col-md-9">
-                                    <input
-                                        class="form-control @error('capture_at') is-invalid @enderror"
-                                        type="date"
-                                        value="{{ old('capture_at', $gallery->capture_at) }}"
-                                        id="capture_at"
-                                        name="capture_at"
-                                        required
-                                    />
-                                    @error('capture_at')
-                                        <div class="invalid-feedback">{{ $message }}</div>
-                                    @enderror
-                                </div>
-                            </div>
                             
                             <div class="form-group row">
                                 <label

@@ -69,7 +69,7 @@ class UserController extends Controller
             'email' => 'required|email:dns|unique:users',
             'telephone' => 'max:15',
             'password' => 'required|min:4|max:255',
-            'bio' => 'max:500'
+            'address' => 'required|max:500'
         ]);
         $validated['slug'] = str::of($request->name)->slug('-');
         $validated['password'] = Hash::make($validated['password']);
@@ -129,7 +129,7 @@ class UserController extends Controller
         $rules = [
             'image' => 'file|image|max:1024',
             'telephone' => 'max:15',
-            'bio' => 'max:500'
+            'address' => 'required|max:500'
         ];
 
         if($request->password)

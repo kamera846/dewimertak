@@ -187,13 +187,13 @@
                             
                             <div class="form-group row">
                                 <label
-                                    for="bio"
+                                    for="address"
                                     class="col-md-3 col-form-label form-control-label text-md-right"
-                                    >Bio</label
+                                    >Alamat <span class="text-danger">*</span></label
                                 >
                                 <div class="col-md-9">
-                                    <textarea name="bio" id="bio" rows="5" class="form-control @error('bio') is-invalid @enderror">{{ old('bio') }}</textarea>
-                                    @error('bio')
+                                    <textarea name="address" id="address" rows="5" class="form-control @error('address') is-invalid @enderror" required>{{ old('address') }}</textarea>
+                                    @error('address')
                                         <div class="invalid-feedback">
                                             {{ $message }}
                                         </div>
