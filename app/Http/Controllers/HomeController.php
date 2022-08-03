@@ -36,14 +36,6 @@ class HomeController extends Controller
     }
 
     public function post()
-    // {
-    //     $posts =  Post::latest()->filter(request(['search', 'category', 'author', 'tag']))->paginate(1);
-    //     // return dd($posts->links());
-    //     // return dd($posts->perPage());
-    //     // return dd($posts->currentPage());
-    //     // return dd($posts->lastPage());
-    //     // return dd($posts->total());
-    // }
     {
         $title = '';
 
