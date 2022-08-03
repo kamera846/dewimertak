@@ -13,9 +13,7 @@
         <meta name="keywords" content="creative, modern, clean, bootstrap responsive, html5, css3, portfolio, blog, agency, templates, multipurpose, one page, corporate, start-up, studio, branding, designer, freelancer, carousel, parallax, photography, personal, masonry, grid, coming soon, faq">
         
         <!-- favicon -->
-        
-        <link rel="shortcut icon" href="{{ asset('assets/landing-page/images/favicon.png') }}>
-
+        <link rel="shortcut icon" href="{{ asset('assets/landing-page/images/favicon.png') }}">
         {{-- <link rel="apple-touch-icon" href="{{ asset('assets/landing-page/images/apple-touch-icon-57x57.png') }}>
         <link rel="apple-touch-icon" sizes="72x72" href="{{ asset('assets/landing-page/images/apple-touch-icon-72x72.png') }}>
         <link rel="apple-touch-icon" sizes="114x114" href="{{ asset('assets/landing-page/images/apple-touch-icon-114x114.png') }}> --}}
