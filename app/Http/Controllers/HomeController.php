@@ -14,6 +14,7 @@ use App\Models\Carousel;
 use App\Models\Feature;
 use App\Models\About;
 use App\Models\Event;
+use Illuminate\Support\Str;
 
 class HomeController extends Controller
 {
@@ -61,7 +62,7 @@ class HomeController extends Controller
             'pageTitle' => $title,
             'profile' => Profile::get()[0],
             'socials' => Social::get(),
-            'posts' => Post::latest()->filter(request(['search', 'category', 'author', 'tag']))->paginate(1),
+            'posts' => Post::latest()->filter(request(['search', 'category', 'author', 'tag']))->paginate(10),
             'categories' => PostCategory::get(),
             'recentPosts' => Post::latest()->limit(4)->get()
         ]);
@@ -88,7 +89,7 @@ class HomeController extends Controller
             'galleryPage' => true,
             'profile' => Profile::get()[0],
             'socials' => Social::get(),
-            'galleries' => Gallery::latest()->get()
+            'galleries' => Gallery::latest()->paginate(15)
         ]);
     }
 
@@ -109,8 +110,13 @@ class HomeController extends Controller
             'email' => 'required|email|max:50',
             'message' => 'required|min:5|max:1000'
         ]);
+        $telephone = Profile::get()[0]->telephone;
+
+        if(substr($telephone, 0, 1) == '0'){
+            $telephone = Str::replaceFirst('0', '62', $telephone);
+        }
         
-        echo "<script>window.location.href = 'https://api.whatsapp.com/send?phone={$request->phone}&text=Nama:%20{$request->name}%0D%0AEmail:%20{$request->email}%0D%0APesan:%20{$request->message}'</script>";
+        echo "<script>window.location.href = 'https://api.whatsapp.com/send?phone={$telephone}&text=Nama:%20{$request->name}%0D%0AEmail:%20{$request->email}%0D%0APesan:%20{$request->message}'</script>";
     }
 
     

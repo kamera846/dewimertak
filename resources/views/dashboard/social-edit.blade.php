@@ -48,9 +48,10 @@
             <div class="card-body pt-4 pb-2">
                 <div class="row justify-content-center">
                     <div class="col-lg-8 py-md-5">
-                        <form method="post" action="/dashboard/socials" enctype="multipart/form-data" autocomplete="off">
+                        <form method="post" action="/dashboard/socials/{{ $social->id }}" enctype="multipart/form-data" autocomplete="off">
         
                             @csrf
+                            @method('put')
 
                             <div class="form-group row">
                                 <label

@@ -72,6 +72,10 @@
             </div>
         </div>
 
+        <div class="d-flex mt-5">
+            {{ $galleries->links('vendor.pagination.semantic-ui') }}
+        </div>
+
         @else
 
             <div class="row fs-4 justify-content-center py-5">

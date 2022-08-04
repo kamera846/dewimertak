@@ -94,7 +94,8 @@
                                 placeholder="Nama *" 
                                 value="{{ old('name') }}"
                                 class="bg-transparent border-color-medium-dark-gray medium-input mb-2" 
-                                required
+                                autocomplete="off"
+                                required 
                             >
                             @error('name')
                                 <div class="text-danger text-sm text-start">{{ $message }}</div>
@@ -108,7 +109,8 @@
                                 placeholder="E-mail *"
                                 value="{{ old('email') }}"
                                 class="bg-transparent border-color-medium-dark-gray medium-input mb-2" 
-                                required
+                                autocomplete="off"
+                                required 
                             >
                             @error('email')
                                 <div class="text-danger text-sm text-start">{{ $message }}</div>
@@ -116,13 +118,14 @@
                         </div>
                         <div class="col-12 mb-3">
                             <textarea
-                                name="messsage" 
+                                name="message" 
                                 id="message" 
                                 placeholder="Apa pesan anda.. *" 
                                 rows="7" 
                                 name="message"
                                 class="bg-transparent border-color-medium-dark-gray medium-textarea mb-2" 
-                                required
+                                autocomplete="off"
+                                required 
                             >{{ old('message') }}</textarea>
                             @error('message')
                                 <div class="text-danger text-sm text-start">{{ $message }}</div>

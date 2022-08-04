@@ -23,6 +23,9 @@
         <link rel="stylesheet" type="text/css" href="{{ asset('assets/landing-page/css/theme-vendors.min.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('assets/landing-page/css/style.css') }}" />
         <link rel="stylesheet" type="text/css" href="{{ asset('assets/landing-page/css/responsive.css') }}" />
+        
+        {{-- Custom css --}}
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/dashboard/css/custom.css') }}" />
     </head>
     <body>
         <!-- start header -->
