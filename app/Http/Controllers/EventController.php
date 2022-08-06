@@ -13,7 +13,7 @@ class EventController extends Controller
     public function index()
     {
         return view('dashboard.event', [
-            'subSection' => true,
+            'subPart' => true,
             'eventPage' => true,
             'profile' => Profile::get()[0],
             'events' => Event::all(),
@@ -23,7 +23,7 @@ class EventController extends Controller
     public function create()
     {
         return view('dashboard.event-create', [
-            'subSection' => true,
+            'subPart' => true,
             'eventPage' => true,
             'profile' => Profile::get()[0]
         ]);
@@ -46,7 +46,7 @@ class EventController extends Controller
     public function edit(Event $event)
     {
         return view('dashboard.event-edit', [
-            'subSection' => true,
+            'subPart' => true,
             'eventPage' => true,
             'profile' => Profile::get()[0],
             'event' => $event

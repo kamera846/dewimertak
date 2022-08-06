@@ -13,7 +13,7 @@ class CarouselController extends Controller
     public function index()
     {
         return view('dashboard.carousel', [
-            'subSection' => true,
+            'subPart' => true,
             'carouselPage' => true,
             'profile' => Profile::get()[0],
             'carousels' => Carousel::all(),
@@ -23,7 +23,7 @@ class CarouselController extends Controller
     public function create()
     {
         return view('dashboard.carousel-create', [
-            'subSection' => true,
+            'subPart' => true,
             'carouselPage' => true,
             'profile' => Profile::get()[0]
         ]);
@@ -46,7 +46,7 @@ class CarouselController extends Controller
     public function edit(Carousel $carousel)
     {
         return view('dashboard.carousel-edit', [
-            'subSection' => true,
+            'subPart' => true,
             'carouselPage' => true,
             'profile' => Profile::get()[0],
             'carousel' => $carousel

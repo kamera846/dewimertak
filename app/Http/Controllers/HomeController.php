@@ -14,18 +14,26 @@ use App\Models\Carousel;
 use App\Models\Feature;
 use App\Models\About;
 use App\Models\Event;
+use App\Models\Section;
 use Illuminate\Support\Str;
 
 class HomeController extends Controller
 {
     public function home()
     {
-        // 
+        return view('home', [
+            // cuurentPage saya set sebagai isi tag <title> dengan gabungan nama_situs
+            'homePage' => true,
+            'profile' => Profile::get()[0],
+            'about' => About::get()[0],
+            'features' => Feature::all(),
+        ]);
     }
     
     Public function about()
     {
         return view('about', [
+            // cuurentPage saya set sebagai isi tag <title> dengan gabungan nama_situs
             'currentPage' => 'Tentang Kami',
             'aboutPage' => true,
             'profile' => Profile::get()[0],
@@ -33,73 +41,71 @@ class HomeController extends Controller
             'features' => Feature::all(),
             'events' => Event::latest()->get(),
             'about' => About::get()[0],
+
+            'pageTitle' => Section::where('code', 'judul-halaman')->where('on_page', 'Tentang')->get()[0],
+            'event' => Section::where('code', 'acara-dan-kegiatan')->where('on_page', 'Tentang')->get()[0]
         ]);
     }
 
     public function post()
     {
-        $title = '';
-
-        if(request('category')) {
-            $title = 'Artikel Tentang ' . PostCategory::where('slug', request('category'))->get()[0]->name;
-        }
-        elseif(request('author')) {
-            $title = 'Artikel Oleh ' . User::where('slug', request('author'))->get()[0]->name;
-        }
-        elseif(request('tag')) {
-            $title = 'Artikel dengan Tanda ' . request('tag');
-        }
-        elseif(request('search')) {
-            $title = 'Cari : ' . request('search');
-        }
-        else {
-            $title = 'Artikel';
-        }
-
         return view('post', [
+            // cuurentPage saya set sebagai isi tag <title> dengan gabungan nama_situs
             'currentPage' => 'Artikel',
             'postPage' => true,
-            'pageTitle' => $title,
             'profile' => Profile::get()[0],
             'socials' => Social::get(),
             'posts' => Post::latest()->filter(request(['search', 'category', 'author', 'tag']))->paginate(10),
             'categories' => PostCategory::get(),
-            'recentPosts' => Post::latest()->limit(4)->get()
+            'recentPosts' => Post::latest()->limit(4)->get(),
+
+            'pageTitle' => Section::where('code', 'judul-halaman')->where('on_page', 'Artikel')->get()[0]
         ]);
     }
 
     public function postDetail(Post $post)
     {
         return view('post-detail', [
-            'currentPage' => 'Artikel',
+            // cuurentPage saya set sebagai isi tag <title> dengan gabungan nama_situs
+            'currentPage' => $post->title,
             'postPage' => true,
-            'pageTitle' => $post->title,
+            'postDetail' => true,
             'profile' => Profile::get()[0],
             'socials' => Social::get(),
             'post' => $post,
             'categories' => PostCategory::get(),
-            'recentPosts' => Post::latest()->limit(4)->get()
+            'recentPosts' => Post::latest()->limit(4)->get(),
+            
+            'pageTitle' => Section::where('code', 'judul-halaman')->where('on_page', 'Artikel')->get()[0]
         ]);
     }
 
     public function gallery()
     {
         return view('gallery', [
+            // cuurentPage saya set sebagai isi tag <title> dengan gabungan nama_situs
             'currentPage' => 'Galeri',
             'galleryPage' => true,
             'profile' => Profile::get()[0],
             'socials' => Social::get(),
-            'galleries' => Gallery::latest()->paginate(15)
+            'galleries' => Gallery::latest()->paginate(15),
+            // section langsung panggil fieldnya ga perlu pakek perulangan karena sudah memanggil indeks pertama
+            'pageTitle' => Section::where('code', 'judul-halaman')->where('on_page', 'Galeri')->get()[0],
+            'allGalleries' => Section::where('code', 'semua-galeri')->where('on_page', 'Galeri')->get()[0],
         ]);
     }
 
     public function contact()
     {
         return view('contact', [
-            'currentPage' => 'Kontak',
+            // cuurentPage saya set sebagai isi tag <title> dengan gabungan nama_situs
+            'currentPage' => 'Kontak Kami',
             'contactPage' => true,
             'profile' => Profile::get()[0],
             'socials' => Social::get(),
+            // section langsung panggil fieldnya ga perlu pakek perulangan karena sudah memanggil indeks pertama
+            'pageTitle' => Section::where('code', 'judul-halaman')->where('on_page', 'Kontak')->get()[0],
+            'waForm' => Section::where('code', 'wa-form')->where('on_page', 'Kontak')->get()[0],
         ]);
     }
 
@@ -116,7 +122,10 @@ class HomeController extends Controller
             $telephone = Str::replaceFirst('0', '62', $telephone);
         }
         
-        echo "<script>window.location.href = 'https://api.whatsapp.com/send?phone={$telephone}&text=Nama:%20{$request->name}%0D%0AEmail:%20{$request->email}%0D%0APesan:%20{$request->message}'</script>";
+        echo "
+        <script>
+            window.location.href = 'https://api.whatsapp.com/send?phone={$telephone}&text=Nama:%20{$request->name}%0D%0AEmail:%20{$request->email}%0D%0APesan:%20{$request->message}'
+        </script>";
     }
 
     

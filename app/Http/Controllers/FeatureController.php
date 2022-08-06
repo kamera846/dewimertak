@@ -13,7 +13,7 @@ class FeatureController extends Controller
     public function index()
     {
         return view('dashboard.feature', [
-            'subSection' => true,
+            'subPart' => true,
             'featurePage' => true,
             'profile' => Profile::get()[0],
             'features' => Feature::all(),
@@ -23,7 +23,7 @@ class FeatureController extends Controller
     public function create()
     {
         return view('dashboard.feature-create', [
-            'subSection' => true,
+            'subPart' => true,
             'featurePage' => true,
             'profile' => Profile::get()[0]
         ]);
@@ -49,7 +49,7 @@ class FeatureController extends Controller
     public function edit(Feature $feature)
     {
         return view('dashboard.feature-edit', [
-            'subSection' => true,
+            'subPart' => true,
             'featurePage' => true,
             'profile' => Profile::get()[0],
             'feature' => $feature

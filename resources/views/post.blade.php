@@ -1,54 +1,97 @@
 @extends('layouts.main')
 
 @section('page-content')
+
+@php
+    $title = $pageTitle->title;
+
+    if(request('category')) {
+        $title = 'Artikel Tentang ' . App\Models\PostCategory::where('slug', request('category'))->get()[0]->name;
+    }
+    elseif(request('author')) {
+        $title = 'Artikel Oleh ' . App\Models\User::where('slug', request('author'))->get()[0]->name;
+    }
+    elseif(request('tag')) {
+        $title = 'Artikel Dengan #' . request('tag');
+    }
+    elseif(request('search')) {
+        $title = 'Cari : ' . request('search');
+    }
+@endphp
+
+
 <!-- start page title section -->
-<section class="wow animate__fadeIn bg-extra-dark-gray">
-    <div class="container">
+@if($pageTitle->image)
+<section class="wow animate__fadeIn parallax" data-parallax-background-ratio="0.5" style="background-image:url('{{ asset('storage/'.$pageTitle->image) }}');">
+    <div class="opacity-medium bg-extra-dark-gray"></div>
+    <div class="container position-relative">
         <div class="row">
-            <div class="col-12 extra-small-screen page-title-medium text-center d-flex flex-column justify-content-center">
-                <h1 class="alt-font text-white-2 font-weight-600 m-0 text-uppercase letter-spacing-1">
-                    {{ $pageTitle }}
-                </h1>
-                {{-- @if($pageTitle === 'Artikel')
-                    <span class="d-block margin-10px-top text-extra-small alt-font text-uppercase">Kami juga menyediakan artikel berupa postingan</span>
-                @endif --}}
+            <div class="col-12 extra-small-screen d-flex flex-column justify-content-center page-title-medium text-center">
+                <!-- start page title -->
+                <h1 class="text-white-2 alt-font font-weight-600 letter-spacing-minus-1 margin-10px-bottom text-uppercase">{{ $title }}</h1>
+                <!-- end page title -->
+                <!-- start sub title -->
+                {{-- <span class="text-white-2 opacity6 alt-font mb-0">Unlimited power and customization possibilities</span> --}}
+                <!-- end sub title -->
             </div>
         </div>
     </div>
 </section>
+@else
+<section class="wow animate__fadeIn bg-extra-dark-gray">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 extra-small-screen page-title-medium text-center d-flex flex-column justify-content-center">
+                <!-- start page title -->
+                <h1 class="alt-font text-white-2 font-weight-600 m-0 text-uppercase letter-spacing-1"> {{ $title  }} </h1>
+                <!-- end page title -->
+                <!-- start sub title -->
+                {{-- <span class="d-block margin-10px-top text-extra-small alt-font text-uppercase">Hubungi kami jika anda punya pertanyan atau saran yang ingin disampaikan!</span> --}}
+                <!-- end sub title -->
+            </div>
+        </div>
+    </div>
+</section>
+@endif
 <!-- end page title section -->
 <!-- start blog content section --> 
 <section>
     <div class="container">
         
-        @if($posts->count())
+        @if($posts->count() || request('search'))
 
             <div class="row justify-content-center">
 
                 <main class="col-12 col-xl-9 col-lg-8 right-sidebar md-margin-60px-bottom sm-margin-40px-bottom">
 
-                    @foreach($posts as $post)
+                    @if($posts->count())
+                        @foreach($posts as $post)
 
-                        <!-- start post item --> 
-                        <div class="blog-post-content d-flex align-items-center flex-wrap margin-60px-bottom padding-60px-bottom border-bottom border-color-extra-light-gray md-margin-30px-bottom md-padding-30px-bottom text-center text-md-start md-no-border">
-                            <div class="col-12 col-lg-5 blog-image p-0 md-margin-30px-bottom sm-margin-20px-bottom margin-45px-right md-no-margin-right">
-                                <a href="/posts/{{ $post->slug }}"><img src="{{ asset('storage/'.$post->image) }}" alt="{{ $post->title }}"></a>
-                            </div>
-                            <div class="col-12 col-lg-6 blog-text p-0">
-                                <div class="content margin-20px-bottom md-no-padding-left ">
-                                    <a href="/posts/{{ $post->slug }}" class="text-extra-dark-gray margin-5px-bottom alt-font text-extra-large font-weight-600 d-inline-block">{{ $post->title }}</a>
-                                    <div class="text-medium-gray text-extra-small margin-15px-bottom text-uppercase alt-font"><span>By <a href="/posts?author={{ $post->user->slug }}" class="text-medium-gray">{{ ucwords($post->user->name) }}</a></span>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<span>{{ $post->created_at->isoFormat('d MMMM Y') }}</span>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="/posts?category={{ $post->category->slug }}" class="text-medium-gray">{{ ucwords($post->category->name) }}</a></div>
-                                    <p class="m-0 w-95 lg-w-100">{{ substr(strip_tags($post->content), 0, 200) }}...</p>
+                            <!-- start post item --> 
+                            <div class="blog-post-content d-flex align-items-center flex-wrap margin-60px-bottom padding-60px-bottom border-bottom border-color-extra-light-gray md-margin-30px-bottom md-padding-30px-bottom text-center text-md-start md-no-border">
+                                <div class="col-12 col-lg-5 blog-image p-0 md-margin-30px-bottom sm-margin-20px-bottom margin-45px-right md-no-margin-right">
+                                    <a href="/posts/{{ $post->slug }}"><img src="{{ asset('storage/'.$post->image) }}" alt="{{ $post->title }}"></a>
                                 </div>
-                                <a class="btn btn-very-small btn-dark-gray text-uppercase" href="/posts/{{ $post->slug }}">Selengkapnya</a>
+                                <div class="col-12 col-lg-6 blog-text p-0">
+                                    <div class="content margin-20px-bottom md-no-padding-left ">
+                                        <a href="/posts/{{ $post->slug }}" class="text-extra-dark-gray margin-5px-bottom alt-font text-extra-large font-weight-600 d-inline-block">{{ $post->title }}</a>
+                                        <div class="text-medium-gray text-extra-small margin-15px-bottom text-uppercase alt-font"><span>By <a href="/posts?author={{ $post->user->slug }}" class="text-medium-gray">{{ ucwords($post->user->name) }}</a></span>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<span>{{ $post->created_at->isoFormat('d MMMM Y') }}</span>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="/posts?category={{ $post->category->slug }}" class="text-medium-gray">{{ ucwords($post->category->name) }}</a></div>
+                                        <p class="m-0 w-95 lg-w-100">{{ substr(strip_tags($post->content), 0, 200) }}...</p>
+                                    </div>
+                                    <a class="btn btn-very-small btn-dark-gray text-uppercase" href="/posts/{{ $post->slug }}">Selengkapnya</a>
+                                </div>
                             </div>
-                        </div>
-                        <!-- end post item --> 
+                            <!-- end post item --> 
 
-                    @endforeach
+                        @endforeach
+                    @else
+                    <div class="row fs-4 justify-content-center py-5">
+                        Tidak ada hasil ditemukan.
+                    </div>
+                    @endif
 
                     <!-- start pagination -->
-                    <div class="d-flex"> {{ $posts->links('vendor.pagination.semantic-ui') }} </div>
+                    <div class="d-flex"> {{ $posts->links('partials.paginator') }} </div>
                     <!-- end pagination -->
                 </main>
 
@@ -112,6 +155,7 @@
                     </div>
 
                     {{-- recent posts --}}
+                    @if($posts->count() > 5)
                     @if(request(['search', 'category', 'author', 'tag']))
                         @if($recentPosts->count())
                         <div class="margin-45px-bottom sm-margin-25px-bottom">
@@ -128,6 +172,7 @@
                             </ul>
                         </div>
                         @endif
+                    @endif
                     @endif
 
                     {{-- tags --}}

@@ -3,21 +3,40 @@
 @section('page-content')
 
 <!-- start page title section -->
-<section class="wow animate__fadeIn bg-extra-dark-gray">
-    <div class="container">
+@if($pageTitle->image)
+<section class="wow animate__fadeIn parallax" data-parallax-background-ratio="0.5" style="background-image:url('{{ asset('storage/'.$pageTitle->image) }}');">
+    <div class="opacity-medium bg-extra-dark-gray"></div>
+    <div class="container position-relative">
         <div class="row">
-            <div class="col-12 extra-small-screen page-title-medium text-center d-flex flex-column justify-content-center">
+            <div class="col-12 extra-small-screen d-flex flex-column justify-content-center page-title-medium text-center">
                 <!-- start page title -->
-                <h1 class="alt-font text-white-2 font-weight-600 m-0 text-uppercase letter-spacing-1">Galeri</h1>
+                <h1 class="text-white-2 alt-font font-weight-600 letter-spacing-minus-1 margin-10px-bottom text-uppercase">{{ $pageTitle->title }}</h1>
                 <!-- end page title -->
                 <!-- start sub title -->
-                <span class="d-block margin-10px-top text-extra-small alt-font text-uppercase">Berikut momen-momen yang berhasil kami abadikan!</span>
+                {{-- <span class="text-white-2 opacity6 alt-font mb-0">Unlimited power and customization possibilities</span> --}}
                 <!-- end sub title -->
             </div>
         </div>
     </div>
 </section>
+@else
+<section class="wow animate__fadeIn bg-extra-dark-gray">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 extra-small-screen page-title-medium text-center d-flex flex-column justify-content-center">
+                <!-- start page title -->
+                <h1 class="alt-font text-white-2 font-weight-600 m-0 text-uppercase letter-spacing-1"> {{ $pageTitle->title  }} </h1>
+                <!-- end page title -->
+                <!-- start sub title -->
+                {{-- <span class="d-block margin-10px-top text-extra-small alt-font text-uppercase">Hubungi kami jika anda punya pertanyan atau saran yang ingin disampaikan!</span> --}}
+                <!-- end sub title -->
+            </div>
+        </div>
+    </div>
+</section>
+@endif
 <!-- end page title section -->
+
 <!-- start galleries section -->
 <section class="wow animate__fadeIn padding-90px-top md-padding-50px-top sm-padding-30px-top" style="visibility: visible; animation-name: fadeIn;">
     {{-- <div class="container">
@@ -40,6 +59,14 @@
     <div class="container-fluid">
 
         @if($galleries->count())
+        
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-7 text-center margin-100px-bottom sm-margin-40px-bottom">
+                <div class="position-relative overflow-hidden w-100">
+                    <span class="text-outside-line-full alt-font font-weight-600 text-uppercase">{{ $allGalleries->title }}</span>
+                </div>
+            </div>
+        </div>
 
         <div class="row">
             <div class="col-12 filter-content overflow-hidden">
@@ -73,7 +100,7 @@
         </div>
 
         <div class="d-flex mt-5">
-            {{ $galleries->links('vendor.pagination.semantic-ui') }}
+            {{ $galleries->links('partials.paginator') }}
         </div>
 
         @else

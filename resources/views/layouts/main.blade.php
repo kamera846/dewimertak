@@ -2,7 +2,14 @@
 <html class="no-js" lang="en">
     <head>
         <!-- title -->
-        <title>{{ $profile->site_name }} | {{ $currentPage }}</title>
+        @if(isset($homePage))
+            <title> {{ $profile->site_name }} </title>
+        @elseif(isset($postDetail))
+            <title>{{ $post->title }} - {{ $profile->site_name }}</title>
+        @else
+            <title>{{ $profile->site_name }} | {{ $currentPage }}</title>
+        @endif
+
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1" />
@@ -48,11 +55,11 @@
                         <div class="navbar-collapse collapse justify-content-center" id="navbar-collapse-toggle-1">
                             <ul class="nav navbar-nav no-margin alt-font text-normal" data-in="animate__fadeIn" data-out="animate__fadeOut">
                                 <!-- start menu item -->
-                                <li class="nav-item"><a href="/home">Beranda</a></li>
-                                <li class="nav-item"><a href="/about">Tentang</a></li>
-                                <li class="nav-item"><a href="/posts">Artikel</a></li>
-                                <li class="nav-item"><a href="/galleries">Galeri</a></li>
-                                <li class="nav-item"><a href="/contact">Kontak</a></li>
+                                <li class="nav-item {{ isset($homePage) ? 'active' : '' }}"><a href="/">Beranda</a></li>
+                                <li class="nav-item {{ isset($aboutPage) ? 'active' : '' }}"><a href="/about">Tentang</a></li>
+                                <li class="nav-item {{ isset($postPage) ? 'active' : '' }}"><a href="/posts">Artikel</a></li>
+                                <li class="nav-item {{ isset($galleryPage) ? 'active' : '' }}"><a href="/galleries">Galeri</a></li>
+                                <li class="nav-item {{ isset($contactPage) ? 'active' : '' }}"><a href="/contact">Kontak</a></li>
                             </ul>
                         </div>
                     </div>

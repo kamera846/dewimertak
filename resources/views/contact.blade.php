@@ -3,21 +3,40 @@
 @section('page-content')
 
 <!-- start page title section -->
-<section class="wow animate__fadeIn bg-extra-dark-gray">
-    <div class="container">
+@if($pageTitle->image)
+<section class="wow animate__fadeIn parallax" data-parallax-background-ratio="0.5" style="background-image:url('{{ asset('storage/'.$pageTitle->image) }}');">
+    <div class="opacity-medium bg-extra-dark-gray"></div>
+    <div class="container position-relative">
         <div class="row">
-            <div class="col-12 extra-small-screen page-title-medium text-center d-flex flex-column justify-content-center">
+            <div class="col-12 extra-small-screen d-flex flex-column justify-content-center page-title-medium text-center">
                 <!-- start page title -->
-                <h1 class="alt-font text-white-2 font-weight-600 m-0 text-uppercase letter-spacing-1">Kontak Kami </h1>
+                <h1 class="text-white-2 alt-font font-weight-600 letter-spacing-minus-1 margin-10px-bottom text-uppercase">{{ $pageTitle->title }}</h1>
                 <!-- end page title -->
                 <!-- start sub title -->
-                <span class="d-block margin-10px-top text-extra-small alt-font text-uppercase">Hubungi kami jika anda punya pertanyan atau saran yang ingin disampaikan!</span>
+                {{-- <span class="text-white-2 opacity6 alt-font mb-0">Unlimited power and customization possibilities</span> --}}
                 <!-- end sub title -->
             </div>
         </div>
     </div>
 </section>
+@else
+<section class="wow animate__fadeIn bg-extra-dark-gray">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 extra-small-screen page-title-medium text-center d-flex flex-column justify-content-center">
+                <!-- start page title -->
+                <h1 class="alt-font text-white-2 font-weight-600 m-0 text-uppercase letter-spacing-1"> {{ $pageTitle->title  }} </h1>
+                <!-- end page title -->
+                <!-- start sub title -->
+                {{-- <span class="d-block margin-10px-top text-extra-small alt-font text-uppercase">Hubungi kami jika anda punya pertanyan atau saran yang ingin disampaikan!</span> --}}
+                <!-- end sub title -->
+            </div>
+        </div>
+    </div>
+</section>
+@endif
 <!-- end page title section -->
+
 <!-- start contact info -->
 <section class="wow animate__fadeIn">
     <div class="container px-0">
@@ -73,9 +92,9 @@
 <section id="contact" class="wow animate__fadeIn p-0 bg-extra-dark-gray">
     <div class="container-fluid">
         <div class="row row-cols-1 row-cols-lg-2">
-            <div class="col cover-background md-h-450px sm-h-350px wow animate__fadeIn" style="background: url(https://via.placeholder.com/1200x854)"></div>
+            <div class="col cover-background md-h-450px sm-h-350px wow animate__fadeIn" style="background: url({{ $waForm->image ? asset('storage/'.$waForm->image) : '/storage/default/image.jpg' }})"></div>
             <div class="col text-center padding-six-lr padding-five-half-tb lg-padding-four-lr md-padding-ten-half-tb md-padding-twelve-half-lr sm-padding-15px-lr wow animate__fadeIn">
-                <div class="margin-55px-bottom text-medium-gray alt-font text-small text-uppercase sm-margin-ten-bottom ">Hubungi Kami melalui Whatsapp!</div>
+                <div class="margin-55px-bottom text-medium-gray alt-font text-small text-uppercase sm-margin-ten-bottom ">{{ $waForm->title }}</div>
                 {{-- <h5 class="margin-55px-bottom text-white-2 alt-font font-weight-700 text-uppercase sm-margin-ten-bottom">Ready to request a quote?</h5> --}}
                 <form id="project-contact-form-4"  method="post" target="_blank">
                     @csrf

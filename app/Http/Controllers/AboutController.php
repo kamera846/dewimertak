@@ -14,7 +14,7 @@ class AboutController extends Controller
     {
         return view('dashboard.about', [
             'profile' => Profile::get()[0],
-            'subSection' => true,
+            'subPart' => true,
             'aboutPage' => true,
             'about' => About::get()[0]
         ]);
@@ -24,7 +24,7 @@ class AboutController extends Controller
     {
         return view('dashboard.about-edit', [
             'profile' => Profile::get()[0],
-            'subSection' => true,
+            'subPart' => true,
             'aboutPage' => true,
             'about' => About::get()[0]
         ]);

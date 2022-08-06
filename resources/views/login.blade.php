@@ -24,7 +24,7 @@
             content="Start your development with a Dashboard for Bootstrap 4."
         />
         <meta name="author" content="Creative Tim" />
-        <title>{{ $profile->site_name }} | Admin Login</title>
+        <title>{{ $profile->site_name }} | Login</title>
         
         <!-- Favicon -->
         @if($profile->favicon)
@@ -186,9 +186,9 @@
                         </div>
                         <div class="row mt-3">
                             <div class="col">
-                                <a href="/" class="text-light"
-                                    ><small>Kembali ke beranda</small></a
-                                >
+                                <a href="/" class="text-light">
+                                    <small>Kembali ke beranda</small>
+                                </a>
                             </div>
                         </div>
                     </div>

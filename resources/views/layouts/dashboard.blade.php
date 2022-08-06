@@ -24,7 +24,7 @@
             content="Start your development with a Dashboard for Bootstrap 4."
         />
         <meta name="author" content="Creative Tim" />
-        <title>{{ $profile->site_name }} | Admin Dasbor</title>
+        <title>{{ $profile->site_name }} | Dasbor</title>
 
         <!-- Favicon -->
         @if($profile->favicon)
@@ -189,17 +189,17 @@
                             </li>
                             <li class="nav-item">
                                 <a
-                                    class="nav-link {{ (isset($subSection)) ? 'active' : ''}}"
-                                    href="#section"
+                                    class="nav-link {{ (isset($subPart)) ? 'active' : ''}}"
+                                    href="#part"
                                     data-toggle="collapse"
                                     role="button"
                                     aria-expanded="false"
-                                    aria-controls="section"
+                                    aria-controls="part"
                                 >
                                     <i class="ni ni-single-copy-04 text-primary"></i>
                                     <span class="nav-link-text">Bagian</span>
                                 </a>
-                                <div class="collapse {{ (isset($subSection)) ? 'show' : '' }}" id="section">
+                                <div class="collapse {{ (isset($subPart)) ? 'show' : '' }}" id="part">
                                     <ul class="nav nav-sm flex-column">
                                         <li class="nav-item">
                                             <a
@@ -231,6 +231,17 @@
                                         </li>
                                     </ul>
                                 </div>
+                            </li>
+                            <li class="nav-item">
+                                <a
+                                    class="nav-link {{ (isset($sectionPage)) ? 'active' : '' }}"
+                                    href="/dashboard/sections"
+                                >
+                                    <i class="ni ni-ui-04 text-primary"></i>
+                                    <span class="nav-link-text"
+                                        >Seksi</span
+                                    >
+                                </a>
                             </li>
                         </ul>
 

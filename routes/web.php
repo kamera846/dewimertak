@@ -13,6 +13,7 @@ use App\Http\Controllers\CarouselController;
 use App\Http\Controllers\FeatureController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\SectionController;
 
 use App\Models\Profile;
 use App\Models\User;
@@ -30,6 +31,7 @@ use App\Models\Gallery;
 |
 */
 
+Route::get('/', [HomeController::class, 'home']);
 Route::get('/about', [HomeController::class, 'about']);
 Route::get('/posts', [HomeController::class, 'post']);
 Route::get('/posts/{post:slug}', [HomeController::class, 'postDetail']);
@@ -68,6 +70,8 @@ Route::get('/dashboard/about/edit', [AboutController::class, 'edit'])->middlewar
 Route::put('/dashboard/about/{about}', [AboutController::class, 'update'])->middleware('auth');
 
 Route::resource('/dashboard/events', EventController::class)->middleware('auth');
+
+Route::resource('/dashboard/sections', SectionController::class)->middleware('auth');
 
 Route::get('/dashboard/profile', [ProfileController::class, 'show'])->middleware('auth');
 Route::get('/dashboard/profile/edit', [ProfileController::class, 'edit'])->middleware('auth');
