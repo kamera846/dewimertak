@@ -71,7 +71,7 @@
                                         <img src="{{ asset('storage/default/image.jpg') }}" style="width: 100%; max-height:325px; object-fit: cover;" class="rounded mb-3" alt="">
                                     @endif
                                 </div>
-                                <div class="row text-justify mt-2">
+                                <div class="row text-sm text-justify mt-2">
                                     <span>Konten :</span>
                                     {!! $about->content !!}
                                 </div>

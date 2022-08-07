@@ -59,10 +59,10 @@
                             <div class="form-group row">
                                 <label
                                     for="image"
-                                    class="col-md-2 col-form-label form-control-label text-md-right"
+                                    class="col-md-3 col-form-label form-control-label text-md-right"
                                     >Foto <span class="text-danger">*</span></label
                                 >
-                                <div class="col-md-10">
+                                <div class="col-md-9">
                                     <input
                                         class="form-control @error('image') is-invalid @enderror"
                                         type="file"
@@ -82,13 +82,34 @@
         
                             <div class="form-group row">
                                 <label
-                                    for="text"
-                                    class="col-md-2 col-form-label form-control-label text-md-right"
-                                    >Teks <span class="text-danger">*</span></label
+                                    for="title"
+                                    class="col-md-3 col-form-label form-control-label text-md-right"
+                                    >Judul <span class="text-danger">*</span></label
                                 >
-                                <div class="col-md-10">
-                                    <textarea name="text" id="text" rows="5" class="form-control @error('text') is-invalid @enderror" required>{{  old('text', $carousel->text)  }}</textarea>
-                                    @error('text')
+                                <div class="col-md-9">
+                                    <input
+                                        class="form-control @error('title') is-invalid @enderror"
+                                        type="text"
+                                        id="title"
+                                        name="title"
+                                        required
+                                        value="{{ old('title', $carousel->title) }}"
+                                    />
+                                    @error('title')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+        
+                            <div class="form-group row">
+                                <label
+                                    for="sub_title"
+                                    class="col-md-3 col-form-label form-control-label text-md-right"
+                                    >Sub Judul</label
+                                >
+                                <div class="col-md-9">
+                                    <textarea name="sub_title" id="sub_title" rows="5" class="form-control @error('sub_title') is-invalid @enderror">{{  old('sub_title', $carousel->sub_title)  }}</textarea>
+                                    @error('sub_title')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>

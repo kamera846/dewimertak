@@ -3,7 +3,7 @@
 @section('page-content')
 
 @php
-    $title = $pageTitle->title;
+    $title = $pageTitleSection->title;
 
     if(request('category')) {
         $title = 'Artikel Tentang ' . App\Models\PostCategory::where('slug', request('category'))->get()[0]->name;
@@ -21,8 +21,8 @@
 
 
 <!-- start page title section -->
-@if($pageTitle->image)
-<section class="wow animate__fadeIn parallax" data-parallax-background-ratio="0.5" style="background-image:url('{{ asset('storage/'.$pageTitle->image) }}');">
+@if($pageTitleSection->image)
+<section class="wow animate__fadeIn parallax" data-parallax-background-ratio="0.5" style="background-image:url('{{ asset('storage/'.$pageTitleSection->image) }}');">
     <div class="opacity-medium bg-extra-dark-gray"></div>
     <div class="container position-relative">
         <div class="row">

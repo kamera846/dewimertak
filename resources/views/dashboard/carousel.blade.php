@@ -80,6 +80,7 @@
                     <tr>
                         <th>No.</th>
                         <th>Foto</th>
+                        <th>Judul</th>
                         <th>Opsi</th>
                     </tr>
                 </thead>
@@ -100,6 +101,9 @@
                                     class="rounded"
                                 />
                             </td>
+                            <td>
+                                {{ $carousel->title }}
+                            </td>
                             <td class="table-actions">
                                 <a
                                     href="#"
@@ -108,7 +112,8 @@
                                     data-target="#carousel-detail"
                                     data-id="{{ $carousel->id }}"
                                     data-image="{{ $carousel->image }}"
-                                    data-title="{{ $carousel->text }}"
+                                    data-title="{{ $carousel->title }}"
+                                    data-subtitle="{{ $carousel->sub_title }}"
                                     data-loop="{{ $loop->iteration }}"
                                 >
                                     <i 
@@ -160,7 +165,7 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h6 class="modal-title carousel-title" id="modal-title-default"></h6>
+                <h6 class="modal-title modal-title" id="modal-title-default"></h6>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
@@ -173,6 +178,10 @@
                 <div class="row mb-3">
                     <div class="col-3 font-weight-bold text-right">Judul</div>
                     <div class="col-9" id="carousel-title"></div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-3 font-weight-bold text-right">Sub Judul</div>
+                    <div class="col-9" id="carousel-subtitle"></div>
                 </div>
             </div>
             <div class="modal-footer text-end">

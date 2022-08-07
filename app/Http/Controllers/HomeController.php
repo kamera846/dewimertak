@@ -22,11 +22,17 @@ class HomeController extends Controller
     public function home()
     {
         return view('home', [
-            // cuurentPage saya set sebagai isi tag <title> dengan gabungan nama_situs
             'homePage' => true,
             'profile' => Profile::get()[0],
             'about' => About::get()[0],
             'features' => Feature::all(),
+            'carousels' => Carousel::all(),
+            
+            'latestGalleries' => Gallery::latest()->limit(6)->get(), 
+            'latestPosts' => Post::latest()->limit(3)->get(),
+
+            'latestGallerySection' => Section::where('code', 'galeri-terbaru')->where('on_page', 'Beranda')->get()[0],
+            'latestPostSection' => Section::where('code', 'artikel-terbaru')->where('on_page', 'Beranda')->get()[0]
         ]);
     }
     
@@ -42,8 +48,8 @@ class HomeController extends Controller
             'events' => Event::latest()->get(),
             'about' => About::get()[0],
 
-            'pageTitle' => Section::where('code', 'judul-halaman')->where('on_page', 'Tentang')->get()[0],
-            'event' => Section::where('code', 'acara-dan-kegiatan')->where('on_page', 'Tentang')->get()[0]
+            'pageTitleSection' => Section::where('code', 'judul-halaman')->where('on_page', 'Tentang')->get()[0],
+            'eventSection' => Section::where('code', 'acara-dan-kegiatan')->where('on_page', 'Tentang')->get()[0]
         ]);
     }
 
@@ -59,7 +65,7 @@ class HomeController extends Controller
             'categories' => PostCategory::get(),
             'recentPosts' => Post::latest()->limit(4)->get(),
 
-            'pageTitle' => Section::where('code', 'judul-halaman')->where('on_page', 'Artikel')->get()[0]
+            'pageTitleSection' => Section::where('code', 'judul-halaman')->where('on_page', 'Artikel')->get()[0]
         ]);
     }
 
@@ -76,7 +82,7 @@ class HomeController extends Controller
             'categories' => PostCategory::get(),
             'recentPosts' => Post::latest()->limit(4)->get(),
             
-            'pageTitle' => Section::where('code', 'judul-halaman')->where('on_page', 'Artikel')->get()[0]
+            'pageTitleSection' => Section::where('code', 'judul-halaman')->where('on_page', 'Artikel')->get()[0]
         ]);
     }
 
@@ -90,8 +96,8 @@ class HomeController extends Controller
             'socials' => Social::get(),
             'galleries' => Gallery::latest()->paginate(15),
             // section langsung panggil fieldnya ga perlu pakek perulangan karena sudah memanggil indeks pertama
-            'pageTitle' => Section::where('code', 'judul-halaman')->where('on_page', 'Galeri')->get()[0],
-            'allGalleries' => Section::where('code', 'semua-galeri')->where('on_page', 'Galeri')->get()[0],
+            'pageTitleSection' => Section::where('code', 'judul-halaman')->where('on_page', 'Galeri')->get()[0],
+            'allGalleriesSection' => Section::where('code', 'semua-galeri')->where('on_page', 'Galeri')->get()[0],
         ]);
     }
 
@@ -104,8 +110,8 @@ class HomeController extends Controller
             'profile' => Profile::get()[0],
             'socials' => Social::get(),
             // section langsung panggil fieldnya ga perlu pakek perulangan karena sudah memanggil indeks pertama
-            'pageTitle' => Section::where('code', 'judul-halaman')->where('on_page', 'Kontak')->get()[0],
-            'waForm' => Section::where('code', 'wa-form')->where('on_page', 'Kontak')->get()[0],
+            'pageTitleSection' => Section::where('code', 'judul-halaman')->where('on_page', 'Kontak')->get()[0],
+            'waFormSection' => Section::where('code', 'wa-form')->where('on_page', 'Kontak')->get()[0],
         ]);
     }
 

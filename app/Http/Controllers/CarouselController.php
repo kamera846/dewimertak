@@ -33,7 +33,8 @@ class CarouselController extends Controller
     {
         $validated = $request->validate([
             'image' => 'required|file|image',
-            'text' => 'required|max:255'
+            'title' => 'required|max:100',
+            'sub_title' => 'max:255'
         ]);
 
         $validated['image'] = $request->file('image')->store('/');
@@ -57,7 +58,8 @@ class CarouselController extends Controller
     {
         $validated = $request->validate([
             'image' => 'file|image',
-            'text' => 'required|max:255'
+            'title' => 'required|max:100',
+            'sub_title' => 'max:255'
         ]);
 
         if($request->file('image'))

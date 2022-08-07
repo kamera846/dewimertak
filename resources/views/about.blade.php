@@ -2,14 +2,14 @@
 
 @section('page-content')
 <!-- start page title section -->
-@if($pageTitle->image)
-<section class="wow animate__fadeIn parallax" data-parallax-background-ratio="0.5" style="background-image:url('{{ asset('storage/'.$pageTitle->image) }}');">
+@if($pageTitleSection->image)
+<section class="wow animate__fadeIn parallax" data-parallax-background-ratio="0.5" style="background-image:url('{{ asset('storage/'.$pageTitleSection->image) }}');">
     <div class="opacity-medium bg-extra-dark-gray"></div>
     <div class="container position-relative">
         <div class="row">
             <div class="col-12 extra-small-screen d-flex flex-column justify-content-center page-title-medium text-center">
                 <!-- start page title -->
-                <h1 class="text-white-2 alt-font font-weight-600 letter-spacing-minus-1 margin-10px-bottom text-uppercase">{{ $pageTitle->title }}</h1>
+                <h1 class="text-white-2 alt-font font-weight-600 letter-spacing-minus-1 margin-10px-bottom text-uppercase">{{ $pageTitleSection->title }}</h1>
                 <!-- end page title -->
                 <!-- start sub title -->
                 {{-- <span class="text-white-2 opacity6 alt-font mb-0">Unlimited power and customization possibilities</span> --}}
@@ -24,7 +24,7 @@
         <div class="row">
             <div class="col-12 extra-small-screen page-title-medium text-center d-flex flex-column justify-content-center">
                 <!-- start page title -->
-                <h1 class="alt-font text-white-2 font-weight-600 m-0 text-uppercase letter-spacing-1"> {{ $pageTitle->title  }} </h1>
+                <h1 class="alt-font text-white-2 font-weight-600 m-0 text-uppercase letter-spacing-1"> {{ $pageTitleSection->title  }} </h1>
                 <!-- end page title -->
                 <!-- start sub title -->
                 {{-- <span class="d-block margin-10px-top text-extra-small alt-font text-uppercase">Hubungi kami jika anda punya pertanyan atau saran yang ingin disampaikan!</span> --}}
@@ -69,7 +69,6 @@
             @foreach($features as $feature)
             <div class="col-12 col-lg-3 col-md-6 col-sm-8 feature-box-1 md-margin-60px-bottom sm-margin-40px-bottom wow animate__fadeInRight">
                 <div class="d-flex align-items-center margin-15px-bottom alt-font ms-2">
-                    {{-- <h3 class="char-value letter-spacing-minus-1 text-medium-gray font-weight-300 mb-0">0{{ $loop->iteration }}.</h3> --}}
                     <span class="text-large line-height-22 sm-padding-15px w-100">
                         {{ $feature->name }}
                     </span>
@@ -85,31 +84,6 @@
 @endif
 <!-- end feature box -->
 
-<!-- start slider section  -->
-<section id="clients" class="parallax wow animate__fadeIn" data-parallax-background-ratio="0.4" style="background-image:url('https://via.placeholder.com/1920x1200');">
-    <div class="opacity-medium bg-extra-dark-gray"></div>
-    <div class="container">
-        <div class="row">    
-            <div class="swiper-container white-move" data-slider-options='{ "slidesPerView": "1", "allowTouchMove":true,"paginationClickable": true, "autoplay": { "delay": 3000, "disableOnInteraction": true }, "navigation": { "nextEl": ".swiper-button-next", "prevEl": ".swiper-button-prev" }, "pagination": { "el": ".swiper-pagination", "clickable": true }, "breakpoints": { "1200": { "slidesPerView": 4 }, "992": { "slidesPerView": 3 }, "768": { "slidesPerView": 2 } }, "pagination": { "el": ".swiper-pagination" } }'>
-                <div class="swiper-wrapper">
-                    <!-- start slide item--><div class="swiper-slide text-center"><a href="http://envato.com"><img src="images/clients-logo1.png" alt=""></a></div><!-- end slide item -->
-                    <!-- start slide item--><div class="swiper-slide text-center"><a href="http://woocommerce.com"><img src="images/clients-logo2.png" alt=""></a></div><!-- end slide item -->
-                    <!-- start slide item--><div class="swiper-slide text-center"><a href="http://wordpress.com"><img src="images/clients-logo3.png" alt=""></a></div><!-- end slide item -->
-                    <!-- start slide item--><div class="swiper-slide text-center"><a href="http://magento.com"><img src="images/clients-logo4.png" alt=""></a></div><!-- end slide item -->
-                    <!-- start slide item--><div class="swiper-slide text-center"><a href="http://envato.com"><img src="images/clients-logo1.png" alt=""></a></div><!-- end slide item -->
-                    <!-- start slide item--><div class="swiper-slide text-center"><a href="http://woocommerce.com"><img src="images/clients-logo2.png" alt=""></a></div><!-- end slide item -->
-                    <!-- start slide item--><div class="swiper-slide text-center"><a href="http://wordpress.com"><img src="images/clients-logo3.png" alt=""></a></div><!-- end slide item -->
-                    <!-- start slide item--><div class="swiper-slide text-center"><a href="http://magento.com"><img src="images/clients-logo4.png" alt=""></a></div><!-- end slide item -->
-                </div>
-                <!-- start swiper pagination -->
-                <!-- <div class="swiper-pagination swiper-pagination-white"></div> -->
-                <!-- end swiper pagination -->
-            </div>
-        </div>    
-    </div>
-</section>
-<!-- end slider section -->
-
 <!-- start event section -->
 @if($events->count())
 <section class="wow animate__fadeIn">
@@ -117,7 +91,7 @@
         <div class="row justify-content-center">
             <div class="col-12 col-xl-7 col-lg-8 col-md-10 margin-eight-bottom md-margin-40px-bottom sm-margin-30px-bottom text-center">
                 {{-- variabel ini ngambil dari data section bukan data event --}}
-                <h5 class="alt-font text-extra-dark-gray font-weight-600 mb-0">{{ $event->title }}</h5>
+                <h5 class="alt-font text-extra-dark-gray font-weight-600 mb-0">{{ $eventSection->title }}</h5>
             </div>
         </div>
         <div class="row row-cols-1 row-cols-lg-4 row-cols-sm-2 justify-content-center">

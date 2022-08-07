@@ -175,6 +175,9 @@
                                             {{ $message }}
                                         </div>
                                     @enderror
+                                    <span class="text-sm">
+                                        (Pastikan nomor ini terhubung ke Whatsapp!)
+                                    </span>
                                 </div>
                             </div>
                             

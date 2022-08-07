@@ -114,24 +114,23 @@
                             </div>
         
                             <div class="form-group">
-                                <label
-                                    for="tags"
-                                    class="form-control-label"
-                                    >Tags</label
-                                >
+                                <label for="tags" class="form-control-label" >
+                                    Tags
+                                    <span class="text-sm text-warning">
+                                        (Pisahkan antar tag dengan tanda koma!)
+                                    </span>
+                                </label>
                                 <input
                                     class="form-control @error('tags') is-invalid @enderror"
                                     type="text"
                                     name="tags"
                                     value="{{ old('tags') }}"
                                     id="tags"
+                                    placeholder="cth: tips,berita pasar,artis"
                                 />
                                 @error('tags')
                                     <div class="invalid-feedback">{{ $message }}</div>   
                                 @enderror
-                                <div class="text-sm text-warning">
-                                    Pisahkan antar tag dengan tanda koma ( , )
-                                </div>
                             </div>
                             
                             <div class="form-group">

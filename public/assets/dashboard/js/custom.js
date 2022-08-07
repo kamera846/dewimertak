@@ -87,7 +87,10 @@ $(document).ready(function () {
                 '" class="rounded mb-2" height="100px">'
         );
         $("#carousel-title").text($(this).data("title"));
-        $(".carousel-title").text("Detail tayangan " + $(this).data("loop"));
+        $("#carousel-subtitle").text(
+            $(this).data("subtitle") ? $(this).data("subtitle") : "-"
+        );
+        $(".modal-title").text("Detail tayangan " + $(this).data("loop"));
         $("#carousel-edit").attr(
             "href",
             "/dashboard/carousels/" + $(this).data("id") + "/edit"
