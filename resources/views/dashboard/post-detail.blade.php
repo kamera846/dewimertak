@@ -64,13 +64,13 @@
                                     <span class="text-xs text-muted">
                                         <i class="ni ni-single-02 mr-1"></i> {{ ucwords($post->user->name) }} <span class="mx-2">|</span>
                                         <i class="ni ni-archive-2 mr-1"></i> {{ ucwords($post->category->name) }} <span class="mx-2">|</span>
-                                        <i class="ni ni-calendar-grid-58 mr-1"></i> {{ $post->created_at->isoFormat('dddd, d MMMM Y') }} (terakhir diubah {{ $post->updated_at->diffForHumans() }})
+                                        <i class="ni ni-calendar-grid-58 mr-1"></i> {{ $post->created_at->isoFormat('dddd, D MMMM Y') }} (terakhir diubah {{ $post->updated_at->diffForHumans() }})
                                     </span>
                                 </div>
                                 <div class="row text-sm text-justify mt-2">
                                     {!! $post->content !!}
         
-                                    <p class=" text-md mt-4 mb-0">
+                                    <p class="text-md mt-4 mb-0">
                                         <i class="ni ni-tag text-xs mr-2"></i>
                                         tags:
                                         {{ ($post->tags) ? $post->tags : '-' }}

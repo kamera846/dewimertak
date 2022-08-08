@@ -145,6 +145,12 @@
                         </tr>
 
                         @endforeach
+
+                        @if($features->count() >= 4)
+                        <tr >
+                            <td colspan="4" class="text-center">Anda tidak bisa membuat data lagi, maksimal diperbolehkan 4 data.</td>
+                        </tr>
+                        @endif
                         
                     @else
                         

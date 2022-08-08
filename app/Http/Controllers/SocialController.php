@@ -22,12 +22,17 @@ class SocialController extends Controller
 
     public function create()
     {
-        return view('dashboard.social-create', [
-            'profile' => Profile::get()[0],
-            'socialPage' => true,
-            'socials' => Social::all(),
-            'options' => ['facebook', 'instagram', 'twitter', 'pinterest', 'youtube']
-        ]);
+        if(Social::count() < 5) {
+            return view('dashboard.social-create', [
+                'profile' => Profile::get()[0],
+                'socialPage' => true,
+                'socials' => Social::all(),
+                'options' => ['facebook', 'instagram', 'twitter', 'pinterest', 'youtube']
+            ]);
+        } else {
+            return redirect('/dashboard/socials');
+        }
+
     }
 
     public function store(Request $request)

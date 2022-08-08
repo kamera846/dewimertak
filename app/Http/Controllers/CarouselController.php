@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Carousel;
 use App\Models\Profile;
 use Illuminate\Support\Facades\Storage;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 class CarouselController extends Controller
 {
@@ -22,11 +23,15 @@ class CarouselController extends Controller
 
     public function create()
     {
-        return view('dashboard.carousel-create', [
-            'subPart' => true,
-            'carouselPage' => true,
-            'profile' => Profile::get()[0]
-        ]);
+        if(Carousel::count() < 3) {
+            return view('dashboard.carousel-create', [
+                'subPart' => true,
+                'carouselPage' => true,
+                'profile' => Profile::get()[0]
+            ]);
+        } else {
+            return redirect('/dashboard/carousels');
+        }
     }
 
     public function store(Request $request)

@@ -49,11 +49,7 @@
         
         <link
             rel="stylesheet"
-            href="{{
-                asset(
-                    'assets/dashboard/vendor/@fortawesome/fontawesome-free/css/all.min.css'
-                )
-            }}"
+            href="{{ asset('assets/dashboard/vendor/@fortawesome/fontawesome-free/css/all.min.css') }}"
             type="text/css"
         />
 
@@ -101,6 +97,7 @@
                                 alt="{{ $profile->site_name }}"
                             />
                         @else
+                            {{-- <h1 class="display-4 text-primary font-weight-bolder">{{ $profile->site_name }}</h1> --}}
                             <img src="{{ asset('assets/dashboard/img/brand/blue.png') }}" class="navbar-brand-img" alt="...">
                         @endif
                     </a>
@@ -239,7 +236,7 @@
                                 >
                                     <i class="ni ni-ui-04 text-primary"></i>
                                     <span class="nav-link-text"
-                                        >Seksi</span
+                                        >Bagian Lainnya</span
                                     >
                                 </a>
                             </li>

@@ -170,7 +170,7 @@
                                 </div>
                             </div>
                             
-                            @if(Auth::user()->id === $user->id)
+                            {{-- @if(Auth::user()->id === $user->id) --}}
                             <div class="form-group row">
                                 <label
                                     for="password"
@@ -192,7 +192,7 @@
                                     @enderror
                                 </div>
                             </div>
-                            @endif
+                            {{-- @endif --}}
                             
                             <div class="form-group row">
                                 <label
@@ -214,7 +214,7 @@
                                 <div class="col-md-3"></div>
                                 <div class="col-md-9">
                                     <button type="submit" class="btn btn-primary">Simpan</button>
-                                    <a href="/dashboard/users" class="btn btn-secondary">Batal</a>
+                                    <a href="/dashboard{{ (Auth::user()->id === $user->id)?'':'/users' }}" class="btn btn-secondary">Batal</a>
                                 </div>
                             </div>
                         </form>

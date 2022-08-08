@@ -31,7 +31,7 @@
                         </ol>
                     </nav>
                 </div>
-                @if($carousels->count() < 6)
+                @if($carousels->count() < 3)
                 <div class="col-lg-6 col-5 text-right">
                     <a
                         href="/dashboard/carousels/create"
@@ -141,6 +141,12 @@
                         </tr>
 
                         @endforeach
+
+                        @if($carousels->count() >= 3)
+                        <tr >
+                            <td colspan="4" class="text-center">Anda tidak bisa membuat data lagi, maksimal diperbolehkan 3 data.</td>
+                        </tr>
+                        @endif
                         
                     @else
                         

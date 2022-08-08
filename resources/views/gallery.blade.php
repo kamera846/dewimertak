@@ -62,7 +62,7 @@
         
         <div class="row justify-content-center">
             <div class="col-12 col-lg-5 col-md-6 col-sm-8 margin-eight-bottom md-margin-40px-bottom sm-margin-30px-bottom text-center">
-                <h5 class="alt-font text-extra-dark-gray font-weight-600 mb-0">{{ $allGalleriesSection->title }}</h5>
+                <h5 class="alt-font text-extra-dark-gray font-weight-600 mb-0 fw-bolder">{{ $allGalleriesSection->title }}</h5>
             </div>
         </div>
 

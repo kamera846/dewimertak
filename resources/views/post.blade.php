@@ -75,7 +75,7 @@
                                 <div class="col-12 col-lg-6 blog-text p-0">
                                     <div class="content margin-20px-bottom md-no-padding-left ">
                                         <a href="/posts/{{ $post->slug }}" class="text-extra-dark-gray margin-5px-bottom alt-font text-extra-large font-weight-600 d-inline-block">{{ $post->title }}</a>
-                                        <div class="text-medium-gray text-extra-small margin-15px-bottom text-uppercase alt-font"><span>By <a href="/posts?author={{ $post->user->slug }}" class="text-medium-gray">{{ ucwords($post->user->name) }}</a></span>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<span>{{ $post->created_at->isoFormat('d MMMM Y') }}</span>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="/posts?category={{ $post->category->slug }}" class="text-medium-gray">{{ ucwords($post->category->name) }}</a></div>
+                                        <div class="text-medium-gray text-extra-small margin-15px-bottom text-uppercase alt-font"><span>By <a href="/posts?author={{ $post->user->slug }}" class="text-medium-gray">{{ ucwords($post->user->name) }}</a></span>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<span>{{ $post->created_at->isoFormat('D MMMM Y') }}</span>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="/posts?category={{ $post->category->slug }}" class="text-medium-gray">{{ ucwords($post->category->name) }}</a></div>
                                         <p class="m-0 w-95 lg-w-100">{{ substr(strip_tags($post->content), 0, 200) }}...</p>
                                     </div>
                                     <a class="btn btn-very-small btn-dark-gray text-uppercase" href="/posts/{{ $post->slug }}">Selengkapnya</a>
@@ -166,7 +166,7 @@
                                     <figure class="flex-shrink-0">
                                         <a href="/posts/{{ $post->slug }}"><img src="{{ asset('storage/'.$post->image) }}" alt="{{ $post->title }}"></a>
                                     </figure>
-                                    <div class="media-body flex-grow-1 text-small"><a href="/posts/{{ $post->slug }}" class="text-extra-dark-gray"><span class="d-block margin-5px-bottom">{{ $post->title }}</span></a> <span class="d-block text-medium-gray text-small">{{ $post->created_at->isoFormat('d MMMM Y') }}</span></div>
+                                    <div class="media-body flex-grow-1 text-small"><a href="/posts/{{ $post->slug }}" class="text-extra-dark-gray"><span class="d-block margin-5px-bottom">{{ $post->title }}</span></a> <span class="d-block text-medium-gray text-small">{{ $post->created_at->isoFormat('D MMMM Y') }}</span></div>
                                 </li>
                                 @endforeach
                             </ul>

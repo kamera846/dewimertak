@@ -125,7 +125,7 @@
                             <figure class="flex-shrink-0">
                                 <a href="/posts/{{ $post->slug }}"><img src="{{ asset('storage/'.$post->image) }}" alt="{{ $post->title }}"></a>
                             </figure>
-                            <div class="media-body flex-grow-1 text-small"><a href="/posts/{{ $post->slug }}" class="text-extra-dark-gray"><span class="d-block margin-5px-bottom">{{ $post->title }}</span></a> <span class="d-block text-medium-gray text-small">{{ $post->created_at->isoFormat('d MMMM Y') }}</span></div>
+                            <div class="media-body flex-grow-1 text-small"><a href="/posts/{{ $post->slug }}" class="text-extra-dark-gray"><span class="d-block margin-5px-bottom">{{ $post->title }}</span></a> <span class="d-block text-medium-gray text-small">{{ $post->created_at->isoFormat('D MMMM Y') }}</span></div>
                         </li>
                         @endforeach
                     </ul>

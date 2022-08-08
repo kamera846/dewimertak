@@ -77,7 +77,7 @@
                 @endif
             </div> 
             <div class="col-12 col-lg-7 col-md-6 text-center text-md-start padding-eight-lr lg-padding-six-lr md-padding-15px-lr wow animate__fadeInRight" data-wow-delay="0.2s">
-                <h6 class="alt-font text-extra-dark-gray">{{ $about->title }}</h6>
+                <h6 class="alt-font text-extra-dark-gray fw-bolder">{{ $about->title }}</h6>
                 
                 {{ substr(strip_tags($about->content), 0, 500)  }}...
                 
@@ -188,7 +188,7 @@
                                 <div class="blog-hover-color"></div>
                                 <a href="/posts/{{ $post->slug }}" class="alt-font post-title text-medium text-extra-dark-gray w-90 d-block lg-w-100 margin-5px-bottom">{{ $post->title }}</a>
                                 <div class="author mt-2">
-                                    <span class="text-medium-gray text-uppercase text-extra-small d-inline-block">oleh <a href="/posts?author={{ $post->user->slug }}" class="text-medium-gray">{{ $post->user->name }}</a>&nbsp;&nbsp;|&nbsp;&nbsp;{{ $post->created_at->isoFormat('d MMMM Y') }}</span>
+                                    <span class="text-medium-gray text-uppercase text-extra-small d-inline-block">oleh <a href="/posts?author={{ $post->user->slug }}" class="text-medium-gray">{{ $post->user->name }}</a>&nbsp;&nbsp;|&nbsp;&nbsp;{{ $post->created_at->isoFormat('D MMMM Y') }}</span>
                                 </div>
                             </div>
                         </div>

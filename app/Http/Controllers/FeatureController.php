@@ -22,11 +22,15 @@ class FeatureController extends Controller
 
     public function create()
     {
-        return view('dashboard.feature-create', [
-            'subPart' => true,
-            'featurePage' => true,
-            'profile' => Profile::get()[0]
-        ]);
+        if(Feature::count() < 4){
+            return view('dashboard.feature-create', [
+                'subPart' => true,
+                'featurePage' => true,
+                'profile' => Profile::get()[0]
+            ]);
+        } else {
+            return redirect('/dashboard/features');
+        }
     }
 
     public function store(Request $request)

@@ -8,7 +8,7 @@
             <div class="row align-items-center py-4">
                 <div class="col-lg-6 col-7">
                     <h6 class="h2 text-white d-inline-block mb-0">
-                        Seksi
+                        Bagian Lainnya
                     </h6>
                     <nav
                         aria-label="breadcrumb"
@@ -26,7 +26,7 @@
                                 class="breadcrumb-item active"
                                 aria-current="page"
                             >
-                                Data Seksi
+                                Data Bagian Lainnya
                             </li>
                         </ol>
                     </nav>
@@ -57,7 +57,7 @@
         <div class="card-header border-0">
             <div class="row">
                 <div class="col">
-                    <h3 class="mb-0">Seksi Halaman Beranda</h3>
+                    <h3 class="mb-0">Bagian Halaman Beranda</h3>
                 </div>
             </div>
         </div>
@@ -111,7 +111,7 @@
         <div class="card-header border-0">
             <div class="row">
                 <div class="col">
-                    <h3 class="mb-0">Seksi Halaman Tentang</h3>
+                    <h3 class="mb-0">Bagian Halaman Tentang</h3>
                 </div>
             </div>
         </div>
@@ -165,7 +165,7 @@
         <div class="card-header border-0">
             <div class="row">
                 <div class="col">
-                    <h3 class="mb-0">Seksi Halaman Artikel</h3>
+                    <h3 class="mb-0">Bagian Halaman Artikel</h3>
                 </div>
             </div>
         </div>
@@ -211,7 +211,7 @@
         <div class="card-header border-0">
             <div class="row">
                 <div class="col">
-                    <h3 class="mb-0">Seksi Halaman Galeri</h3>
+                    <h3 class="mb-0">Bagian Halaman Galeri</h3>
                 </div>
             </div>
         </div>
@@ -257,7 +257,7 @@
         <div class="card-header border-0">
             <div class="row">
                 <div class="col">
-                    <h3 class="mb-0">Seksi Halaman Kontak</h3>
+                    <h3 class="mb-0">Bagian Halaman Kontak</h3>
                 </div>
             </div>
         </div>

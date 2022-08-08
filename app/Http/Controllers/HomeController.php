@@ -24,6 +24,7 @@ class HomeController extends Controller
         return view('home', [
             'homePage' => true,
             'profile' => Profile::get()[0],
+            'socials' => Social::all(),
             'about' => About::get()[0],
             'features' => Feature::all(),
             'carousels' => Carousel::all(),
