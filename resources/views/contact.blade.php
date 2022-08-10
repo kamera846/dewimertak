@@ -2,168 +2,188 @@
 
 @section('page-content')
 
-<!-- start page title section -->
-@if($pageTitleSection->image)
-<section class="wow animate__fadeIn parallax" data-parallax-background-ratio="0.5" style="background-image:url('{{ asset('storage/'.$pageTitleSection->image) }}');">
-    <div class="opacity-medium bg-extra-dark-gray"></div>
-    <div class="container position-relative">
+<section class="wrapper bg-soft-green">
+    <div class="container pt-10 pb-19 pt-md-14 pb-md-20 text-center">
         <div class="row">
-            <div class="col-12 extra-small-screen d-flex flex-column justify-content-center page-title-medium text-center">
-                <!-- start page title -->
-                <h1 class="text-white-2 alt-font font-weight-600 letter-spacing-minus-1 margin-10px-bottom text-uppercase">{{ $pageTitleSection->title }}</h1>
-                <!-- end page title -->
-                <!-- start sub title -->
-                {{-- <span class="text-white-2 opacity6 alt-font mb-0">Unlimited power and customization possibilities</span> --}}
-                <!-- end sub title -->
+            <div class="col-sm-10 col-md-8 col-lg-6 col-xl-6 col-xxl-5 mx-auto">
+                <h1 class="mb-3">
+                    {{ $pageTitleSection->title ? $pageTitleSection->title : 'Lebih Dekat' }}
+                </h1>
+                <nav class="d-inline-block" aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/">Beranda</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">
+                            Kontak
+                        </li>
+                    </ol>
+                </nav>
+                <!-- /nav -->
             </div>
+            <!-- /column -->
         </div>
+        <!-- /.row -->
     </div>
+    <!-- /.container -->
 </section>
-@else
-<section class="wow animate__fadeIn bg-extra-dark-gray">
-    <div class="container">
-        <div class="row">
-            <div class="col-12 extra-small-screen page-title-medium text-center d-flex flex-column justify-content-center">
-                <!-- start page title -->
-                <h1 class="alt-font text-white-2 font-weight-600 m-0 text-uppercase letter-spacing-1"> {{ $pageTitleSection->title  }} </h1>
-                <!-- end page title -->
-                <!-- start sub title -->
-                {{-- <span class="d-block margin-10px-top text-extra-small alt-font text-uppercase">Hubungi kami jika anda punya pertanyan atau saran yang ingin disampaikan!</span> --}}
-                <!-- end sub title -->
-            </div>
-        </div>
-    </div>
-</section>
-@endif
-<!-- end page title section -->
-
-<!-- start contact info -->
-<section class="wow animate__fadeIn">
-    <div class="container px-0">
-        {{-- <div class="row justify-content-center">
-            <div class="col-12 col-lg-6 col-md-8 margin-eight-bottom md-margin-40px-bottom sm-margin-30px-bottom text-center last-paragraph-no-margin">
-                <h5 class="alt-font font-weight-700 text-extra-dark-gray text-uppercase mb-0">We love to talk</h5>
-            </div>  
-        </div> --}}
-        <div class="row justify-content-center row-cols-1 row-cols-lg-4 row-cols-sm-2">
-            <!-- start contact info item -->
-            <div class="col text-center md-margin-eight-bottom sm-margin-30px-bottom wow animate__fadeInUp last-paragraph-no-margin" data-wow-delay="0.2s">
-                <div class="d-inline-block margin-20px-bottom">
-                    <div class="bg-extra-dark-gray icon-round-medium"><i class="icon-chat icon-medium text-white-2"></i></div>
-                </div>
-                <div class="text-extra-dark-gray text-uppercase text-small font-weight-600 alt-font margin-5px-bottom">Telepon</div>
-                <p class="mx-auto">{{ $profile->telephone }}</p>
-            </div>
-            <!-- end contact info item -->
-            <!-- start contact info item -->
-            <div class="col text-center xs-margin-30px-bottom wow animate__fadeInUp last-paragraph-no-margin" data-wow-delay="0.4s">
-                <div class="d-inline-block margin-20px-bottom">
-                    <div class="bg-extra-dark-gray icon-round-medium"><i class="icon-envelope icon-medium text-white-2"></i></div>
-                </div>
-                <div class="text-extra-dark-gray text-uppercase text-small font-weight-600 alt-font margin-5px-bottom">Email</div>
-                <p class="mx-auto"><a href="mailto:{{ $profile->email }}">{{ $profile->email }}</a></p>
-            </div>
-            <!-- end contact info item -->
-            <!-- start contact info item -->
-            <div class="col text-center md-margin-eight-bottom sm-margin-30px-bottom wow animate__fadeInUp last-paragraph-no-margin">
-                <div class="d-inline-block margin-20px-bottom">
-                    <div class="bg-extra-dark-gray icon-round-medium"><i class="icon-map-pin icon-medium text-white-2"></i></div>
-                </div>
-                <div class="text-extra-dark-gray text-uppercase text-small font-weight-600 alt-font margin-5px-bottom">Lokasi</div>
-                <p class="mx-auto">{{ $profile->location }}</p>
-            </div>
-            <!-- end contact info item -->
-            <!-- start contact info item -->
-            {{-- <div class="col text-center wow animate__fadeInUp last-paragraph-no-margin" data-wow-delay="0.6s">
-                <div class="d-inline-block margin-20px-bottom">
-                    <div class="bg-extra-dark-gray icon-round-medium"><i class="icon-megaphone icon-medium text-white-2"></i></div>
-                </div>
-                <div class="text-extra-dark-gray text-uppercase text-small font-weight-600 alt-font margin-5px-bottom">Customer Services</div>
-                <p class="mx-auto">Lorem Ipsum is simply dummy<br>text of the printing.</p>
-                <a href="#" class="text-decoration-line-through-deep-pink text-uppercase text-deep-pink text-small margin-15px-top sm-margin-10px-top d-inline-block">open ticket</a>
-            </div> --}}
-            <!-- end contact info item -->
-        </div>
-    </div>
-</section>
-
-<!-- end contact info section -->
-<!-- start contact form -->
-<section id="contact" class="wow animate__fadeIn p-0 bg-extra-dark-gray">
-    <div class="container-fluid">
-        <div class="row row-cols-1 row-cols-lg-2">
-            <div class="col cover-background md-h-450px sm-h-350px wow animate__fadeIn" style="background: url({{ $waFormSection->image ? asset('storage/'.$waFormSection->image) : '/storage/default/image.jpg' }})"></div>
-            <div class="col text-center padding-six-lr padding-five-half-tb lg-padding-four-lr md-padding-ten-half-tb md-padding-twelve-half-lr sm-padding-15px-lr wow animate__fadeIn">
-                <div class="margin-55px-bottom text-medium-gray alt-font text-small text-uppercase sm-margin-ten-bottom ">{{ $waFormSection->title }}</div>
-                {{-- <h5 class="margin-55px-bottom text-white-2 alt-font font-weight-700 text-uppercase sm-margin-ten-bottom">Ready to request a quote?</h5> --}}
-                <form id="project-contact-form-4"  method="post" target="_blank">
-                    @csrf
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="form-results d-none"></div>
-                        </div>
-
-                        <input type="hidden" name="phone" value="{{ $profile->telephone }}">
-
-                        <div class="col-12 col-md-6 mb-3">
-                            <input 
-                                type="text" 
-                                name="name" 
-                                id="name" 
-                                placeholder="Nama *" 
-                                value="{{ old('name') }}"
-                                class="bg-transparent border-color-medium-dark-gray medium-input mb-2" 
-                                autocomplete="off"
-                                required 
+<!-- /section -->
+<section class="wrapper bg-light angled upper-end lower-end">
+    <div class="container py-14 py-md-16">
+        <div class="row mb-15">
+            <div class="col-xl-10 mx-auto">
+                <div class="card">
+                    <div class="row gx-0">
+                        <div class="col-lg-6 align-self-stretch">
+                            <div
+                                class="map map-full rounded-top rounded-lg-start"
                             >
-                            @error('name')
-                                <div class="text-danger text-sm text-start">{{ $message }}</div>
-                            @enderror
+                                <iframe
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63066.38347626953!2d116.32788477188889!3d-8.912188965613169!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dcd00f256982d81%3A0x6729802b0161a7d8!2sMertak%2C%20Kec.%20Pujut%2C%20Kabupaten%20Lombok%20Tengah%2C%20Nusa%20Tenggara%20Bar.!5e0!3m2!1sid!2sid!4v1660136311998!5m2!1sid!2sid"
+                                    style="width: 100%; height: 100%; border: 0"
+                                    allowfullscreen=""
+                                ></iframe>
+                            </div>
+                            <!-- /.map -->
                         </div>
-                        <div class="col-12 col-md-6 mb-3">
-                            <input
-                                type="email"
-                                name="email" 
-                                id="email" 
-                                placeholder="E-mail *"
-                                value="{{ old('email') }}"
-                                class="bg-transparent border-color-medium-dark-gray medium-input mb-2" 
-                                autocomplete="off"
-                                required 
-                            >
-                            @error('email')
-                                <div class="text-danger text-sm text-start">{{ $message }}</div>
-                            @enderror
+                        <!--/column -->
+                        <div class="col-lg-6">
+                            <div class="p-10 p-md-11 p-lg-14">
+                                <div class="d-flex flex-row">
+                                    <div>
+                                        <div class="icon text-green fs-28 me-6 mt-n1">
+                                            <i class="uil uil-location-pin-alt"></i>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <h5 class="mb-1">Lokasi</h5>
+                                        <address>
+                                            {{ $profile->location }}
+                                        </address>
+                                    </div>
+                                </div>
+                                <div class="d-flex flex-row">
+                                    <div>
+                                        <div class="icon text-green fs-28 me-6 mt-n1">
+                                            <i class="uil uil-phone-volume"></i>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <h5 class="mb-1">Telepon</h5>
+                                        <p>{{ $profile->telephone }}</p>
+                                    </div>
+                                </div>
+                                <div class="d-flex flex-row">
+                                    <div>
+                                        <div class="icon text-green fs-28 me-6 mt-n1">
+                                            <i class="uil uil-envelope"></i>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <h5 class="mb-1">E-mail</h5>
+                                        <p class="mb-0">
+                                            {{ $profile->email }}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/div -->
                         </div>
-                        <div class="col-12 mb-3">
-                            <textarea
-                                name="message" 
-                                id="message" 
-                                placeholder="Apa pesan anda.. *" 
-                                rows="7" 
-                                name="message"
-                                class="bg-transparent border-color-medium-dark-gray medium-textarea mb-2" 
-                                autocomplete="off"
-                                required 
-                            >{{ old('message') }}</textarea>
-                            @error('message')
-                                <div class="text-danger text-sm text-start">{{ $message }}</div>
-                            @enderror
-                        </div>
-                        <div class="col-12 text-center">
-                            <button type="submit" class="btn btn-deep-pink btn-medium margin-15px-top">Kirim Pesan</button>
-                        </div>
+                        <!--/column -->
                     </div>
-                </form>
+                    <!--/.row -->
+                </div>
+                <!-- /.card -->
             </div>
         </div>
+        <!-- /.row -->
+        <div class="row">
+            <div class="col-lg-10 offset-lg-1 col-xl-8 offset-xl-2">
+                <h2 class="pb-6 text-center">
+                    {{ $waFormSection->title ? $waFormSection->title : 'Hubungi Kami Melalui Whatsapp'}}
+                </h2>
+                <form
+                    class="contact-form"
+                    method="post"
+                >
+
+                    @csrf
+
+                    <div class="row gx-4">
+                        <div class="col-md-6">
+                            <div class="form-floating mb-4">
+                                <input
+                                    id="name"
+                                    type="text"
+                                    name="name"
+                                    class="form-control"
+                                    placeholder="nama anda"
+                                    value="{{ old('name') }}"
+                                    required
+                                    autocomplete="off"
+                                />
+                                <label for="name">Nama Lengkap *</label>
+                                @error('name')
+                                    <div class="text-danger">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                        </div>
+                        <!-- /column -->
+                        <div class="col-md-6">
+                            <div class="form-floating mb-4">
+                                <input
+                                    id="email"
+                                    type="email"
+                                    name="email"
+                                    class="form-control"
+                                    placeholder="email"
+                                    value="{{ old('email') }}"
+                                    required
+                                    autocomplete="off"
+                                />
+                                <label for="email">Alamat E-mail *</label>
+                                @error('email')
+                                    <div class="text-danger">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                        </div>
+                        <!-- /column -->
+                        <div class="col-12">
+                            <div class="form-floating mb-4">
+                                <textarea
+                                    id="message"
+                                    name="message"
+                                    class="form-control"
+                                    placeholder="teks pesan"
+                                    style="height: 150px"
+                                    required
+                                >{{ old('message') }}</textarea>
+                                <label for="message">Isi Pesan *</label>
+                                @error('message')
+                                    <div class="text-danger">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                        </div>
+                        <!-- /column -->
+                        <div class="col-12 text-center">
+                            <button type="submit" class="btn btn-green rounded-pill btn-send mb-3">Kirim Pesan</button>
+                        </div>
+                        <!-- /column -->
+                    </div>
+                    <!-- /.row -->
+                </form>
+                <!-- /form -->
+            </div>
+            <!-- /column -->
+        </div>
+        <!-- /.row -->
     </div>
+    <!-- /.container -->
 </section>
-<!-- end contact form -->
-<!-- start map section -->
-<section class="p-0 one-second-screen md-h-400px sm-h-300px wow animate__fadeIn">
-    <iframe class="w-100 h-100" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31545.048524351307!2d116.39009783789685!3d-8.773737683019863!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dcdacd0761cb1fd%3A0x5030bfbcaf7dae0!2sGanti%2C%20Praya%20Timur%2C%20Central%20Lombok%20Regency%2C%20West%20Nusa%20Tenggara!5e0!3m2!1sen!2sid!4v1659073316102!5m2!1sen!2sid"></iframe>
-</section>
-<!-- end map section -->
+<!-- /section -->
 
 @endsection

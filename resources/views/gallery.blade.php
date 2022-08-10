@@ -2,115 +2,99 @@
 
 @section('page-content')
 
-<!-- start page title section -->
-@if($pageTitleSection->image)
-<section class="wow animate__fadeIn parallax" data-parallax-background-ratio="0.5" style="background-image:url('{{ asset('storage/'.$pageTitleSection->image) }}');">
-    <div class="opacity-medium bg-extra-dark-gray"></div>
-    <div class="container position-relative">
+<section class="wrapper bg-soft-green">
+    <div class="container pt-10 pb-19 pt-md-14 pb-md-20 text-center">
         <div class="row">
-            <div class="col-12 extra-small-screen d-flex flex-column justify-content-center page-title-medium text-center">
-                <!-- start page title -->
-                <h1 class="text-white-2 alt-font font-weight-600 letter-spacing-minus-1 margin-10px-bottom text-uppercase">{{ $pageTitleSection->title }}</h1>
-                <!-- end page title -->
-                <!-- start sub title -->
-                {{-- <span class="text-white-2 opacity6 alt-font mb-0">Unlimited power and customization possibilities</span> --}}
-                <!-- end sub title -->
+            <div class="col-sm-10 col-md-8 col-lg-6 col-xl-6 col-xxl-5 mx-auto">
+                <h1 class="mb-3">
+                    {{ $pageTitleSection->title ? $pageTitleSection->title : 'Galeri' }}
+                </h1>
+                <nav class="d-inline-block" aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/">Beranda</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">
+                            Galeri
+                        </li>
+                    </ol>
+                </nav>
+                <!-- /nav -->
             </div>
+            <!-- /column -->
         </div>
+        <!-- /.row -->
     </div>
+    <!-- /.container -->
 </section>
-@else
-<section class="wow animate__fadeIn bg-extra-dark-gray">
-    <div class="container">
-        <div class="row">
-            <div class="col-12 extra-small-screen page-title-medium text-center d-flex flex-column justify-content-center">
-                <!-- start page title -->
-                <h1 class="alt-font text-white-2 font-weight-600 m-0 text-uppercase letter-spacing-1"> {{ $pageTitleSection->title  }} </h1>
-                <!-- end page title -->
-                <!-- start sub title -->
-                {{-- <span class="d-block margin-10px-top text-extra-small alt-font text-uppercase">Hubungi kami jika anda punya pertanyan atau saran yang ingin disampaikan!</span> --}}
-                <!-- end sub title -->
-            </div>
-        </div>
-    </div>
-</section>
-@endif
-<!-- end page title section -->
-
-<!-- start galleries section -->
-<section class="wow animate__fadeIn padding-90px-top md-padding-50px-top sm-padding-30px-top" style="visibility: visible; animation-name: fadeIn;">
-    {{-- <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <!-- start filter navigation -->
-                <ul class="portfolio-filter nav nav-tabs justify-content-center border-0 portfolio-filter-tab-1 font-weight-600 alt-font text-uppercase text-center margin-80px-bottom text-small md-margin-40px-bottom sm-margin-20px-bottom">
-                    <li class="nav active"><a href="javascript:void(0);" data-filter="*" class="light-gray-text-link text-very-small">All</a></li>
-                    <li class="nav"><a href="javascript:void(0);" data-filter=".web" class="light-gray-text-link text-very-small">Web</a></li>
-                    <li class="nav"><a href="javascript:void(0);" data-filter=".advertising" class="light-gray-text-link text-very-small">Advertising</a></li>
-                    <li class="nav"><a href="javascript:void(0);" data-filter=".branding" class="light-gray-text-link text-very-small">Branding</a></li>
-                    <li class="nav"><a href="javascript:void(0);" data-filter=".design" class="light-gray-text-link text-very-small">Design</a></li>
-                    <li class="nav"><a href="javascript:void(0);" data-filter=".photography" class="light-gray-text-link text-very-small">Photography</a></li>
-                </ul>                                                                           
-                <!-- end filter navigation -->
-            </div>
-        </div>
-    </div> --}}
-    <!-- start filter content -->
-    <div class="container-fluid">
+<!-- /section -->
+<section class="wrapper bg-light angled upper-end lower-end">
+    <div class="container py-14 py-md-16">
 
         @if($galleries->count())
-        
-        <div class="row justify-content-center">
-            <div class="col-12 col-lg-5 col-md-6 col-sm-8 margin-eight-bottom md-margin-40px-bottom sm-margin-30px-bottom text-center">
-                <h5 class="alt-font text-extra-dark-gray font-weight-600 mb-0 fw-bolder">{{ $allGalleriesSection->title }}</h5>
+
+        <div class="row pb-7">
+            <div class="col-lg-9 col-xl-8 col-xxl-7 mx-auto mb-8">
+
+                <h3 class="text-center">
+                    {{ $allGalleriesSection->title ? $allGalleriesSection->title : 'Momen-momen yang berhasil kami abadikan' }}
+                </h3>
             </div>
+            <!-- /column -->
         </div>
+        <!-- /.row -->
+        <div class="grid grid-view projects-masonry">
+            <div
+                class="row gx-md-8 gy-10 gy-md-13 isotope"
+                style="position: relative; height: 1147.05px"
+            >
 
-        <div class="row">
-            <div class="col-12 filter-content overflow-hidden">
-                <ul class="hover-option10 lightbox-portfolio portfolio-wrapper grid grid-4col xl-grid-4col lg-grid-3col md-grid-2col sm-grid-2col xs-grid-1col gutter-medium" style="position: relative; height: 1081.55px;">
-                    <li class="grid-sizer"></li>
-
-                        @foreach ($galleries as $gallery)
-                            
-                            <!-- start portfolio item -->
-                            <li class="grid-item web wow animate__zoomIn" style="position: absolute; left: 0%; top: 0px; animation: 0s ease 0s 1 normal none running none;">
-                                <figure>
-                                    {{-- <div class="portfolio-img bg-black"><img src="https://via.placeholder.com/770x788" alt="" data-no-retina=""></div> --}}
-                                    <div class="portfolio-img bg-black"><img src="{{ asset('storage/'.$gallery->image) }}" alt="{{ $gallery->caption }}" data-no-retina=""></div>
-                                    <figcaption>
-                                        <div class="portfolio-hover-main">
-                                            <div class="portfolio-hover-box align-middle">
-                                                <div class="portfolio-icon">
-                                                    <a class="gallery-link" title="{{ $gallery->caption }}" href="{{ asset('storage/'.$gallery->image) }}"><i class="ti-zoom-in" aria-hidden="true"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </figcaption>
-                                </figure>
-                            </li>
-                            <!-- end portfolio item -->
-                            
-                        @endforeach
-
-                </ul>
+                @foreach ($galleries as $gallery)
+                    <div
+                        class="project item col-md-6 col-xl-4 product"
+                        style="position: absolute; left: 0%; top: 0px"
+                    >
+                        <figure class="lift rounded mb-6">
+                            <a href="/storage/{{ $gallery->image }}" data-glightbox="description: {{ $gallery->caption }}" data-gallery="g1">
+                                <img src="/storage/{{ $gallery->image }}" alt="{{ $gallery->caption }}"/>
+                            </a>
+                        </figure>
+                        {{-- <div
+                            class="project-details d-flex justify-content-center flex-column"
+                        >
+                            <div class="post-header">
+                                <h3 class="h5">Cras Fermentum Sem</h3>
+                            </div>
+                            <!-- /.post-header -->
+                        </div>
+                        <!-- /.project-details --> --}}
+                    </div>
+                @endforeach
+                <!-- /.project -->
+                
             </div>
+            <!-- /.row -->
         </div>
+        <!-- /.grid -->
 
-        <div class="d-flex mt-5">
-            {{ $galleries->links('partials.paginator') }}
+        <div class="row pt-5">
+            {{ $galleries->links('vendor.pagination.bootstrap-5') }}
         </div>
 
         @else
 
-            <div class="row fs-4 justify-content-center py-5">
-                Belum ada momen yang dapat kami bagikan!
+        <div class="row">
+            <div class="col-lg-9 col-xl-8 col-xxl-7 mx-auto mb-8">
+
+                <h3 class="text-center">
+                    Belum ada momen untuk dibagikan.
+                </h3>
             </div>
+            <!-- /column -->
+        </div>
 
         @endif
+
     </div>
-    <!-- end filter content -->
+    <!-- /.content-wrapper -->
 </section>
-<!-- end galleries section -->
 
 @endsection

@@ -112,7 +112,7 @@
                             </div>
                             @endif
                             
-                            @if($section->code == 'judul-halaman' || $section->code == 'wa-form')
+                            {{-- @if($section->code == 'judul-halaman' || $section->code == 'wa-form')
                             <div class="form-group row">
                                 <label for="image" class="col-md-3 col-form-label form-control-label text-md-right">
                                     {{ ($section->code == 'wa-form') ? 'Foto' : 'Latar Belakang' }}
@@ -134,7 +134,7 @@
                                     @endif
                                 </div>
                             </div>
-                            @endif
+                            @endif --}}
 
                             {{-- <div class="form-group row">
                                 <label class="col-md-3 col-form-label form-control-label text-md-right">
