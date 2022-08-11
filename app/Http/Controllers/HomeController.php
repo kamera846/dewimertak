@@ -95,7 +95,7 @@ class HomeController extends Controller
             'galleryPage' => true,
             'profile' => Profile::get()[0],
             'socials' => Social::get(),
-            'galleries' => Gallery::latest()->paginate(1),
+            'galleries' => Gallery::latest()->paginate(15),
             // section langsung panggil fieldnya ga perlu pakek perulangan karena sudah memanggil indeks pertama
             'pageTitleSection' => Section::where('code', 'judul-halaman')->where('on_page', 'Galeri')->get()[0],
             'allGalleriesSection' => Section::where('code', 'semua-galeri')->where('on_page', 'Galeri')->get()[0],

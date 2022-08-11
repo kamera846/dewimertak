@@ -117,12 +117,14 @@
     <!-- /.container -->
 </section>
 <!-- /section -->
+
+@if($events->count())
 <section id="snippet-2" class="wrapper bg-light wrapper-border angled upper-end lower-end">
     <div class="container pt-15 pt-md-17 pb-13 pb-md-15">
         <div class="row">
             <div class="col-lg-9 col-xl-8 col-xxl-7 mx-auto text-center">
                 <h3 class="mb-10">
-                    Foto Adat Desa
+                    {{ $eventSection->title ? $eventSection->title : 'Foto Acara dan Kegiatan' }}
             </div>
             <!-- /column -->
         </div>
@@ -148,132 +150,33 @@
                         transition-duration: 0ms;
                     "
                 >
+
+                    @foreach($events as $event)
                     <div
                         class="swiper-slide"
                         role="group"
-                        aria-label="1 / 6"
+                        aria-label="{{ $loop->iteration }} / {{ $events->count() }}"
                         style="width: 410px; margin-right: 30px"
                     >
                         <figure class="rounded mb-6">
                             <img
-                                src=".././assets/landing-page//img/photos/pd7.jpg"
-                                srcset=".././assets/landing-page//img/photos/pd7@2x.jpg 2x"
+                                src="/storage/{{ $event->image }}"
+                                {{-- srcset="/storage/{{ $event->image }} 2x" --}}
+                                {{-- srcset="/storage/{{ Str::replace('.', '@2x.', $event->image) }} 2x" --}}
                                 alt=""
                             /><a
                                 class="item-link"
-                                href=".././assets/landing-page//img/photos/pd7-full.jpg"
-                                data-glightbox=""
+                                {{-- href="/storage/{{ Str::replace('.', '-full.', $event->image) }}" --}}
+                                href="/storage/{{ $event->image }}"
+                                data-glightbox="{{ $loop->iteration }}"
                                 data-gallery="projects-group"
                                 ><i class="uil uil-focus-add"></i
                             ></a>
                         </figure>
                     </div>
+                    @endforeach
                     <!--/.swiper-slide -->
-                    <div
-                        class="swiper-slide swiper-slide-prev"
-                        role="group"
-                        aria-label="2 / 6"
-                        style="width: 410px; margin-right: 30px"
-                    >
-                        <figure class="rounded mb-6">
-                            <img
-                                src=".././assets/landing-page//img/photos/pd8.jpg"
-                                srcset=".././assets/landing-page//img/photos/pd8@2x.jpg 2x"
-                                alt=""
-                            /><a
-                                class="item-link"
-                                href=".././assets/landing-page//img/photos/pd8-full.jpg"
-                                data-glightbox=""
-                                data-gallery="projects-group"
-                                ><i class="uil uil-focus-add"></i
-                            ></a>
-                        </figure>
-                    </div>
-                    <!--/.swiper-slide -->
-                    <div
-                        class="swiper-slide swiper-slide-active"
-                        style="width: 410px; margin-right: 30px"
-                        role="group"
-                        aria-label="3 / 6"
-                    >
-                        <figure class="rounded mb-6">
-                            <img
-                                src=".././assets/landing-page//img/photos/pd9.jpg"
-                                srcset=".././assets/landing-page//img/photos/pd9@2x.jpg 2x"
-                                alt=""
-                            /><a
-                                class="item-link"
-                                href=".././assets/landing-page//img/photos/pd9-full.jpg"
-                                data-glightbox=""
-                                data-gallery="projects-group"
-                                ><i class="uil uil-focus-add"></i
-                            ></a>
-                        </figure>
-                    </div>
-                    <!--/.swiper-slide -->
-                    <div
-                        class="swiper-slide swiper-slide-next"
-                        role="group"
-                        aria-label="4 / 6"
-                        style="width: 410px; margin-right: 30px"
-                    >
-                        <figure class="rounded mb-6">
-                            <img
-                                src=".././assets/landing-page//img/photos/pd10.jpg"
-                                srcset=".././assets/landing-page//img/photos/pd10@2x.jpg 2x"
-                                alt=""
-                            /><a
-                                class="item-link"
-                                href=".././assets/landing-page//img/photos/pd10-full.jpg"
-                                data-glightbox=""
-                                data-gallery="projects-group"
-                                ><i class="uil uil-focus-add"></i
-                            ></a>
-                        </figure>
-                    </div>
-                    <!--/.swiper-slide -->
-                    <div
-                        class="swiper-slide"
-                        role="group"
-                        aria-label="5 / 6"
-                        style="width: 410px; margin-right: 30px"
-                    >
-                        <figure class="rounded mb-6">
-                            <img
-                                src=".././assets/landing-page//img/photos/pd11.jpg"
-                                srcset=".././assets/landing-page//img/photos/pd11@2x.jpg 2x"
-                                alt=""
-                            /><a
-                                class="item-link"
-                                href=".././assets/landing-page//img/photos/pd11-full.jpg"
-                                data-glightbox=""
-                                data-gallery="projects-group"
-                                ><i class="uil uil-focus-add"></i
-                            ></a>
-                        </figure>
-                    </div>
-                    <!--/.swiper-slide -->
-                    <div
-                        class="swiper-slide"
-                        role="group"
-                        aria-label="6 / 6"
-                        style="width: 410px; margin-right: 30px"
-                    >
-                        <figure class="rounded mb-6">
-                            <img
-                                src=".././assets/landing-page//img/photos/pd12.jpg"
-                                srcset=".././assets/landing-page//img/photos/pd12@2x.jpg 2x"
-                                alt=""
-                            /><a
-                                class="item-link"
-                                href=".././assets/landing-page//img/photos/pd12-full.jpg"
-                                data-glightbox=""
-                                data-gallery="projects-group"
-                                ><i class="uil uil-focus-add"></i
-                            ></a>
-                        </figure>
-                    </div>
-                    <!--/.swiper-slide -->
+
                 </div>
                 <!--/.swiper-wrapper -->
                 <span
@@ -319,5 +222,6 @@
     </div>
     <!-- /.container -->
 </section>
+@endif
 
 @endsection

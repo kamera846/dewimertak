@@ -26,29 +26,14 @@
                     We carefully consider our solutions to support each and
                     every stage of your growth.
                 </p>
-                <div>
-                    <a class="btn btn-lg btn-primary rounded">Get Started</a>
-                </div>
             </div>
             <!-- /column -->
             <div class="col-lg-5 offset-lg-1 mb-n18" data-cues="slideInDown">
                 <div class="position-relative">
-                    <!-- <a
-                        href="./assets/media/movie.mp4"
-                        class="btn btn-circle btn-primary btn-play ripple mx-auto mb-6 position-absolute"
-                        style="
-                            top: 50%;
-                            left: 50%;
-                            transform: translate(-50%, -50%);
-                            z-index: 3;
-                        "
-                        data-glightbox
-                        ><i class="icn-caret-right"></i
-                    ></a> -->
                     <figure class="rounded shadow-lg">
                         <img
-                            src="./assets/img/photos/about13.jpg"
-                            srcset="./assets/img/photos/about13@2x.jpg 2x"
+                            src="/assets/landing-page/img/photos/about13.jpg"
+                            srcset="/assets/landing-page/img/photos/about13@2x.jpg 2x"
                             alt=""
                         />
                     </figure>
@@ -62,6 +47,8 @@
     <!-- /.container -->
 </section>
 <!-- /section -->
+
+
 <section class="wrapper mt-20">
     <div class="container pt-14 pt-md-16 pb-3 pb-md-3">
         <div class="row gx-md-8 gy-8 text-center mb-14 mb-md-17">
@@ -125,8 +112,8 @@
                 ></div>
                 <figure class="rounded">
                     <img
-                        src="./assets/img/photos/about7.jpg"
-                        srcset="./assets/img/photos/about7@2x.jpg 2x"
+                        src="/assets/landing-page/img/photos/about7.jpg"
+                        srcset="/assets/landing-page/img/photos/about7@2x.jpg 2x"
                         alt=""
                     />
                 </figure>
@@ -163,8 +150,8 @@
                     style="position: absolute; left: 0%; top: 0px"
                 >
                     <figure class="lift rounded mb-6">
-                        <a href="../../assets/img/photos/cs16.jpg" data-glightbox="title: Title; description: Description" data-gallery="g1">
-                            <img src="../../assets/img/photos/cs16.jpg" alt=""/>
+                        <a href=".././assets/landing-page/img/photos/cs16.jpg" data-glightbox="title: Title; description: Description" data-gallery="g1">
+                            <img src=".././assets/landing-page/img/photos/cs16.jpg" alt=""/>
                         </a>
                         </figure>
                     <div
@@ -183,8 +170,8 @@
                     style="position: absolute; left: 33.3333%; top: 0px"
                 >
                     <figure class="lift rounded mb-6">
-                        <a href="../../assets/img/photos/cs17.jpg" data-glightbox="title: Title; description: Description" data-gallery="g1">
-                            <img src="../../assets/img/photos/cs17.jpg" alt=""/>
+                        <a href=".././assets/landing-page/img/photos/cs17.jpg" data-glightbox="title: Title; description: Description" data-gallery="g1">
+                            <img src=".././assets/landing-page/img/photos/cs17.jpg" alt=""/>
                         </a>
                         </figure>
                     <div
@@ -203,8 +190,8 @@
                     style="position: absolute; left: 66.6667%; top: 0px"
                 >
                     <figure class="lift rounded mb-6">
-                        <a href="../../assets/img/photos/cs18.jpg" data-glightbox="title: Title; description: Description" data-gallery="g1">
-                            <img src="../../assets/img/photos/cs18.jpg" alt=""/>
+                        <a href=".././assets/landing-page/img/photos/cs18.jpg" data-glightbox="title: Title; description: Description" data-gallery="g1">
+                            <img src=".././assets/landing-page/img/photos/cs18.jpg" alt=""/>
                         </a>
                         </figure>
                     <div
@@ -225,8 +212,8 @@
                     style="position: absolute; left: 66.6667%; top: 499.812px"
                 >
                     <figure class="lift rounded mb-6">
-                        <a href="../../assets/img/photos/cs20.jpg" data-glightbox="title: Title; description: Description" data-gallery="g1">
-                            <img src="../../assets/img/photos/cs20.jpg" alt=""/>
+                        <a href=".././assets/landing-page/img/photos/cs20.jpg" data-glightbox="title: Title; description: Description" data-gallery="g1">
+                            <img src=".././assets/landing-page/img/photos/cs20.jpg" alt=""/>
                         </a>
                         </figure>
                     <div
@@ -247,8 +234,8 @@
                     style="position: absolute; left: 0%; top: 581.125px"
                 >
                     <figure class="lift rounded mb-6">
-                        <a href="../../assets/img/photos/cs19.jpg" data-glightbox="title: Title; description: Description" data-gallery="g1">
-                            <img src="../../assets/img/photos/cs19.jpg" alt=""/>
+                        <a href=".././assets/landing-page/img/photos/cs19.jpg" data-glightbox="title: Title; description: Description" data-gallery="g1">
+                            <img src=".././assets/landing-page/img/photos/cs19.jpg" alt=""/>
                         </a>
                         </figure>
                     <div
@@ -269,8 +256,8 @@
                     style="position: absolute; left: 33.3333%; top: 634.797px"
                 >
                     <figure class="lift rounded mb-6">
-                        <a href="../../assets/img/photos/cs21.jpg" data-glightbox="title: Title; description: Description" data-gallery="g1">
-                            <img src="../../assets/img/photos/cs21.jpg" alt=""/>
+                        <a href=".././assets/landing-page/img/photos/cs21.jpg" data-glightbox="title: Title; description: Description" data-gallery="g1">
+                            <img src=".././assets/landing-page/img/photos/cs21.jpg" alt=""/>
                         </a>
                         </figure>
                     <div
@@ -313,7 +300,7 @@
                                 >
                                     <a href="#">
                                         <img
-                                            src="./assets/img/photos/b5.jpg"
+                                            src="/assets/landing-page/img/photos/b5.jpg"
                                             alt=""
                                     /></a>
                                     <figcaption>
@@ -364,7 +351,7 @@
                                 >
                                     <a href="#">
                                         <img
-                                            src="./assets/img/photos/b6.jpg"
+                                            src="/assets/landing-page/img/photos/b6.jpg"
                                             alt=""
                                     /></a>
                                     <figcaption>
@@ -415,7 +402,7 @@
                                 >
                                     <a href="#">
                                         <img
-                                            src="./assets/img/photos/b7.jpg"
+                                            src="/assets/landing-page/img/photos/b7.jpg"
                                             alt=""
                                     /></a>
                                     <figcaption>
@@ -470,15 +457,14 @@
     <div class="container pt-3 pt-md-5 pb-15 pb-md-18">
         <div class="row mb-7">
             <div class="col-lg-9 col-xl-8 col-xxl-7 mx-auto text-center">
-                <h2 class="fs-15 text-uppercase text-muted mb-3">Kontak Kami</h2>
                 <h3 class="mb-10">
-                    Jika anda punya pertanyaan ataupun saran yang membangun, jangan ragu untuk menghubungi kami.
+                    {{ App\Models\Section::where('code', 'info-kontak')->where('on_page', 'Kontak')->get()[0]->title }}
                 </h3>
             </div>
             <!-- /column -->
         </div>
         <!-- /.row -->
-        <div class="row">
+        <div class="row mb-15">
             <div class="col-xl-10 mx-auto">
                 <div class="card">
                     <div class="row gx-0">
@@ -487,7 +473,7 @@
                                 class="map map-full rounded-top rounded-lg-start"
                             >
                                 <iframe
-                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31554.927921782735!2d120.19511432801728!3d-8.656698725049925!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2db37c29dcbbbdcd%3A0xb51b596c072959bf!2sGalang%2C%20Welak%2C%20West%20Manggarai%20Regency%2C%20East%20Nusa%20Tenggara!5e0!3m2!1sen!2sid!4v1655863631667!5m2!1sen!2sid"
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63066.38347626953!2d116.32788477188889!3d-8.912188965613169!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dcd00f256982d81%3A0x6729802b0161a7d8!2sMertak%2C%20Kec.%20Pujut%2C%20Kabupaten%20Lombok%20Tengah%2C%20Nusa%20Tenggara%20Bar.!5e0!3m2!1sid!2sid!4v1660136311998!5m2!1sid!2sid"
                                     style="width: 100%; height: 100%; border: 0"
                                     allowfullscreen=""
                                 ></iframe>
@@ -504,10 +490,9 @@
                                         </div>
                                     </div>
                                     <div>
-                                        <h5 class="mb-1">Alamat</h5>
+                                        <h5 class="mb-1">Lokasi</h5>
                                         <address>
-                                            Desa Galang, Kecamatan Welak, 
-                                            <br class="d-none d-md-block" /> Manggarai Barat - NTT
+                                            {{ $profile->location }}
                                         </address>
                                     </div>
                                 </div>
@@ -519,7 +504,7 @@
                                     </div>
                                     <div>
                                         <h5 class="mb-1">Telepon</h5>
-                                        <p>+62 813 3752 2673</p>
+                                        <p>{{ $profile->telephone }}</p>
                                     </div>
                                 </div>
                                 <div class="d-flex flex-row">
@@ -531,7 +516,7 @@
                                     <div>
                                         <h5 class="mb-1">E-mail</h5>
                                         <p class="mb-0">
-                                            sandbox@email.com
+                                            {{ $profile->email }}
                                         </p>
                                     </div>
                                 </div>

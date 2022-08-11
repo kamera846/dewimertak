@@ -78,7 +78,7 @@
                     <tr>
                         <th>No.</th>
                         <th>Foto</th>
-                        <th>Judul</th>
+                        {{-- <th>Judul</th> --}}
                         <th>Opsi</th>
                     </tr>
                 </thead>
@@ -99,9 +99,9 @@
                                     class="rounded"
                                 />
                             </td>
-                            <td>
+                            {{-- <td>
                                 {{ $event->title }}
-                            </td>
+                            </td> --}}
                             <td class="table-actions">
                                 <a
                                     href="/dashboard/events/{{ $event->id }}/edit"

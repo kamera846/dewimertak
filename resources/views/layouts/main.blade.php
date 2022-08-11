@@ -59,7 +59,7 @@ $ig = $socials->where('app', 'instagram');
                                 @if($profile->image)
                                 {{-- <img
                                     src="/storage/{{ $profile->image }}"
-                                    srcset="/storage/{{ Str::replace('.', '@2x', $profile->image) }} 2x"
+                                    srcset="/storage/{{ Str::replace('.', '@2x.', $profile->image) }} 2x"
                                     alt="{{ $profile->site_name }}"
                                 /> --}}
                                 @else
@@ -75,7 +75,7 @@ $ig = $socials->where('app', 'instagram');
                                     @if($profile->image)
                                     {{-- <img
                                         src="/storage/{{ $profile->image }}"
-                                        srcset="/storage/{{ Str::replace('.', '@2x', $profile->image) }} 2x"
+                                        srcset="/storage/{{ Str::replace('.', '@2x.', $profile->image) }} 2x"
                                         alt="{{ $profile->site_name }}"
                                     /> --}}
                                     @else
@@ -271,13 +271,17 @@ $ig = $socials->where('app', 'instagram');
                     class="d-md-flex align-items-center justify-content-between"
                 >
                     <p class="mb-2 mb-lg-0">
-                        © {{ date('Y') }} Galang - powered by <a href="https://jongkreatif.id" target="_blank">JongKreatif</a>.
+                        © 2022 {{ $profile->site_name }} - powered by <a href="https://jongkreatif.id" target="_blank">JongKreatif</a>.
                     </p>
+
+                    @if($socials->count())
                     <nav class="nav social social-muted mb-0 text-md-end">
-                        <a href="#"><i class="uil uil-twitter"></i></a>
-                        <a href="#"><i class="uil uil-facebook-f"></i></a>
-                        <a href="#"><i class="uil uil-instagram"></i></a>
+                        @foreach($socials as $social)
+                        <a href="{{ $social->link }}" target="_blank"><i class="uil uil-{{ $social->app }}"></i></a>
+                        <a href="{{ $social->link }}" target="_blank"><i class="uil uil-{{ $social->app }}"></i></a>
+                        @endforeach
                     </nav>
+                    @endif
                     <!-- /.social -->
                 </div>
             </div>
