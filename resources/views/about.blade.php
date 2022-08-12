@@ -41,13 +41,13 @@
                     @if($about->image)
                         <img
                             src="/storage/{{ $about->image }}"
-                            srcset="/storage/{{ Str::replace('.', '@2x', $about->image) }} 2x"
+                            {{-- srcset="/storage/{{ Str::replace('.', '@2x', $about->image) }} 2x" --}}
                             alt="{{ $about->title }}"
                         />
                     @else
                         <img
                             src="/storage/default/image.jpg"
-                            srcset="/storage/default/image@2x.jpg 2x"
+                            {{-- srcset="/storage/default/image@2x.jpg 2x" --}}
                             alt=""
                         />
                     @endif

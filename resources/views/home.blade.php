@@ -1,53 +1,46 @@
 @extends('layouts.main')
 
 @section('page-content')
+@php
 
-<section class="wrapper bg-soft-green angled lower-start">
-    <div class="container pt-7 pt-md-11 pb-8">
-        <div class="row gx-0 gy-10 align-items-center">
-            <div
-                class="col-lg-6"
-                data-cues="slideInDown"
-                data-group="page-title"
-                data-delay="600"
-            >
-                <h1 class="mb-4">
-                    Sandbox focuses on <br /><span
-                        class="typer text-primary text-nowrap"
-                        data-delay="100"
-                        data-words="customer satisfaction,business needs,creative ideas"
-                    ></span
-                    ><span
-                        class="cursor text-primary"
-                        data-owner="typer"
-                    ></span>
-                </h1>
-                <p class="lead fs-24 lh-sm mb-7 pe-md-18 pe-lg-0 pe-xxl-15">
-                    We carefully consider our solutions to support each and
-                    every stage of your growth.
-                </p>
-            </div>
-            <!-- /column -->
-            <div class="col-lg-5 offset-lg-1 mb-n18" data-cues="slideInDown">
-                <div class="position-relative">
-                    <figure class="rounded shadow-lg">
-                        <img
-                            src="/assets/landing-page/img/photos/about13.jpg"
-                            srcset="/assets/landing-page/img/photos/about13@2x.jpg 2x"
-                            alt=""
-                        />
-                    </figure>
+$randomClass = [
+    'col-md-10 offset-md-1 col-lg-7 offset-lg-0 col-xl-6 col-xxl-5 text-center text-lg-start justify-content-center align-self-center align-items-start',
+    'col-md-11 col-lg-8 col-xl-7 col-xxl-6 mx-auto text-center justify-content-center align-self-center',
+    'col-md-10 offset-md-1 col-lg-7 offset-lg-5 col-xl-6 offset-xl-6 col-xxl-5 offset-xxl-6 text-center text-lg-start justify-content-center align-self-center align-items-start'
+];
+
+@endphp
+
+<section class="wrapper bg-dark">
+    <div class="swiper-container swiper-hero dots-over" data-margin="0" data-autoplay="true" data-autoplaytime="5000" data-nav="true" data-dots="true" data-items="1">
+        <div class="swiper">
+            <div class="swiper-wrapper">
+
+                @foreach($carousels as $carousel)
+                <div class="swiper-slide bg-overlay bg-overlay-400 bg-dark bg-image" data-image-src="/storage/{{ $carousel->image }}">
+                    <div class="container h-100">
+                        <div class="row h-100">
+                            <div class="{{ $randomClass[array_rand($randomClass)] }}">
+                                <h2 class="fs-56 mb-4 text-white animate__animated animate__slideInDown animate__delay-1s">{{ $carousel->title }}</h2>
+                                <p class="lead fs-23 lh-sm mb-7 text-white animate__animated animate__slideInRight animate__delay-2s">{{ $carousel->sub_title }}</p>
+                            </div>
+                            <!--/column -->
+                        </div>
+                        <!--/.row -->
+                    </div>
+                    <!--/.container -->
                 </div>
-                <!-- /div -->
+                @endforeach
+                <!--/.swiper-slide -->
+            
             </div>
-            <!-- /column -->
+            <!--/.swiper-wrapper -->
         </div>
-        <!-- /.row -->
+        <!-- /.swiper -->
     </div>
-    <!-- /.container -->
-</section>
+    <!-- /.swiper-container -->
+  </section>
 <!-- /section -->
-
 
 <section class="wrapper mt-20">
     <div class="container pt-14 pt-md-16 pb-3 pb-md-3">
@@ -150,8 +143,8 @@
                     style="position: absolute; left: 0%; top: 0px"
                 >
                     <figure class="lift rounded mb-6">
-                        <a href=".././assets/landing-page/img/photos/cs16.jpg" data-glightbox="title: Title; description: Description" data-gallery="g1">
-                            <img src=".././assets/landing-page/img/photos/cs16.jpg" alt=""/>
+                        <a href="..//assets/landing-page/landing-page/img/photos/cs16.jpg" data-glightbox="title: Title; description: Description" data-gallery="g1">
+                            <img src="..//assets/landing-page/landing-page/img/photos/cs16.jpg" alt=""/>
                         </a>
                         </figure>
                     <div
@@ -170,8 +163,8 @@
                     style="position: absolute; left: 33.3333%; top: 0px"
                 >
                     <figure class="lift rounded mb-6">
-                        <a href=".././assets/landing-page/img/photos/cs17.jpg" data-glightbox="title: Title; description: Description" data-gallery="g1">
-                            <img src=".././assets/landing-page/img/photos/cs17.jpg" alt=""/>
+                        <a href="..//assets/landing-page/landing-page/img/photos/cs17.jpg" data-glightbox="title: Title; description: Description" data-gallery="g1">
+                            <img src="..//assets/landing-page/landing-page/img/photos/cs17.jpg" alt=""/>
                         </a>
                         </figure>
                     <div
@@ -190,8 +183,8 @@
                     style="position: absolute; left: 66.6667%; top: 0px"
                 >
                     <figure class="lift rounded mb-6">
-                        <a href=".././assets/landing-page/img/photos/cs18.jpg" data-glightbox="title: Title; description: Description" data-gallery="g1">
-                            <img src=".././assets/landing-page/img/photos/cs18.jpg" alt=""/>
+                        <a href="..//assets/landing-page/landing-page/img/photos/cs18.jpg" data-glightbox="title: Title; description: Description" data-gallery="g1">
+                            <img src="..//assets/landing-page/landing-page/img/photos/cs18.jpg" alt=""/>
                         </a>
                         </figure>
                     <div
@@ -212,8 +205,8 @@
                     style="position: absolute; left: 66.6667%; top: 499.812px"
                 >
                     <figure class="lift rounded mb-6">
-                        <a href=".././assets/landing-page/img/photos/cs20.jpg" data-glightbox="title: Title; description: Description" data-gallery="g1">
-                            <img src=".././assets/landing-page/img/photos/cs20.jpg" alt=""/>
+                        <a href="..//assets/landing-page/landing-page/img/photos/cs20.jpg" data-glightbox="title: Title; description: Description" data-gallery="g1">
+                            <img src="..//assets/landing-page/landing-page/img/photos/cs20.jpg" alt=""/>
                         </a>
                         </figure>
                     <div
@@ -234,8 +227,8 @@
                     style="position: absolute; left: 0%; top: 581.125px"
                 >
                     <figure class="lift rounded mb-6">
-                        <a href=".././assets/landing-page/img/photos/cs19.jpg" data-glightbox="title: Title; description: Description" data-gallery="g1">
-                            <img src=".././assets/landing-page/img/photos/cs19.jpg" alt=""/>
+                        <a href="..//assets/landing-page/landing-page/img/photos/cs19.jpg" data-glightbox="title: Title; description: Description" data-gallery="g1">
+                            <img src="..//assets/landing-page/landing-page/img/photos/cs19.jpg" alt=""/>
                         </a>
                         </figure>
                     <div
@@ -256,8 +249,8 @@
                     style="position: absolute; left: 33.3333%; top: 634.797px"
                 >
                     <figure class="lift rounded mb-6">
-                        <a href=".././assets/landing-page/img/photos/cs21.jpg" data-glightbox="title: Title; description: Description" data-gallery="g1">
-                            <img src=".././assets/landing-page/img/photos/cs21.jpg" alt=""/>
+                        <a href="..//assets/landing-page/landing-page/img/photos/cs21.jpg" data-glightbox="title: Title; description: Description" data-gallery="g1">
+                            <img src="..//assets/landing-page/landing-page/img/photos/cs21.jpg" alt=""/>
                         </a>
                         </figure>
                     <div

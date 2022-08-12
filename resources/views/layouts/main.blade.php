@@ -1,9 +1,3 @@
-@php
-$fb = $socials->where('app', 'facebook');
-$tweet = $socials->where('app', 'twitter');
-$ig = $socials->where('app', 'instagram');
-@endphp
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -49,7 +43,7 @@ $ig = $socials->where('app', 'instagram');
         <div class="content-wrapper">
             <header class="wrapper bg-soft-green">
                 <nav
-                    class="navbar navbar-expand-lg classic transparent navbar-light"
+                    class="navbar navbar-expand-lg transparent position-absolute navbar-{{ isset($homePage) ? 'dark' : 'light' }} caret-none"
                 >
                     <div
                         class="container flex-lg-row flex-nowrap align-items-center"
@@ -57,13 +51,13 @@ $ig = $socials->where('app', 'instagram');
                         <div class="navbar-brand w-100">
                             <a href="/">
                                 @if($profile->image)
-                                {{-- <img
+                                <img
                                     src="/storage/{{ $profile->image }}"
-                                    srcset="/storage/{{ Str::replace('.', '@2x.', $profile->image) }} 2x"
+                                    {{-- srcset="/storage/{{ Str::replace('.', '@2x.', $profile->image) }} 2x" --}}
                                     alt="{{ $profile->site_name }}"
-                                /> --}}
+                                />
                                 @else
-                                    <h1 class="fs-20 m-0">{{ $profile->site_name }}</h1>
+                                    <h1 class="fs-20 m-0 text-green">{{ $profile->site_name }}</h1>
                                 @endif
                             </a>
                         </div>
@@ -73,11 +67,11 @@ $ig = $socials->where('app', 'instagram');
                             <div class="offcanvas-header d-lg-none d-xl-none">
                                 <a href="/">
                                     @if($profile->image)
-                                    {{-- <img
+                                    <img
                                         src="/storage/{{ $profile->image }}"
-                                        srcset="/storage/{{ Str::replace('.', '@2x.', $profile->image) }} 2x"
+                                        {{-- srcset="/storage/{{ Str::replace('.', '@2x.', $profile->image) }} 2x" --}}
                                         alt="{{ $profile->site_name }}"
-                                    /> --}}
+                                    />
                                     @else
                                         <h1 class="text-light fs-20 m-0">{{ $profile->site_name }}</h1>
                                     @endif
@@ -90,7 +84,7 @@ $ig = $socials->where('app', 'instagram');
                                 ></button>
                             </div>
                             <div
-                                class="offcanvas-body mx-lg-auto d-flex flex-column h-100"
+                                class="offcanvas-body ms-lg-auto d-flex flex-column h-100"
                             >
                                 <ul class="navbar-nav">
                                     <li class="nav-item">
@@ -131,17 +125,11 @@ $ig = $socials->where('app', 'instagram');
                                     <br />
                                     {{ $profile->telephone }} <br />
 
-                                    @if(isset($fb[0]) || isset($tweet[0]) || isset($ig[0]))
+                                    @if($socials->count())
                                         <nav class="nav social social-white mt-4">
-                                            @if(isset($fb[0]))
-                                                <a href="{{ $fb[0]->link }}"><i class="uil uil-facebook-f"></i></a>
-                                            @endif
-                                            @if(isset($tweet[0]))
-                                                <a href="{{ $tweet[0]->link }}"><i class="uil uil-twitter"></i></a>
-                                            @endif
-                                            @if(isset($ig[0]))
-                                                <a href="{{ $ig[0]->link }}"><i class="uil uil-instagram"></i></a>                        
-                                            @endif
+                                            @foreach($socials as $social)
+                                            <a href="{{ $social->link }}"><i class="uil uil-{{ $social->app }}"></i></a>
+                                            @endforeach
                                         </nav>
                                     @endif
                                     <!-- /.social -->
@@ -152,28 +140,6 @@ $ig = $socials->where('app', 'instagram');
                         </div>
                         <!-- /.navbar-collapse -->
 
-                        @if(isset($fb[0]) || isset($tweet[0]) || isset($ig[0]))
-                        <div
-                            class="navbar-other ms-auto w-100 d-none d-lg-block"
-                        >
-                            <nav
-                                class="nav social social-muted justify-content-end text-end"
-                            >
-                                @if(isset($fb[0]))
-                                    <a href="{{ $fb[0]->link }}"><i class="uil uil-facebook-f"></i></a>
-                                @endif
-                                @if(isset($tweet[0]))
-                                    <a href="{{ $tweet[0]->link }}"><i class="uil uil-twitter"></i></a>
-                                @endif
-                                @if(isset($ig[0]))
-                                    <a href="{{ $ig[0]->link }}"><i class="uil uil-instagram"></i></a>                        
-                                @endif
-                            </nav>
-                            <!-- /.social -->
-                        </div>
-                        @endif
-
-                        <!-- /.navbar-other -->
                         <div class="navbar-other ms-lg-4">
                             <ul
                                 class="navbar-nav flex-row align-items-center ms-auto"
@@ -268,7 +234,7 @@ $ig = $socials->where('app', 'instagram');
                 <!--/.row -->
                 <hr class="mt-13 mt-md-14 mb-7" />
                 <div
-                    class="d-md-flex align-items-center justify-content-between"
+                    class="d-md-flex align-items-center justify-content-{{ $socials->count() ? 'between' : 'center' }}"
                 >
                     <p class="mb-2 mb-lg-0">
                         © 2022 {{ $profile->site_name }} - powered by <a href="https://jongkreatif.id" target="_blank">JongKreatif</a>.
@@ -277,7 +243,6 @@ $ig = $socials->where('app', 'instagram');
                     @if($socials->count())
                     <nav class="nav social social-muted mb-0 text-md-end">
                         @foreach($socials as $social)
-                        <a href="{{ $social->link }}" target="_blank"><i class="uil uil-{{ $social->app }}"></i></a>
                         <a href="{{ $social->link }}" target="_blank"><i class="uil uil-{{ $social->app }}"></i></a>
                         @endforeach
                     </nav>
