@@ -2,22 +2,24 @@
 
 @section('page-content')
 
-<section class="wrapper bg-soft-green">
+<section class="wrapper bg-soft-green pt-14">
     <div class="container pt-10 pb-19 pt-md-14 pb-md-20 text-center">
         <div class="row">
             <div class="col-sm-10 col-md-8 col-lg-6 col-xl-6 col-xxl-5 mx-auto">
                 <div class="post-header">
                     <h1 class="mb-4">
-                        Commodo Dolor Bibendum Parturient Cursus Mollis
+                        {{ $post->title }}
                     </h1>
                     <ul class="post-meta">
                         <li class="post-date">
                             <i class="uil uil-calendar-alt"></i
-                            ><span>5 Jul 2021</span>
+                            ><span>{{ $post->created_at->isoFormat('dddd, D MMMM Y') }}</span>
                         </li>
                         <li class="post-author">
                             <i class="uil uil-user"></i>
-                            <span>Oleh Sandbox</span>
+                            <span>
+                                Oleh <a href="/posts?author={{ $post->user->slug }}">{{ $post->user->name }} </a>
+                            </span>
                         </li>
                     </ul>
                     <!-- /.post-meta -->
@@ -37,57 +39,29 @@
                 <div class="blog single">
                     <div class="card">
                         <figure class="card-img-top">
-                            <img src="./assets/img/photos/b1.jpg" alt="" />
+                            <img src="/storage/{{ $post->image }}" alt="{{ $post->title }}" />
                         </figure>
                         <div class="card-body">
                             <div class="classic-view">
                                 <article class="post">
                                     <div class="post-content mb-5">
                                         <h2 class="h1 mb-4">
-                                            Cras mattis consectetur purus
-                                            fermentum
+                                            {{ $post->title }}
                                         </h2>
-                                        <p>
-                                            Fusce dapibus, tellus ac cursus
-                                            commodo, tortor mauris condimentum
-                                            nibh, ut fermentum massa justo sit
-                                            amet. Vivamus sagittis lacus vel
-                                            augue laoreet rutrum faucibus dolor
-                                            auctor. Cras mattis consectetur
-                                            purus sit amet fermentum. Aenean
-                                            lacinia bibendum nulla sed
-                                            consectetur. Curabitur blandit
-                                            tempus porttitor. Vivamus sagittis
-                                            lacus vel augue laoreet rutrum
-                                            faucibus dolor auctor. Nullam quis
-                                            risus eget porta ac consectetur
-                                            vestibulum.
-                                        </p>
-                                        <p>
-                                            Donec sed odio dui consectetur
-                                            adipiscing elit. Etiam adipiscing
-                                            tincidunt elit, eu convallis felis
-                                            suscipit ut. Phasellus rhoncus
-                                            tincidunt auctor. Nullam eu sagittis
-                                            mauris. Donec non dolor ac elit
-                                            aliquam tincidunt at at sapien.
-                                            Aenean tortor libero, condimentum ac
-                                            laoreet vitae, varius tempor nisi.
-                                            Duis non arcu vel lectus urna mollis
-                                            ornare vel eu leo.
-                                        </p>
+                                        {!! $post->content !!}
+
                                         <div class="row g-6 mt-3 mb-10">
                                             <div class="col-md-6">
                                                 <figure
                                                     class="hover-scale rounded cursor-dark"
                                                 >
                                                     <a
-                                                        href="./assets/img/photos/b8-full.jpg"
+                                                        href="/assets/landing-page/img/photos/b8-full.jpg"
                                                         data-glightbox="title: Heading; description: Purus Vulputate Sem Tellus Quam"
                                                         data-gallery="post"
                                                     >
                                                         <img
-                                                            src="./assets/img/photos/b8.jpg"
+                                                            src="/assets/landing-page/img/photos/b8.jpg"
                                                             alt=""
                                                     /></a>
                                                 </figure>
@@ -98,12 +72,12 @@
                                                     class="hover-scale rounded cursor-dark"
                                                 >
                                                     <a
-                                                        href="./assets/img/photos/b9-full.jpg"
+                                                        href="/assets/landing-page/img/photos/b9-full.jpg"
                                                         data-glightbox
                                                         data-gallery="post"
                                                     >
                                                         <img
-                                                            src="./assets/img/photos/b9.jpg"
+                                                            src="/assets/landing-page/img/photos/b9.jpg"
                                                             alt=""
                                                     /></a>
                                                 </figure>
@@ -114,12 +88,12 @@
                                                     class="hover-scale rounded cursor-dark"
                                                 >
                                                     <a
-                                                        href="./assets/img/photos/b10-full.jpg"
+                                                        href="/assets/landing-page/img/photos/b10-full.jpg"
                                                         data-glightbox
                                                         data-gallery="post"
                                                     >
                                                         <img
-                                                            src="./assets/img/photos/b10.jpg"
+                                                            src="/assets/landing-page/img/photos/b10.jpg"
                                                             alt=""
                                                     /></a>
                                                 </figure>
@@ -130,12 +104,12 @@
                                                     class="hover-scale rounded cursor-dark"
                                                 >
                                                     <a
-                                                        href="./assets/img/photos/b11-full.jpg"
+                                                        href="/assets/landing-page/img/photos/b11-full.jpg"
                                                         data-glightbox
                                                         data-gallery="post"
                                                     >
                                                         <img
-                                                            src="./assets/img/photos/b11.jpg"
+                                                            src="/assets/landing-page/img/photos/b11.jpg"
                                                             alt=""
                                                     /></a>
                                                 </figure>
@@ -248,7 +222,7 @@
                             <figure class="rounded">
                                 <a href="/blog-detail"
                                     ><img
-                                        src="./assets/img/photos/a1.jpg"
+                                        src="/assets/landing-page/img/photos/a1.jpg"
                                         alt=""
                                 /></a>
                             </figure>
@@ -271,7 +245,7 @@
                             <figure class="rounded">
                                 <a href="/blog-detail"
                                     ><img
-                                        src="./assets/img/photos/a2.jpg"
+                                        src="/assets/landing-page/img/photos/a2.jpg"
                                         alt=""
                                 /></a>
                             </figure>
@@ -294,7 +268,7 @@
                             <figure class="rounded">
                                 <a href="/blog-detail"
                                     ><img
-                                        src="./assets/img/photos/a3.jpg"
+                                        src="/assets/landing-page/img/photos/a3.jpg"
                                         alt=""
                                 /></a>
                             </figure>

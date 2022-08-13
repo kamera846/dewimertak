@@ -2,7 +2,7 @@
 
 @section('page-content')
 
-<section class="wrapper bg-soft-green">
+<section class="wrapper bg-soft-green pt-14">
     <div class="container pt-10 pb-19 pt-md-14 pb-md-20 text-center">
         <div class="row">
             <div class="col-sm-10 col-md-8 col-lg-6 col-xl-6 col-xxl-5 mx-auto">
