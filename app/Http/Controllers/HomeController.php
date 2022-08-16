@@ -29,11 +29,13 @@ class HomeController extends Controller
             'features' => Feature::all(),
             'carousels' => Carousel::all(),
             
-            'latestGalleries' => Gallery::latest()->limit(6)->get(), 
+            'latestGalleries' => Gallery::latest()->limit(5)->get(), 
             'latestPosts' => Post::latest()->limit(3)->get(),
 
+            'featureSection' => Section::where('code', 'layanan-dan-produk')->where('on_page', 'Beranda')->get()[0],
             'latestGallerySection' => Section::where('code', 'galeri-terbaru')->where('on_page', 'Beranda')->get()[0],
-            'latestPostSection' => Section::where('code', 'artikel-terbaru')->where('on_page', 'Beranda')->get()[0]
+            'latestPostSection' => Section::where('code', 'artikel-terbaru')->where('on_page', 'Beranda')->get()[0],
+            'contactInfoSection' => Section::where('code', 'info-kontak')->where('on_page', 'Kontak')->get()[0]
         ]);
     }
     
@@ -50,6 +52,7 @@ class HomeController extends Controller
             'about' => About::get()[0],
 
             'pageTitleSection' => Section::where('code', 'judul-halaman')->where('on_page', 'Tentang')->get()[0],
+            'featureSection' => Section::where('code', 'layanan-dan-produk')->where('on_page', 'Tentang')->get()[0],
             'eventSection' => Section::where('code', 'acara-dan-kegiatan')->where('on_page', 'Tentang')->get()[0]
         ]);
     }

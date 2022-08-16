@@ -86,8 +86,6 @@
                             <a
                                 @if($section->code == 'tayangan-slide')
                                     href="/dashboard/carousels"
-                                @elseif($section->code == 'layanan-dan-produk')
-                                    href="/dashboard/features"
                                 @elseif($section->code == 'tentang-kami')
                                     href="/dashboard/about"
                                 @else
@@ -140,8 +138,6 @@
                             <a
                                 @if($section->code == 'tayangan-slide')
                                     href="/dashboard/carousels"
-                                @elseif($section->code == 'layanan-dan-produk')
-                                    href="/dashboard/features"
                                 @elseif($section->code == 'tentang-kami')
                                     href="/dashboard/about"
                                 @else
@@ -280,7 +276,7 @@
                             {{ $section->code }}
                         </td>
                         <td>
-                            {{ $section->title ? $section->title : '-' }}
+                            {{ ($section->code == 'wa-form' || $section->code == 'judul-halaman') ? $section->title : '-' }}
                         </td>
                         <td>
                             <a

@@ -75,7 +75,7 @@
                                 @enderror
                             </div>
 
-                            <div class="form-group">
+                            {{-- <div class="form-group">
                                 <label
                                     for="image"
                                     class="form-control-label"
@@ -97,7 +97,7 @@
                                         height="100px"
                                     />
                                 @endif
-                            </div>
+                            </div> --}}
         
                             <div class="form-group">
                                 <label

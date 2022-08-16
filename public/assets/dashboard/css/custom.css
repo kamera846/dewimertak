@@ -12,3 +12,7 @@
 .table-user img {
     object-fit: cover;
 }
+
+.post .card img {
+    height: 100px !important;
+}

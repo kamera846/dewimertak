@@ -65,6 +65,7 @@
                                                 <img
                                                     src="/storage/{{ $post->image }}"
                                                     alt="{{ $post->title }}"
+                                                    style="height:250px !important; object-fit:cover"
                                             /></a>
                                             <figcaption>
                                                 <h5 class="from-top mb-0">selengkapnya</h5>
@@ -85,13 +86,13 @@
                                                     <a
                                                         class="link-dark"
                                                         href="/posts/{{ $post->slug }}"
-                                                        >{{ $post->title }}</a
+                                                        >{{ strlen($post->title) <= 45 ? $post->title : substr($post->title, 0, 45).'..'  }}</a
                                                     >
                                                 </h2>
                                             </div>
                                             <!-- /.post-header -->
                                             <div class="post-content">
-                                                {{ substr(strip_tags($post->content), 0, 155) }}...
+                                                {{ substr(strip_tags($post->content), 0, 115) }}...
                                             </div>
                                             <!-- /.post-content -->
                                         </div>
@@ -182,6 +183,19 @@
                     </div>
                     <!-- /.widget --> --}}
 
+                    {{-- catgeories --}}
+                    @if($categories->count())
+                    <div class="widget">
+                        <h4 class="widget-title mb-3">Kategori</h4>
+                        <ul class="unordered-list bullet-primary text-reset">
+                            @foreach($categories as $category)
+                            <li class="{{ request('category') == $category->slug ? 'text-green': '' }}"><a href="/posts?category={{ $category->slug }}">{{ ucwords($category->name) }} ({{ App\Models\Post::where('category_id', $category->id)->count() }})</a></li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    @endif
+                    <!-- /.widget -->
+
                     {{-- recent post --}}
                     @if($posts->count() > 5)
                         @if(request(['search', 'category', 'author', 'tag']))
@@ -196,12 +210,13 @@
                                                 ><img
                                                     src="/storage/{{ $post->image }}"
                                                     alt="{{ $post->title }}"
+                                                    style="height: 80px !important; object-fit: cover;"
                                             /></a>
                                         </figure>
                                         <div class="post-content">
                                             <h6 class="mb-2">
                                                 <a class="link-dark" href="/posts/{{ $post->slug }}"
-                                                    >{{ $post->title }}</a
+                                                    >{{ strlen($post->title) <= 40 ? $post->title : substr($post->title, 0, 40).'..'  }}</a
                                                 >
                                             </h6>
                                             <ul class="post-meta">
@@ -219,19 +234,6 @@
                             </div>
                             @endif
                         @endif
-                    @endif
-                    <!-- /.widget -->
-
-                    {{-- catgeories --}}
-                    @if($categories->count())
-                        <div class="widget">
-                            <h4 class="widget-title mb-3">Kategori</h4>
-                            <ul class="unordered-list bullet-primary text-reset">
-                                @foreach($categories as $category)
-                                <li class="{{ request('category') == $category->slug ? 'text-green': '' }}"><a href="/posts?category={{ $category->slug }}">{{ ucwords($category->name) }} ({{ App\Models\Post::where('category_id', $category->id)->count() }})</a></li>
-                                @endforeach
-                            </ul>
-                        </div>
                     @endif
                     <!-- /.widget -->
 

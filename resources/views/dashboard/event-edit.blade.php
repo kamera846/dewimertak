@@ -80,7 +80,7 @@
                                 </div>
                             </div>
         
-                            {{-- <div class="form-group row">
+                            <div class="form-group row">
                                 <label
                                     for="title"
                                     class="col-md-2 col-form-label form-control-label text-md-right"
@@ -92,7 +92,7 @@
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
-                            </div> --}}
+                            </div>
                             
                             <div class="form-group row mt-3">
                                 <div class="col-md-2"></div>

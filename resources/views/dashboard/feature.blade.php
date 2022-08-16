@@ -80,7 +80,7 @@
                     <tr>
                         <th>No.</th>
                         <th>Nama</th>
-                        <th>Foto</th>
+                        {{-- <th>Foto</th> --}}
                         <th>Opsi</th>
                     </tr>
                 </thead>
@@ -97,7 +97,7 @@
                             <td>
                                 {{ $feature->name }}
                             </td>
-                            <td>
+                            {{-- <td>
                                 @if($feature->image)
                                 <img
                                     src="{{ asset('storage/'.$feature->image) }}"
@@ -107,7 +107,7 @@
                                 @else
                                     -
                                 @endif
-                            </td>
+                            </td> --}}
                             <td class="table-actions">
                                 <a
                                     href="#"
@@ -185,10 +185,10 @@
                     <div class="col-3 font-weight-bold text-right">Nama</div>
                     <div class="col-9" id="feature-name"></div>
                 </div>
-                <div class="row mb-3">
+                {{-- <div class="row mb-3">
                     <div class="col-3 font-weight-bold text-right">Foto</div>
                     <div class="col-9" id="feature-image"></div>
-                </div>
+                </div> --}}
                 <div class="row mb-3">
                     <div class="col-3 font-weight-bold text-right">Konten</div>
                     <div class="col-9 pl-0" id="feature-content"></div>

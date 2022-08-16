@@ -37,6 +37,9 @@
             as="style"
             onload="this.rel='stylesheet'"
         />
+
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+        
     </head>
 
     <body>
@@ -128,7 +131,11 @@
                                     @if($socials->count())
                                         <nav class="nav social social-white mt-4">
                                             @foreach($socials as $social)
-                                            <a href="{{ $social->link }}"><i class="uil uil-{{ $social->app }}"></i></a>
+                                                @if($social->app != 'pinterest')
+                                                    <a href="{{ $social->link }}" target="_blank"><i class="uil uil-{{ $social->app }}"></i></a>
+                                                @else
+                                                    <a href="{{ $social->link }}" target="_blank"><i class="bi bi-pinterest"></i></a>
+                                                @endif    
                                             @endforeach
                                         </nav>
                                     @endif
@@ -171,33 +178,45 @@
                 <div class="row gx-lg-0 gy-6">
                     <div class="col-lg-4">
                         <div class="widget">
-                            <img
+                            {{-- <img
                                 class="mb-4"
                                 src="assets/landing-page/img/logo-dark.png"
-                                srcset="assets/landing-page/img/logo-dark@2x.png 2x"
                                 alt=""
+                            /> --}}
+                            @if($profile->image)
+                            <img
+                                src="/storage/{{ $profile->image }}"
+                                {{-- srcset="/storage/{{ Str::replace('.', '@2x.', $profile->image) }} 2x" --}}
+                                alt="{{ $profile->site_name }}"
+                                class="mb-4"
                             />
-                            <p class="lead mb-0">
+                            @else
+                                <h1 class=" mb-4 text-dark">{{ $profile->site_name }}</h1>
+                            @endif
+                            {{-- <p class="lead mb-0">
                                 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vel ipsa accusantium at!
-                            </p>
+                            </p> --}}
                         </div>
                         <!-- /.widget -->
                     </div>
                     <!-- /column -->
-                    <div class="col-lg-3 offset-lg-2">
+                    <div class="col-lg-4">
                         <div class="widget">
                             <div class="d-flex flex-row">
                                 <div>
                                     <div
                                         class="icon text-primary fs-28 me-4 mt-n1"
                                     >
-                                        <i class="uil uil-phone-volume"></i>
+                                        <i class="uil uil-envelope"></i>
                                     </div>
                                 </div>
                                 <div>
-                                    <h5 class="mb-1">Telepon</h5>
+                                    <h5 class="mb-1">Hubungi</h5>
                                     <p class="mb-0">
-                                        +62 813 3752 2673
+                                        <a class="text-reset" href="mailto:{{ $profile->email }}">{{ $profile->email }}</a>
+                                    </p>
+                                    <p class="mb-0">
+                                        Telp: {{ $profile->telephone }}
                                     </p>
                                 </div>
                             </div>
@@ -219,9 +238,9 @@
                                 <div
                                     class="align-self-start justify-content-start"
                                 >
-                                    <h5 class="mb-1">Alamat</h5>
+                                    <h5 class="mb-1">Lokasi</h5>
                                     <address>
-                                        Desa Galang, Kecamatan Welak, Manggarai Barat - NTT
+                                        {{ $profile->location }}
                                     </address>
                                 </div>
                             </div>
@@ -230,6 +249,7 @@
                         <!-- /.widget -->
                     </div>
                     <!-- /column -->
+                    <div class="col-lg-1"></div>
                 </div>
                 <!--/.row -->
                 <hr class="mt-13 mt-md-14 mb-7" />
@@ -237,13 +257,17 @@
                     class="d-md-flex align-items-center justify-content-{{ $socials->count() ? 'between' : 'center' }}"
                 >
                     <p class="mb-2 mb-lg-0">
-                        © 2022 {{ $profile->site_name }} - powered by <a href="https://jongkreatif.id" target="_blank">JongKreatif</a>.
+                        © 2022 {{ $profile->site_name }} - powered by <a href="http://jongkreatif.id" target="_blank">JongKreatif</a>.
                     </p>
 
                     @if($socials->count())
                     <nav class="nav social social-muted mb-0 text-md-end">
                         @foreach($socials as $social)
-                        <a href="{{ $social->link }}" target="_blank"><i class="uil uil-{{ $social->app }}"></i></a>
+                            @if($social->app != 'pinterest')
+                                <a href="{{ $social->link }}" target="_blank"><i class="uil uil-{{ $social->app }}"></i></a>
+                            @else
+                                <a href="{{ $social->link }}" target="_blank"><i class="bi bi-pinterest"></i></a>
+                            @endif    
                         @endforeach
                     </nav>
                     @endif

@@ -16,7 +16,7 @@ class SocialController extends Controller
             'profile' => Profile::get()[0],
             'socials' => Social::latest()->get(),
             'socialPage' => true,
-            'options' => ['facebook', 'instagram', 'twitter', 'pinterest', 'youtube']
+            'options' => ['facebook', 'instagram', 'twitter', 'youtube', 'pinterest']
         ]);
     }
 
@@ -27,7 +27,7 @@ class SocialController extends Controller
                 'profile' => Profile::get()[0],
                 'socialPage' => true,
                 'socials' => Social::all(),
-                'options' => ['facebook', 'instagram', 'twitter', 'pinterest', 'youtube']
+                'options' => ['facebook', 'instagram', 'twitter', 'youtube', 'pinterest']
             ]);
         } else {
             return redirect('/dashboard/socials');

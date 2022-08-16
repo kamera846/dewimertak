@@ -54,7 +54,7 @@
                         >
                             <figure class="lift rounded mb-6">
                                 <a href="/storage/{{ $gallery->image }}" data-glightbox="description: {{ $gallery->caption }}" data-gallery="g1">
-                                    <img src="/storage/{{ $gallery->image }}" alt="{{ $gallery->caption }}"/>
+                                    <img src="/storage/{{ $gallery->image }}" alt="{{ $gallery->caption }}" style="max-height: 500px; object-fit: cover;"/>
                                 </a>
                             </figure>
                             {{-- <div

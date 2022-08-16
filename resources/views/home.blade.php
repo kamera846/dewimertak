@@ -16,21 +16,58 @@ $randomClass = [
         <div class="swiper">
             <div class="swiper-wrapper">
 
-                @foreach($carousels as $carousel)
-                <div class="swiper-slide bg-overlay bg-overlay-400 bg-dark bg-image" data-image-src="/storage/{{ $carousel->image }}">
-                    <div class="container h-100">
-                        <div class="row h-100">
-                            <div class="{{ $randomClass[array_rand($randomClass)] }}">
-                                <h2 class="fs-56 mb-4 text-white animate__animated animate__slideInDown animate__delay-1s">{{ $carousel->title }}</h2>
-                                <p class="lead fs-23 lh-sm mb-7 text-white animate__animated animate__slideInRight animate__delay-2s">{{ $carousel->sub_title }}</p>
+                @if($carousels->count() > 5)
+
+                    @foreach($carousels as $carousel)
+                        <div class="swiper-slide bg-overlay bg-overlay-400 bg-dark bg-image" data-image-src="/storage/{{ $carousel->image }}">
+                            <div class="container h-100">
+                                <div class="row h-100">
+                                    {{-- <div class="{{ $randomClass[array_rand($randomClass)] }}"> --}}
+                                    <div class="col-md-11 col-lg-8 col-xl-7 col-xxl-6 mx-auto text-center justify-content-center align-self-center">
+                                        <h2 class="fs-56 mb-4 text-white animate__animated animate__slideInDown animate__delay-1s">{{ $carousel->title }}</h2>
+                                        <p class="lead fs-23 lh-sm mb-7 text-white animate__animated animate__slideInRight animate__delay-2s">{{ $carousel->sub_title }}</p>
+                                    </div>
+                                    <!--/column -->
+                                </div>
+                                <!--/.row -->
                             </div>
-                            <!--/column -->
+                            <!--/.container -->
                         </div>
-                        <!--/.row -->
+                    @endforeach
+
+                @else
+
+                    <div class="swiper-slide bg-overlay bg-overlay-400 bg-dark bg-image" data-image-src="/storage/default/image.jpg">
+                        <div class="container h-100">
+                            <div class="row h-100">
+                                {{-- <div class="{{ $randomClass[array_rand($randomClass)] }}"> --}}
+                                <div class="col-md-11 col-lg-8 col-xl-7 col-xxl-6 mx-auto text-center justify-content-center align-self-center">
+                                    <h2 class="fs-56 mb-4 text-white animate__animated animate__slideInDown animate__delay-1s">Judul Carousel Pertama</h2>
+                                    <p class="lead fs-23 lh-sm mb-7 text-white animate__animated animate__slideInRight animate__delay-2s">Ini sub judul carousel pertama</p>
+                                </div>
+                                <!--/column -->
+                            </div>
+                            <!--/.row -->
+                        </div>
+                        <!--/.container -->
                     </div>
-                    <!--/.container -->
-                </div>
-                @endforeach
+
+                    <div class="swiper-slide bg-overlay bg-overlay-400 bg-dark bg-image" data-image-src="/storage/default/image.jpg">
+                        <div class="container h-100">
+                            <div class="row h-100">
+                                {{-- <div class="{{ $randomClass[array_rand($randomClass)] }}"> --}}
+                                <div class="col-md-11 col-lg-8 col-xl-7 col-xxl-6 mx-auto text-center justify-content-center align-self-center">
+                                    <h2 class="fs-56 mb-4 text-white animate__animated animate__slideInDown animate__delay-1s">Judul Carousel Kedua</h2>
+                                    <p class="lead fs-23 lh-sm mb-7 text-white animate__animated animate__slideInRight animate__delay-2s">Ini sub judul carousel kedua</p>
+                                </div>
+                                <!--/column -->
+                            </div>
+                            <!--/.row -->
+                        </div>
+                        <!--/.container -->
+                    </div>
+
+                @endif
                 <!--/.swiper-slide -->
             
             </div>
@@ -42,58 +79,10 @@ $randomClass = [
   </section>
 <!-- /section -->
 
-<section class="wrapper mt-20">
-    <div class="container pt-14 pt-md-16 pb-3 pb-md-3">
-        <div class="row gx-md-8 gy-8 text-center mb-14 mb-md-17">
-            <div class="col-md-6 col-lg-4 text-start pe-md-10">
-                <h4>Spot Wisata</h4>
-                <p>
-                    <ul class="ps-3">
-                        <li>Istana Ular</li>
-                        <li>Sawah Beo Galang</li>
-                        <li>Spot Foto Istana Ular</li>
-                    </ul>
-                </p>
-            </div>
-            <!--/column -->
-            <div class="col-md-6 col-lg-4 text-start pe-md-10">
-                <h4>Fasilitas</h4>
-                <p>
-                    <ul class="ps-3 ">
-                        <li>Areal Parkir</li>
-                        <li>Balai Pertemuan</li>
-                        <li>Kamar Mandi Umum</li>
-                        <li>Kios Souvenir</li>
-                        <li>Tempat Makan (Kuliner, Warung)</li>
-                        <li>Selfie Area & Spot Foto</li>
-                    </ul>
-                </p>
-            </div>
-            <div class="col-md-6 col-lg-4 text-start pe-md-10">
-                <h4>Makanan Khas & Souvenir</h4>
-                <p>
-                    Makanan khas:
-                    <ul class="ps-3 mb-0">
-                        <li>Rebok</li>
-                        <li>Serabe</li>
-                    </ul>
-                    Adapun souvenir:
-                    <ul class="ps-3 mb-0">
-                        <li>Selendang</li>
-                        <li>Selempang</li>
-                    </ul>
-                </p>
-            </div>
-            <!--/column -->
-        </div>
-        <!--/.row -->
-    </div>
-    <!-- /.container -->
-</section>
 <section class="wrapper bg-light mt-3 angled upper-end lower-end">
     <div class="container">
         <div
-            class="row pt-8 pt-md-14 pb-20 gx-lg-8 gx-xl-12 gy-10 align-items-center"
+            class="row py-14 py-md-18 gx-lg-8 gx-xl-12 gy-10 align-items-center"
         >
             <div
                 class="col-md-8 col-lg-6 col-xl-5 order-lg-2 position-relative"
@@ -105,30 +94,38 @@ $randomClass = [
                 ></div>
                 <figure class="rounded">
                     <img
-                        src="/assets/landing-page/img/photos/about7.jpg"
-                        srcset="/assets/landing-page/img/photos/about7@2x.jpg 2x"
-                        alt=""
+                        @if($about->image)
+                            src="/storage/{{ $about->image }}"
+                        @else
+                            src="/storage/default/image.jpg"
+                        @endif
+                        alt="{{ $about->title }}"
+                        style="max-height: 400px; object-fit: cover"
                     />
                 </figure>
             </div>
             <!--/column -->
             <div class="col-lg-6">
-                <h2 class="mb-3">Cerita Desa</h2>
-                <p class="lead fs-lg pe-lg-10">
-                    Konon, keberadaan istana ular pertama kali terjadi karena sebuah peristiwa pada Suku Ronggot. Sebagaimana diyakini dan diceritakan masyarakat setempat, kisah ini adalah legenda tentang dua orang kakak beradik yang melakukan hubungan sedarah, kemudian diasingkan dan mengungsi ke sebuah goa.
+                <h2 class="mb-3">{{ $about->title }}</h2>
+                <p class="lead fs-md pe-lg-10">
+                    {{ substr(strip_tags($about->content), 0, 470)  }}...
                 </p>
+                <a href="/about" class="btn btn-sm btn-green">Selengkapnya</a>
             </div>
             <!--/column -->
         </div>
         <!--/.row -->
     </div>
     <!-- /.container -->
-    <div class="container py-10 py-md-12">
-        <div class="row mb-4">
+
+    @if($latestGalleries->count())
+    <div class="container py-14 py-md-16">
+        <div class="row pb-7">
             <div class="col-lg-9 col-xl-8 col-xxl-7 mx-auto mb-8">
-                <h3 class="text-center">
-                    Momen-momen yang berhasil kami abadikan
-                </h3>
+
+                <h2 class="text-center">
+                    {{ $latestGallerySection->title ? $latestGallerySection->title : 'Momen-momen yang berhasil kami abadikan' }}
+                </h2>
             </div>
             <!-- /column -->
         </div>
@@ -138,325 +135,48 @@ $randomClass = [
                 class="row gx-md-8 gy-10 gy-md-13 isotope"
                 style="position: relative; height: 1147.05px"
             >
-                <div
-                    class="project item col-md-6 col-xl-4 product"
-                    style="position: absolute; left: 0%; top: 0px"
-                >
-                    <figure class="lift rounded mb-6">
-                        <a href="..//assets/landing-page/landing-page/img/photos/cs16.jpg" data-glightbox="title: Title; description: Description" data-gallery="g1">
-                            <img src="..//assets/landing-page/landing-page/img/photos/cs16.jpg" alt=""/>
-                        </a>
-                        </figure>
+
+                @foreach ($latestGalleries as $gallery)
                     <div
-                        class="project-details d-flex justify-content-center flex-column"
+                        class="project item col-md-6 col-xl-4 product"
+                        style="position: absolute; left: 0%; top: 0px"
                     >
-                        <div class="post-header">
-                            <h3 class="h5">Cras Fermentum Sem</h3>
-                        </div>
-                        <!-- /.post-header -->
-                    </div>
-                    <!-- /.project-details -->
-                </div>
-                <!-- /.project -->
-                <div
-                    class="project item col-md-6 col-xl-4 workshop"
-                    style="position: absolute; left: 33.3333%; top: 0px"
-                >
-                    <figure class="lift rounded mb-6">
-                        <a href="..//assets/landing-page/landing-page/img/photos/cs17.jpg" data-glightbox="title: Title; description: Description" data-gallery="g1">
-                            <img src="..//assets/landing-page/landing-page/img/photos/cs17.jpg" alt=""/>
-                        </a>
+                        <figure class="lift rounded mb-6">
+                            <a href="/storage/{{ $gallery->image }}" data-glightbox="description: {{ $gallery->caption }}" data-gallery="g1">
+                                <img src="/storage/{{ $gallery->image }}" alt="{{ $gallery->caption }}" style="max-height: 500px; object-fit:cover;"/>
+                            </a>
                         </figure>
-                    <div
-                        class="project-details d-flex justify-content-center flex-column"
-                    >
-                        <div class="post-header">
-                            <h3 class="h5">Mollis Ipsum Mattis</h3>
+                        {{-- <div
+                            class="project-details d-flex justify-content-center flex-column"
+                        >
+                            <div class="post-header">
+                                <h3 class="h5">Cras Fermentum Sem</h3>
+                            </div>
+                            <!-- /.post-header -->
                         </div>
-                        <!-- /.post-header -->
+                        <!-- /.project-details --> --}}
                     </div>
-                    <!-- /.project-details -->
-                </div>
+                @endforeach
                 <!-- /.project -->
-                <div
-                    class="project item col-md-6 col-xl-4 still-life"
-                    style="position: absolute; left: 66.6667%; top: 0px"
-                >
-                    <figure class="lift rounded mb-6">
-                        <a href="..//assets/landing-page/landing-page/img/photos/cs18.jpg" data-glightbox="title: Title; description: Description" data-gallery="g1">
-                            <img src="..//assets/landing-page/landing-page/img/photos/cs18.jpg" alt=""/>
-                        </a>
-                        </figure>
-                    <div
-                        class="project-details d-flex justify-content-center flex-column"
-                    >
-                        <div class="post-header">
-                            <h3 class="h5">
-                                Ipsum Ultricies Cursus
-                            </h3>
-                        </div>
-                        <!-- /.post-header -->
-                    </div>
-                    <!-- /.project-details -->
-                </div>
-                <!-- /.project -->
-                <div
-                    class="project item col-md-6 col-xl-4 product"
-                    style="position: absolute; left: 66.6667%; top: 499.812px"
-                >
-                    <figure class="lift rounded mb-6">
-                        <a href="..//assets/landing-page/landing-page/img/photos/cs20.jpg" data-glightbox="title: Title; description: Description" data-gallery="g1">
-                            <img src="..//assets/landing-page/landing-page/img/photos/cs20.jpg" alt=""/>
-                        </a>
-                        </figure>
-                    <div
-                        class="project-details d-flex justify-content-center flex-column"
-                    >
-                        <div class="post-header">
-                            <h3 class="h5">
-                                Inceptos Euismod Egestas
-                            </h3>
-                        </div>
-                        <!-- /.post-header -->
-                    </div>
-                    <!-- /.project-details -->
-                </div>
-                <!-- /.project -->
-                <div
-                    class="project item col-md-6 col-xl-4 product"
-                    style="position: absolute; left: 0%; top: 581.125px"
-                >
-                    <figure class="lift rounded mb-6">
-                        <a href="..//assets/landing-page/landing-page/img/photos/cs19.jpg" data-glightbox="title: Title; description: Description" data-gallery="g1">
-                            <img src="..//assets/landing-page/landing-page/img/photos/cs19.jpg" alt=""/>
-                        </a>
-                        </figure>
-                    <div
-                        class="project-details d-flex justify-content-center flex-column"
-                    >
-                        <div class="post-header">
-                            <h3 class="h5">
-                                Sollicitudin Ornare Porta
-                            </h3>
-                        </div>
-                        <!-- /.post-header -->
-                    </div>
-                    <!-- /.project-details -->
-                </div>
-                <!-- /.project -->
-                <div
-                    class="project item col-md-6 col-xl-4 workshop"
-                    style="position: absolute; left: 33.3333%; top: 634.797px"
-                >
-                    <figure class="lift rounded mb-6">
-                        <a href="..//assets/landing-page/landing-page/img/photos/cs21.jpg" data-glightbox="title: Title; description: Description" data-gallery="g1">
-                            <img src="..//assets/landing-page/landing-page/img/photos/cs21.jpg" alt=""/>
-                        </a>
-                        </figure>
-                    <div
-                        class="project-details d-flex justify-content-center flex-column"
-                    >
-                        <div class="post-header">
-                            <h3 class="h5">
-                                Ipsum Mollis Vulputate
-                            </h3>
-                        </div>
-                        <!-- /.post-header -->
-                    </div>
-                    <!-- /.project-details -->
-                </div>
-                <!-- /.project -->
+                
             </div>
             <!-- /.row -->
         </div>
         <!-- /.grid -->
     </div>
+    @endif
     <!-- /.content-wrapper -->
-    <div class="container pt-12 pt-md-14 pb-13 pb-md-15">
-        <div class="row mb-5">
+
+    <div class="container pt-11 pt-md-13 pb-10 pb-md-12">
+        {{-- <div class="row mb-7">
             <div class="col-lg-9 col-xl-8 col-xxl-7 mx-auto text-center">
-                <h3 class="mb-10">
-                    Artikel Terbaru
-                </h3>
+                <h2 class="mb-10">
+                    {{ $contactInfoSection->title ? $contactInfoSection->title : 'Jika Anda Punya Pertanyaan atau Saran, Silahkan Menghubungi Kami' }}
+                </h2>
             </div>
             <!-- /column -->
         </div>
-        <!-- /.row -->
-        <div class="row">
-            <div class="col-12">
-                <div class="blog grid grid-view">
-                    <div class="row isotope gx-md-8 gy-8 mb-8">
-                        <article class="item post col-lg-4 col-md-6">
-                            <div class="card">
-                                <figure
-                                    class="card-img-top overlay overlay-1 hover-scale"
-                                >
-                                    <a href="#">
-                                        <img
-                                            src="/assets/landing-page/img/photos/b5.jpg"
-                                            alt=""
-                                    /></a>
-                                    <figcaption>
-                                        <h5 class="from-top mb-0">Selengkapnya</h5>
-                                    </figcaption>
-                                </figure>
-                                <div class="card-body">
-                                    <div class="post-header">
-                                        <h2 class="post-title h3 mt-1 mb-3">
-                                            <a
-                                                class="link-dark"
-                                                href="./blog-post.html"
-                                                >Nullam id dolor elit id nibh</a
-                                            >
-                                        </h2>
-                                    </div>
-                                    <!-- /.post-header -->
-                                    <div class="post-content">
-                                        <p>
-                                            Mauris convallis non ligula non
-                                            interdum. Gravida vulputate
-                                            convallis tempus vestibulum cras
-                                            imperdiet nun eu dolor. Aenean
-                                            lacinia bibendum nulla sed.
-                                        </p>
-                                    </div>
-                                    <!-- /.post-content -->
-                                </div>
-                                <!--/.card-body -->
-                                <div class="card-footer">
-                                    <ul class="post-meta d-flex mb-0">
-                                        <li class="post-date">
-                                            <i class="uil uil-calendar-alt"></i
-                                            ><span>29 Mar 2021</span>
-                                        </li>
-                                    </ul>
-                                    <!-- /.post-meta -->
-                                </div>
-                                <!-- /.card-footer -->
-                            </div>
-                            <!-- /.card -->
-                        </article>
-                        <!-- /.post -->
-                        <article class="item post col-lg-4 col-md-6">
-                            <div class="card">
-                                <figure
-                                    class="card-img-top overlay overlay-1 hover-scale"
-                                >
-                                    <a href="#">
-                                        <img
-                                            src="/assets/landing-page/img/photos/b6.jpg"
-                                            alt=""
-                                    /></a>
-                                    <figcaption>
-                                        <h5 class="from-top mb-0">Selengkapnya</h5>
-                                    </figcaption>
-                                </figure>
-                                <div class="card-body">
-                                    <div class="post-header">
-                                        <h2 class="post-title h3 mt-1 mb-3">
-                                            <a
-                                                class="link-dark"
-                                                href="./blog-post.html"
-                                                >Ultricies fusce porta elit</a
-                                            >
-                                        </h2>
-                                    </div>
-                                    <!-- /.post-header -->
-                                    <div class="post-content">
-                                        <p>
-                                            Mauris convallis non ligula non
-                                            interdum. Gravida vulputate
-                                            convallis tempus vestibulum cras
-                                            imperdiet nun eu dolor. Aenean
-                                            lacinia bibendum nulla sed.
-                                        </p>
-                                    </div>
-                                    <!-- /.post-content -->
-                                </div>
-                                <!--/.card-body -->
-                                <div class="card-footer">
-                                    <ul class="post-meta d-flex mb-0">
-                                        <li class="post-date">
-                                            <i class="uil uil-calendar-alt"></i
-                                            ><span>26 Feb 2021</span>
-                                        </li>
-                                    </ul>
-                                    <!-- /.post-meta -->
-                                </div>
-                                <!-- /.card-footer -->
-                            </div>
-                            <!-- /.card -->
-                        </article>
-                        <!-- /.post -->
-                        <article class="item post col-lg-4 col-md-6">
-                            <div class="card">
-                                <figure
-                                    class="card-img-top overlay overlay-1 hover-scale"
-                                >
-                                    <a href="#">
-                                        <img
-                                            src="/assets/landing-page/img/photos/b7.jpg"
-                                            alt=""
-                                    /></a>
-                                    <figcaption>
-                                        <h5 class="from-top mb-0">Selengkapnya</h5>
-                                    </figcaption>
-                                </figure>
-                                <div class="card-body">
-                                    <div class="post-header">
-                                        <h2 class="post-title h3 mt-1 mb-3">
-                                            <a
-                                                class="link-dark"
-                                                href="./blog-post.html"
-                                                >Morbi leo risus porta eget</a
-                                            >
-                                        </h2>
-                                    </div>
-                                    <div class="post-content">
-                                        <p>
-                                            Mauris convallis non ligula non
-                                            interdum. Gravida vulputate
-                                            convallis tempus vestibulum cras
-                                            imperdiet nun eu dolor. Aenean
-                                            lacinia bibendum nulla sed.
-                                        </p>
-                                    </div>
-                                    <!-- /.post-content -->
-                                </div>
-                                <!--/.card-body -->
-                                <div class="card-footer">
-                                    <ul class="post-meta d-flex mb-0">
-                                        <li class="post-date">
-                                            <i class="uil uil-calendar-alt"></i
-                                            ><span>7 Jan 2021</span>
-                                        </li>
-                                    </ul>
-                                    <!-- /.post-meta -->
-                                </div>
-                                <!-- /.card-footer -->
-                            </div>
-                            <!-- /.card -->
-                        </article>
-                        <!-- /.post -->
-                    </div>
-                    <!-- /.row -->
-                </div>
-                <!-- /.blog -->
-            </div>
-            <!-- /column -->
-        </div>
-        <!-- /.row -->
-    </div>
-    <div class="container pt-3 pt-md-5 pb-15 pb-md-18">
-        <div class="row mb-7">
-            <div class="col-lg-9 col-xl-8 col-xxl-7 mx-auto text-center">
-                <h3 class="mb-10">
-                    {{ App\Models\Section::where('code', 'info-kontak')->where('on_page', 'Kontak')->get()[0]->title }}
-                </h3>
-            </div>
-            <!-- /column -->
-        </div>
-        <!-- /.row -->
+        <!-- /.row --> --}}
         <div class="row mb-15">
             <div class="col-xl-10 mx-auto">
                 <div class="card">
@@ -525,6 +245,99 @@ $randomClass = [
         </div>
         <!-- /.row -->
     </div>
+
+    @if($latestPosts->count())
+    <div class="container pt-10 pt-md-12 pb-13 pb-md-15">
+        <div class="row mb-5">
+            <div class="col-lg-9 col-xl-8 col-xxl-7 mx-auto text-center">
+                <h2 class="mb-10">
+                    {{ $latestPostSection->title ? $latestPostSection->title : 'Artikel Terbaru' }}
+                </h2>
+            </div>
+            <!-- /column -->
+        </div>
+        <!-- /.row -->
+        <div class="row">
+            <div class="col-12">
+                <div class="blog grid grid-view">
+                    <div class="row isotope gx-md-8 gy-8 mb-8">
+
+                        @foreach($latestPosts as $post)
+                        <article class="item post col-lg-4 col-md-6">
+                            <div class="card">
+                                <figure
+                                    class="card-img-top overlay overlay-1 hover-scale"
+                                >
+                                    <a href="/posts/{{ $post->slug }}">
+                                        <img
+                                            src="/storage/{{ $post->image }}"
+                                            alt="{{ $post->title }}"
+                                            style="height: 250px !important; object-fit: cover;"
+                                    /></a>
+                                    <figcaption>
+                                        <h5 class="from-top mb-0">selengkapnya</h5>
+                                    </figcaption>
+                                </figure>
+                                <div class="card-body">
+                                    <div class="post-header">
+                                        <div class="post-category text-line">
+                                            <a
+                                                href="/posts?category={{ $post->category->slug }}"
+                                                class="hover"
+                                                rel="category"
+                                                >{{ ucwords($post->category->name) }}</a
+                                            >
+                                        </div>
+                                        <!-- /.post-category -->
+                                        <h2 class="h3 mt-1 mb-3">
+                                            <a
+                                                class="link-dark"
+                                                href="/posts/{{ $post->slug }}"
+                                                >{{ strlen($post->title) <= 45 ? $post->title : substr($post->title, 0, 45).'..'  }}</a
+                                            >
+                                        </h2>
+                                    </div>
+                                    <!-- /.post-header -->
+                                    <div class="post-content">
+                                        {{ substr(strip_tags($post->content), 0, 115) }}...
+                                    </div>
+                                    <!-- /.post-content -->
+                                </div>
+                                <!--/.card-body -->
+                                <div class="card-footer">
+                                    <ul class="post-meta d-flex mb-0">
+                                        <li class="post-date">
+                                            <i class="uil uil-calendar-alt"></i
+                                            ><span>{{ $post->created_at->isoFormat('D MMM Y') }}</span>
+                                        </li>
+                                        <li class="post-author">
+                                            <a href="/posts?author={{ $post->user->slug }}"
+                                                ><i class="uil uil-user"></i
+                                                ><span>{{ $post->user->name }}</span></a
+                                            >
+                                        </li>
+                                    </ul>
+                                    <!-- /.post-meta -->
+                                </div>
+                                <!-- /.card-footer -->
+                            </div>
+                            <!-- /.card -->
+                        </article>
+                        @endforeach
+                        <!-- /.post -->
+
+                    </div>
+                    <!-- /.row -->
+                </div>
+                <!-- /.blog -->
+            </div>
+            <!-- /column -->
+        </div>
+        <!-- /.row -->
+    </div>
+    @endif
+    <!-- /.container -->
+
 </section>
 <!-- /.content-wrapper -->
 
