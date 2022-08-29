@@ -138,6 +138,7 @@
                 <!-- /.widget -->
 
                 {{-- recent post --}}
+                @if($recentPosts->count() > 1)
                 <div class="widget">
                     <h4 class="widget-title mb-3">Artikel Terbaru</h4>
                     <ul class="image-list">
@@ -170,6 +171,7 @@
                     </ul>
                     <!-- /.image-list -->
                 </div>
+                @endif
                 <!-- /.widget -->
 
                 {{-- tags --}}
