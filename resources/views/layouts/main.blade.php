@@ -3,15 +3,30 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta
-            name="description"
-            content="An impressive and flawless site template that includes various UI elements and countless features, attractive ready-made blocks and rich pages, basically everything you need to create a unique and professional website."
-        />
-        <meta
-            name="keywords"
-            content="bootstrap 5, business, corporate, creative, gulp, marketing, minimal, modern, multipurpose, one page, responsive, saas, sass, seo, startup, html5 template, site template"
-        />
-        <meta name="author" content="elemis" />
+        
+        {{-- <meta name="author" content=""> --}}
+        <meta name="title" content="{{ $profile->site_name }}">
+        <meta name="description" content="{{ substr(strip_tags($about->content), 0, 250)  }}...">
+        <meta name="keywords" content="desa, wisata, mertak, desa wisata, wisata lombok, desa mertak, wisata mertak, desa wisata mertak, desa mertak lombok, ntb, nusa tenggara barat">
+        
+        <!-- Google / Search Engine Tags -->
+        <meta itemprop="name" content="{{ $profile->site_name }}">
+        <meta itemprop="description" content="{{ substr(strip_tags($about->content), 0, 250)  }}...">
+        <meta itemprop="image" content="/storage/{{ $profile->logo }}">
+
+        <!-- Open Graph / Facebook -->
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://www.desamertak.com/">
+        <meta property="og:title" content="{{ $profile->site_name }}">
+        <meta property="og:description" content="{{ substr(strip_tags($about->content), 0, 250)  }}...">
+        <meta property="og:image" content="/storage/{{ $profile->logo }}">
+        
+        <!-- Twitter -->
+        <meta property="twitter:card" content="summary_large_image">
+        <meta property="twitter:url" content="https://www.desamertak.com/">
+        <meta property="twitter:title" content="{{ $profile->site_name }}">
+        <meta property="twitter:description" content="{{ substr(strip_tags($about->content), 0, 250)  }}...">
+        <meta property="twitter:image" content="/storage/{{ $profile->logo }}">
 
         <!-- title -->
         @if(isset($homePage))
@@ -53,11 +68,12 @@
                     >
                         <div class="navbar-brand w-100">
                             <a href="/">
-                                @if($profile->image)
+                                @if($profile->logo)
                                 <img
-                                    src="/storage/{{ $profile->image }}"
-                                    {{-- srcset="/storage/{{ Str::replace('.', '@2x.', $profile->image) }} 2x" --}}
+                                    src="/storage/{{ $profile->logo }}"
+                                    {{-- srcset="/storage/{{ Str::replace('.', '@2x.', $profile->logo) }} 2x" --}}
                                     alt="{{ $profile->site_name }}"
+                                    height="45px"
                                 />
                                 @else
                                     <h1 class="fs-20 m-0 text-green">{{ $profile->site_name }}</h1>
@@ -69,11 +85,12 @@
                         >
                             <div class="offcanvas-header d-lg-none d-xl-none">
                                 <a href="/">
-                                    @if($profile->image)
+                                    @if($profile->logo)
                                     <img
-                                        src="/storage/{{ $profile->image }}"
-                                        {{-- srcset="/storage/{{ Str::replace('.', '@2x.', $profile->image) }} 2x" --}}
+                                        src="/storage/{{ $profile->logo }}"
+                                        {{-- srcset="/storage/{{ Str::replace('.', '@2x.', $profile->logo) }} 2x" --}}
                                         alt="{{ $profile->site_name }}"
+                                        height="45px"
                                     />
                                     @else
                                         <h1 class="text-light fs-20 m-0">{{ $profile->site_name }}</h1>
@@ -183,12 +200,13 @@
                                 src="assets/landing-page/img/logo-dark.png"
                                 alt=""
                             /> --}}
-                            @if($profile->image)
+                            @if($profile->logo)
                             <img
-                                src="/storage/{{ $profile->image }}"
-                                {{-- srcset="/storage/{{ Str::replace('.', '@2x.', $profile->image) }} 2x" --}}
+                                src="/storage/{{ $profile->logo }}"
+                                {{-- srcset="/storage/{{ Str::replace('.', '@2x.', $profile->logo) }} 2x" --}}
                                 alt="{{ $profile->site_name }}"
                                 class="mb-4"
+                                height="55px"
                             />
                             @else
                                 <h1 class=" mb-4 text-dark">{{ $profile->site_name }}</h1>

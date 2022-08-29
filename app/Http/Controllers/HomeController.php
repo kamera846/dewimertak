@@ -64,6 +64,7 @@ class HomeController extends Controller
             'currentPage' => 'Artikel',
             'postPage' => true,
             'profile' => Profile::get()[0],
+            'about' => About::get()[0],
             'socials' => Social::get(),
             'posts' => Post::latest()->filter(request(['search', 'category', 'author', 'tag']))->paginate(10),
             'categories' => PostCategory::get(),
@@ -81,6 +82,7 @@ class HomeController extends Controller
             'postPage' => true,
             'postDetail' => true,
             'profile' => Profile::get()[0],
+            'about' => About::get()[0],
             'socials' => Social::get(),
             'post' => $post,
             'categories' => PostCategory::get(),
@@ -97,6 +99,7 @@ class HomeController extends Controller
             'currentPage' => 'Galeri',
             'galleryPage' => true,
             'profile' => Profile::get()[0],
+            'about' => About::get()[0],
             'socials' => Social::get(),
             'galleries' => Gallery::latest()->paginate(15),
             // section langsung panggil fieldnya ga perlu pakek perulangan karena sudah memanggil indeks pertama
@@ -112,6 +115,7 @@ class HomeController extends Controller
             'currentPage' => 'Kontak Kami',
             'contactPage' => true,
             'profile' => Profile::get()[0],
+            'about' => About::get()[0],
             'socials' => Social::get(),
             // section langsung panggil fieldnya ga perlu pakek perulangan karena sudah memanggil indeks pertama
             'pageTitleSection' => Section::where('code', 'judul-halaman')->where('on_page', 'Kontak')->get()[0],

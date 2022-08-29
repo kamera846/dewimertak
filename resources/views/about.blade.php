@@ -32,7 +32,7 @@
         <div class="row justify-content-center">
             <div class="col-lg-10">
                 <div class="clearfix">
-                    <figure class="col-lg-6 float-lg-start mb-4 me-lg-5 rounded">
+                    <figure class="col-lg-6 float-lg-start mb-3 me-lg-5 rounded">
                         <img
                             @if($about->image)
                                 src="/storage/{{ $about->image }}"
@@ -46,7 +46,7 @@
 
                     
                     <h2 class="mb-3">{{ $about->title }}</h2>
-                    <p class="lead fs-md pe-lg-10">
+                    <p class="lead fs-md">
                         {!! $about->content !!}
                     </p>
                 </div>
