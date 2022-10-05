@@ -67,7 +67,7 @@
                             <img
                                 src="/storage/{{ $gallery->image }}"
                                 alt="{{ $gallery->caption }}"
-                                style="max-height: 450px: object-fit: cover;"
+                                style="max-height: 450px; object-fit: cover;"
                             />
                         </a>
                         @else
