@@ -121,10 +121,10 @@
 
                 @foreach($features as $feature)
                 <div class="col-md-6 col-xl-3">
-                    <div class="card shadow-lg">
-                        <div class="card-body text-start">
-                            <h4 class="">{{ $feature->name }}</h4>
-                            <div class="feature-content">
+                    <div class="card shadow-lg" style="height: 350px;">
+                        <div class="card-body px-1">
+                            <h4 class="text-start mx-4 mb-3">{{ $feature->name }}</h4>
+                            <div class="feature-content text-start ms-0 me-1">
                                 {!! $feature->content !!}
                             </div>
                             {{-- <p class="mb-2">
@@ -178,7 +178,7 @@
     <div class="container pt-15 pt-md-17 pb-13 pb-md-15">
         <div class="row">
             <div class="col-lg-9 col-xl-8 col-xxl-7 mx-auto text-center">
-                <h3 class="mb-10">
+                <h3 class="mb-12">
                     {{ $eventSection->title ? $eventSection->title : 'Acara dan kegiatan Bersama di Desa' }}
             </div>
             <!-- /column -->

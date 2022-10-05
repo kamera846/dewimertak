@@ -56,7 +56,9 @@
             @if(session()->has('success') || session()->has('info'))
                 <div class="row px-3">
                     <div class="alert alert-{{ (session()->has('success'))?'success':'info' }} alert-dismissible fade show" style="width: 100%" role="alert">
+                        @if(session()->has('success'))
                         <span class="alert-icon"><i class="ni ni-like-2"></i></span>
+                        @endif
                         <span class="alert-text"> {{ session('success') }}{{ session('info') }}</span>
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">×</span>
@@ -98,6 +100,7 @@
                 <thead class="thead-light">
                     <tr>
                         <th>Nama</th>
+                        <th>Jumlah Artikel</th>
                         <th>Opsi</th>
                     </tr>
                 </thead>
@@ -110,6 +113,9 @@
                         <tr>
                             <td>
                                 {{ ucwords($postCategory->name) }}
+                            </td>
+                            <td>
+                                {{ App\Models\Post::where('category_id', $postCategory->id)->count() }}
                             </td>
                             <td class="table-actions">
                                 <a
@@ -141,7 +147,7 @@
                     @else
                         
                         <tr>
-                            <td colspan="2" class="text-center">Belum ada data.</td>
+                            <td colspan="3" class="text-center">Belum ada data.</td>
                         </tr>
 
                     @endif

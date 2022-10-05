@@ -116,7 +116,7 @@
                                     data-target="#feature-detail"
                                     data-id="{{ $feature->id }}"
                                     data-name="{{ $feature->name }}"
-                                    data-image="{{ $feature->image }}"
+                                    {{-- data-image="{{ $feature->image }}" --}}
                                     data-content="{{ $feature->content }}"
                                     data-loop="{{ $loop->iteration }}"
                                 >

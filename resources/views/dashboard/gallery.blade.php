@@ -64,7 +64,7 @@
 <div class="container-fluid mt--6">
     <div class="card">
         <!-- Card header -->
-        <div class="card-header border-0">
+        <div class="card-header">
             <div class="row">
                 <div class="col">
                     <h3 class="mb-0">Data Galeri</h3>
@@ -72,11 +72,12 @@
             </div>
         </div>
         <!-- Light table -->
-        <div class="table-responsive table-hover">
-            <table class="table align-items-center table-flush">
+        <div class="table-responsive table-hover py-4">
+            <table class="table table-flush " id="datatable-basic">
                 <thead class="thead-light">
                     <tr>
-                        <th>Foto</th>
+                        <th>No</th>
+                        <th>Foto / Semat Video</th>
                         <th>Keterangan</th>
                         <th>Opsi</th>
                     </tr>
@@ -88,17 +89,43 @@
                         @foreach($galleries as $gallery)
 
                         <tr>
+                            <td>{{ $loop->iteration }}</td>
                             <td>
+                                @if($gallery->image)
                                 <img
                                     src="{{ asset('storage/'.$gallery->image) }}"
                                     style="height: 70px; "
                                     class="rounded"
                                 />
+                                @else
+                                    {{ strlen($gallery->video_link) <= 35 ? $gallery->video_link : substr($gallery->video_link, 0, 35).'..'  }}
+                                @endif
                             </td>
                             <td>
-                                {{ $gallery->caption ? $gallery->caption : '-' }}
+                                @if($gallery->caption)
+                                    {{ strlen($gallery->caption) <= 40 ? $gallery->caption : substr($gallery->caption, 0, 40).'..' }}
+                                @else
+                                    -
+                                @endif
                             </td>
                             <td class="table-actions">
+                                @if($gallery->type == 'video_link')
+                                <a
+                                    href="#"
+                                    class="table-action gallery-detail"
+                                    data-toggle="modal"
+                                    data-target="#gallery-detail"
+                                    data-id="{{ $gallery->id }}"
+                                    data-video_link="{{ $gallery->video_link }}"
+                                    data-caption="{{ $gallery->caption }}"
+                                >
+                                <i 
+                                    data-toggle="tooltip"
+                                    data-original-title="Preview Video"
+                                    class="fas fa-info-circle"
+                                ></i>
+                            </a>
+                                @endif
                                 <a
                                     href="/dashboard/galleries/{{ $gallery->id }}/edit"
                                     class="table-action"
@@ -135,6 +162,36 @@
     <!-- Footer -->
     @include('partials.dashboard-footer')
 
+</div>
+
+{{-- Modal detail --}}
+<div class="modal fade" id="gallery-detail" tabindex="-1" role="dialog" aria-labelledby="gallery-detail" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="modal-title modal-title" id="modal-title-default">Preview Video Galeri</h6>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body text-sm">
+                <div class="row mb-3 px-2" id="gallery-video_link">
+                </div>
+                <div class="row mb-3">
+                    <div class="col-3 font-weight-bold">Keterangan :</div>
+                    <div class="col-9" id="gallery-caption"></div>
+                </div>
+            </div>
+            <div class="modal-footer text-end">
+                <a href="" id="gallery-edit" class="btn btn-primary">Edit</a>
+                <form action="" id="gallery-delete" method="post" class="p-0 m-0 d-inline">
+                    @csrf
+                    @method('delete')
+                    <button type="submit" id="deleteInModal" class="btn btn-outline-primary">Hapus</button>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
 
 @endsection

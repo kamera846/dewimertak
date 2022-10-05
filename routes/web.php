@@ -19,6 +19,7 @@ use App\Models\Profile;
 use App\Models\User;
 use App\Models\Post;
 use App\Models\Gallery;
+use App\Models\Visitor;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,8 +31,10 @@ use App\Models\Gallery;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', [HomeController::class, 'home']);
+Route::middleware('visitor')->group(function(){
+    Route::get('/', [HomeController::class, 'home']);
+});
+// Route::get('/', [HomeController::class, 'home']);
 Route::get('/about', [HomeController::class, 'about']);
 Route::get('/posts', [HomeController::class, 'post']);
 Route::get('/posts/{post:slug}', [HomeController::class, 'postDetail']);
@@ -45,6 +48,7 @@ Route::post('/logout', [LoginController::class, 'logout']);
 
 Route::get('/dashboard', function() {
     return view('dashboard.home', [
+        'ipAddressCount' => Visitor::count(),
         'dashboardPage' => true,
         'profile' => Profile::get()[0],
         'users' => User::count(),

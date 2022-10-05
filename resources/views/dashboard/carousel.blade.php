@@ -102,7 +102,8 @@
                                 />
                             </td>
                             <td>
-                                {{ $carousel->title }}
+                                
+                                {{ strlen($carousel->title) <= 30 ? $carousel->title : substr($carousel->title, 0, 30).'..' }}
                             </td>
                             <td class="table-actions">
                                 <a

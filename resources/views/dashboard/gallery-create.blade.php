@@ -57,6 +57,24 @@
                             
                             <div class="form-group row">
                                 <label
+                                    for="type"
+                                    class="col-md-3 col-form-label form-control-label text-md-right"
+                                    >Jenis <span class="text-danger">*</span></label
+                                >
+                                <div class="col-md-9">
+                                    <select name="type" id="type" class="form-control" required @error('type') is-invalid @enderror>
+                                        <option value="" selected>-- Pilih --</option>
+                                        <option value="image" {{ old('type') == 'image' ? 'selected': '' }}>Foto</option>
+                                        <option value="video_link" {{ old('type') == 'video_link' ? 'selected': '' }}>Video</option>
+                                    </select>
+                                    @error('type')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+                            
+                            <div class="form-group row image-field {{ old('type') == 'video_link' ? 'd-none': '' }}">
+                                <label
                                     for="image"
                                     class="col-md-3 col-form-label form-control-label text-md-right"
                                     >Foto <span class="text-danger">*</span></label
@@ -67,11 +85,34 @@
                                         type="file"
                                         id="image"
                                         name="image"
-                                        required
                                     />
                                     @error('image')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
+                                </div>
+                            </div>
+                            
+                            <div class="form-group row video-field {{ old('type') == 'image' ? 'd-none': '' }}">
+                                <label
+                                    for="video_link"
+                                    class="col-md-3 col-form-label form-control-label text-md-right"
+                                    >Semat Video <span class="text-danger">*</span></label
+                                >
+                                <div class="col-md-9">
+                                    <textarea name="video_link" id="video_link" rows="4" class="form-control @error('video_link') is-invalid @enderror">{{  old('video_link')  }}</textarea>
+                                    @error('video_link')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                    {{-- <input
+                                        class="form-control @error('video_link') is-invalid @enderror"
+                                        type="text"
+                                        id="video_link"
+                                        name="video_link"
+                                        value="{{ old('video_link') }}"
+                                    />
+                                    @error('video_link')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror --}}
                                 </div>
                             </div>
                             

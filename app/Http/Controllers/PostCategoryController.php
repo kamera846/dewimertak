@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\PostCategory;
 use Illuminate\Support\Str;
 use App\Models\Profile;
+use App\Models\Post;
 
 class PostCategoryController extends Controller
 {
@@ -107,8 +108,17 @@ class PostCategoryController extends Controller
      */
     public function destroy($postCategory)
     {
-        Postcategory::destroy($postCategory);
+        $postsCount = Post::where('category_id', $postCategory)->count();
 
-        return redirect('/dashboard/post-categories')->with('success', 'Berhasil menghapus kategori postingan!');
+        if($postsCount)
+        {
+            return redirect('/dashboard/post-categories')->with('info', 'Gagal menghapus kategori postingan!');
+        }
+        else
+        {
+            Postcategory::destroy($postCategory);
+            
+            return redirect('/dashboard/post-categories')->with('success', 'Berhasil menghapus kategori postingan!');
+        }
     }
 }

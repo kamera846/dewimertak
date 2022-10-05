@@ -64,7 +64,7 @@
 <div class="container-fluid mt--6">
     <div class="card">
         <!-- Card header -->
-        <div class="card-header border-0">
+        <div class="card-header">
             <div class="row">
                 <div class="col">
                     <h3 class="mb-0">Acara & Kegiatan</h3>
@@ -72,8 +72,8 @@
             </div>
         </div>
         <!-- Light table -->
-        <div class="table-responsive table-hover">
-            <table class="table align-items-center table-flush">
+        <div class="table-responsive table-hover py-4">
+            <table class="table table-flush " id="datatable-basic">
                 <thead class="thead-light">
                     <tr>
                         <th>No.</th>
@@ -100,7 +100,7 @@
                                 />
                             </td>
                             <td>
-                                {{ $event->title }}
+                                {{ strlen($event->title) <= 30 ? $event->title : substr($event->title, 0, 30).'..' }}
                             </td>
                             <td class="table-actions">
                                 <a

@@ -4,29 +4,55 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         
-        {{-- <meta name="author" content=""> --}}
+        {{-- <meta name="author" content="lezipipell"> --}}
         <meta name="title" content="{{ $profile->site_name }}">
-        <meta name="description" content="{{ substr(strip_tags($about->content), 0, 250)  }}...">
-        <meta name="keywords" content="desa, wisata, mertak, desa wisata, wisata lombok, desa mertak, wisata mertak, desa wisata mertak, desa mertak lombok, ntb, nusa tenggara barat">
+        @if(isset($postDetail))
+            <meta name="description" content="{{ substr(strip_tags($post->content), 0, 250)  }}...">
+        @else
+            <meta name="description" content="{{ substr(strip_tags($about->content), 0, 250)  }}...">
+        @endif
+        <meta name="keywords" content="desa, wisata, mertak, desa wisata, wisata lombok, desa mertak, wisata mertak, wisata lombok tengah, mertak lombok tengah, pantai dondon, desa wisata mertak, desa mertak lombok, ntb, nusa tenggara barat">
         
         <!-- Google / Search Engine Tags -->
         <meta itemprop="name" content="{{ $profile->site_name }}">
-        <meta itemprop="description" content="{{ substr(strip_tags($about->content), 0, 250)  }}...">
-        <meta itemprop="image" content="/storage/{{ $profile->logo }}">
+        @if(isset($postDetail))
+            <meta itemprop="description" content="{{ substr(strip_tags($post->content), 0, 250)  }}...">
+            <meta itemprop="image" content="http://www.desamertak.com/storage/{{ $post->image }}">
+        @else
+            <meta itemprop="description" content="{{ substr(strip_tags($about->content), 0, 250)  }}...">
+            @if($profile->logo)
+            <meta itemprop="image" content="http://www.desamertak.com/storage/{{ $profile->logo }}">
+            @endif
+        @endif
 
         <!-- Open Graph / Facebook -->
         <meta property="og:type" content="website">
-        <meta property="og:url" content="https://www.desamertak.com/">
+        <meta property="og:url" content="http://www.desamertak.com/">
         <meta property="og:title" content="{{ $profile->site_name }}">
-        <meta property="og:description" content="{{ substr(strip_tags($about->content), 0, 250)  }}...">
-        <meta property="og:image" content="/storage/{{ $profile->logo }}">
+        <meta itemprop="name" content="{{ $profile->site_name }}">
+        @if(isset($postDetail))
+            <meta property="og:description" content="{{ substr(strip_tags($post->content), 0, 250)  }}...">
+            <meta property="og:image" content="http://www.desamertak.com/storage/{{ $post->image }}">
+        @else
+            <meta property="og:description" content="{{ substr(strip_tags($about->content), 0, 250)  }}...">
+            @if($profile->logo)
+            <meta property="og:image" content="http://www.desamertak.com/storage/{{ $profile->logo }}">
+            @endif
+        @endif
         
         <!-- Twitter -->
         <meta property="twitter:card" content="summary_large_image">
-        <meta property="twitter:url" content="https://www.desamertak.com/">
+        <meta property="twitter:url" content="http://www.desamertak.com/">
         <meta property="twitter:title" content="{{ $profile->site_name }}">
-        <meta property="twitter:description" content="{{ substr(strip_tags($about->content), 0, 250)  }}...">
-        <meta property="twitter:image" content="/storage/{{ $profile->logo }}">
+        @if(isset($postDetail))
+            <meta property="twitter:description" content="{{ substr(strip_tags($post->content), 0, 250)  }}...">
+            <meta property="twitter:image" content="http://www.desamertak.com/storage/{{ $post->image }}">
+        @else
+            <meta property="twitter:description" content="{{ substr(strip_tags($about->content), 0, 250)  }}...">
+            @if($profile->logo)
+            <meta property="twitter:image" content="http://www.desamertak.com/storage/{{ $profile->logo }}">
+            @endif
+        @endif
 
         <!-- title -->
         @if(isset($homePage))
@@ -36,7 +62,7 @@
         @else
             <title>{{ $profile->site_name }} | {{ $currentPage }}</title>
         @endif
-
+        
         @if($profile->favicon)
         <link
             rel="shortcut icon"
@@ -307,5 +333,26 @@
         <script src="{{ asset('assets/landing-page/js/plugins.js') }}"></script>
         <script src="{{ asset('assets/landing-page/js/theme.js') }}"></script>
         <script src="{{ asset('assets/landing-page/js/custom.js') }}"></script>
+        {{-- <script src="{{ asset('assets/dashboard/js/custom.js') }}"></script> --}}
+
+        <style>
+            
+            iframe {
+                width: 75vw;
+                height: 42.1875vw; /* 90*9/16 */
+                /* margin-left: 5vw;
+                margin-right: 5vw; */
+            }
+
+            @media (min-width: 893px) {
+                iframe {
+                    width: 45vw;
+                    height: 25.3125vw; /* 45*9/16 */
+                    /* margin-left: 2vw;
+                    margin-right: 2vw; */
+                }
+            }
+
+        </style>
     </body>
 </html>

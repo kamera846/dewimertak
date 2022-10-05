@@ -57,7 +57,7 @@
                         <h3 class="mb-0">Profil Desa</h3>
                     </div>
                     <div class="col-6 text-right">
-                        <a href="/dashboard/profile/edit" class="btn btn-sm btn-primary btn-round btn-icon" data-toggle="tooltip" data-original-title="Edit Profil">
+                        <a href="/dashboard/profile/edit" class="btn btn-sm btn-primary btn-round btn-icon">
                             <span class="btn-inner--icon"><i class="fas fa-edit"></i></span>
                             <span class="btn-inner--text">Edit</span>
                         </a>

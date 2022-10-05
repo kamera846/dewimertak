@@ -16,7 +16,7 @@ $randomClass = [
         <div class="swiper">
             <div class="swiper-wrapper">
 
-                @if($carousels->count() > 5)
+                @if($carousels->count())
 
                     @foreach($carousels as $carousel)
                         <div class="swiper-slide bg-overlay bg-overlay-400 bg-dark bg-image" data-image-src="/storage/{{ $carousel->image }}">
@@ -79,13 +79,13 @@ $randomClass = [
   </section>
 <!-- /section -->
 
-<section class="wrapper bg-light mt-3 angled upper-end lower-end">
+<section class="wrapper bg-light mt-3 angled upper-end">
     <div class="container">
         <div
             class="row py-14 py-md-18 gx-lg-8 gx-xl-12 gy-10 align-items-center"
         >
             <div
-                class="col-md-8 col-lg-6 col-xl-5 order-lg-2 position-relative"
+                class="col-lg-6 order-lg-2 position-relative"
             >
                 <div
                     class="shape bg-soft-primary rounded-circle rellax w-20 h-20"
@@ -100,15 +100,15 @@ $randomClass = [
                             src="/storage/default/image.jpg"
                         @endif
                         alt="{{ $about->title }}"
-                        style="max-height: 400px; object-fit: cover"
+                        style="max-height: 400px; object-fit: cover; width: 100%;"
                     />
                 </figure>
             </div>
             <!--/column -->
             <div class="col-lg-6">
                 <h2 class="mb-3">{{ $about->title }}</h2>
-                <p class="lead fs-md pe-lg-10">
-                    {{ substr(strip_tags($about->content), 0, 470)  }}...
+                <p class="fs-md pe-lg-10">
+                    {{ substr(strip_tags($about->content), 0, 425)  }}...
                 </p>
                 <a href="/about" class="btn btn-sm btn-green">Selengkapnya</a>
             </div>
@@ -117,8 +117,88 @@ $randomClass = [
         <!--/.row -->
     </div>
     <!-- /.container -->
+</section>
 
-    @if($latestGalleries->count())
+@if($features->count())
+<section class="wrapper bg-soft-green angled upper-end">
+    <div class="container pt-12 pt-md-14 pb-16 pb-md-18 text-center">
+        <div class="row">
+            <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
+                <h3 class="mb-10 px-xl-10">
+                    {{ $featureSection->title ? $featureSection->title : 'Layanan dan Produk yang bisa anda dapatkan di desa kami' }}
+                </h3>
+            </div>
+            <!-- /column -->
+        </div>
+        <!-- /.row -->
+        <div class="position-relative">
+            <div
+                class="shape rounded-circle bg-soft-blue rellax w-16 h-16"
+                data-rellax-speed="1"
+                style="bottom: -0.5rem; right: -2.2rem; z-index: 0"
+            ></div>
+            <div
+                class="shape bg-dot yellow rellax w-16 h-17"
+                data-rellax-speed="1"
+                style="top: -0.5rem; left: -2.5rem; z-index: 0"
+            ></div>
+            <div class="row gx-md-5 gy-5 justify-content-center">
+
+                @foreach($features as $feature)
+                <div class="col-md-6 col-xl-3">
+                    <div class="card shadow-lg" style="height: 350px;">
+                        <div class="card-body px-1">
+                            <h4 class="text-start mx-4 mb-3">{{ $feature->name }}</h4>
+                            <div class="feature-content text-start ms-0 me-1">
+                                {!! $feature->content !!}
+                            </div>
+                            {{-- <p class="mb-2">
+                                Nulla vitae elit libero, a pharetra augue. Donec
+                                id elit non mi porta gravida at eget metus cras
+                                justo.
+                            </p> --}}
+                        </div>
+                        <!--/.card-body -->
+                    </div>
+                    <!--/.card -->
+                </div>
+                @endforeach
+                <!--/column -->
+                {{-- <div class="col-md-6 col-xl-3">
+                    <div class="card shadow-lg">
+                        <div class="card-body">
+                            <img
+                                src="./assets/img/icons/lineal/chat-2.svg"
+                                class="svg-inject icon-svg icon-svg-md text-green mb-3"
+                                alt=""
+                            />
+                            <h4>Social Engagement</h4>
+                            <p class="mb-2">
+                                Nulla vitae elit libero, a pharetra augue. Donec
+                                id elit non mi porta gravida at eget metus cras
+                                justo.
+                            </p>
+                            <a href="#" class="more hover link-green"
+                                >Learn More</a
+                            >
+                        </div>
+                        <!--/.card-body -->
+                    </div>
+                    <!--/.card -->
+                </div>
+                <!--/column --> --}}
+            </div>
+            <!--/.row -->
+        </div>
+        <!-- /.position-relative -->
+    </div>
+    <!-- /.container -->
+</section>
+@endif
+<!-- /section -->
+
+@if($latestGalleries->count())
+<section class="wrapper bg-light mt-3 angled upper-end lower-end">
     <div class="container py-14 py-md-16">
         <div class="row pb-7">
             <div class="col-lg-9 col-xl-8 col-xxl-7 mx-auto mb-8">
@@ -132,7 +212,7 @@ $randomClass = [
         <!-- /.row -->
         <div class="grid grid-view projects-masonry">
             <div
-                class="row gx-md-8 gy-10 gy-md-13 isotope"
+                class="row gx-md-5 gy-5 gy-md-6 isotope"
                 style="position: relative; height: 1147.05px"
             >
 
@@ -141,7 +221,7 @@ $randomClass = [
                         class="project item col-md-6 col-xl-4 product"
                         style="position: absolute; left: 0%; top: 0px"
                     >
-                        <figure class="lift rounded mb-6">
+                        <figure class="lift rounded">
                             <a href="/storage/{{ $gallery->image }}" data-glightbox="description: {{ $gallery->caption }}" data-gallery="g1">
                                 <img src="/storage/{{ $gallery->image }}" alt="{{ $gallery->caption }}" style="max-height: 500px; object-fit:cover;"/>
                             </a>
@@ -164,90 +244,14 @@ $randomClass = [
         </div>
         <!-- /.grid -->
     </div>
-    @endif
     <!-- /.content-wrapper -->
+</section>
+@endif
 
-    <div class="container pt-11 pt-md-13 pb-10 pb-md-12">
-        {{-- <div class="row mb-7">
-            <div class="col-lg-9 col-xl-8 col-xxl-7 mx-auto text-center">
-                <h2 class="mb-10">
-                    {{ $contactInfoSection->title ? $contactInfoSection->title : 'Jika Anda Punya Pertanyaan atau Saran, Silahkan Menghubungi Kami' }}
-                </h2>
-            </div>
-            <!-- /column -->
-        </div>
-        <!-- /.row --> --}}
-        <div class="row mb-15">
-            <div class="col-xl-10 mx-auto">
-                <div class="card">
-                    <div class="row gx-0">
-                        <div class="col-lg-6 align-self-stretch">
-                            <div
-                                class="map map-full rounded-top rounded-lg-start"
-                            >
-                                <iframe
-                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63066.38347626953!2d116.32788477188889!3d-8.912188965613169!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dcd00f256982d81%3A0x6729802b0161a7d8!2sMertak%2C%20Kec.%20Pujut%2C%20Kabupaten%20Lombok%20Tengah%2C%20Nusa%20Tenggara%20Bar.!5e0!3m2!1sid!2sid!4v1660136311998!5m2!1sid!2sid"
-                                    style="width: 100%; height: 100%; border: 0"
-                                    allowfullscreen=""
-                                ></iframe>
-                            </div>
-                            <!-- /.map -->
-                        </div>
-                        <!--/column -->
-                        <div class="col-lg-6">
-                            <div class="p-10 p-md-11 p-lg-14">
-                                <div class="d-flex flex-row">
-                                    <div>
-                                        <div class="icon text-green fs-28 me-6 mt-n1">
-                                            <i class="uil uil-location-pin-alt"></i>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <h5 class="mb-1">Lokasi</h5>
-                                        <address>
-                                            {{ $profile->location }}
-                                        </address>
-                                    </div>
-                                </div>
-                                <div class="d-flex flex-row">
-                                    <div>
-                                        <div class="icon text-green fs-28 me-6 mt-n1">
-                                            <i class="uil uil-phone-volume"></i>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <h5 class="mb-1">Telepon</h5>
-                                        <p>{{ $profile->telephone }}</p>
-                                    </div>
-                                </div>
-                                <div class="d-flex flex-row">
-                                    <div>
-                                        <div class="icon text-green fs-28 me-6 mt-n1">
-                                            <i class="uil uil-envelope"></i>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <h5 class="mb-1">E-mail</h5>
-                                        <p class="mb-0">
-                                            {{ $profile->email }}
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--/div -->
-                        </div>
-                        <!--/column -->
-                    </div>
-                    <!--/.row -->
-                </div>
-                <!-- /.card -->
-            </div>
-        </div>
-        <!-- /.row -->
-    </div>
 
-    @if($latestPosts->count())
-    <div class="container pt-10 pt-md-12 pb-13 pb-md-15">
+@if($latestPosts->count())
+<section class="wrapper bg-soft-green angled upper-end lower-end">    
+    <div class="container pt-9 pt-md-12 pb-12 pb-md-13">
         <div class="row mb-5">
             <div class="col-lg-9 col-xl-8 col-xxl-7 mx-auto text-center">
                 <h2 class="mb-10">
@@ -335,9 +339,89 @@ $randomClass = [
         </div>
         <!-- /.row -->
     </div>
-    @endif
     <!-- /.container -->
-
+</section>
+@endif
+    
+<section class="wrapper bg-light angled upper-end lower-end">
+    <div class="container pt-15 pt-md-17 pb-10 pb-md-12">
+        {{-- <div class="row mb-7">
+            <div class="col-lg-9 col-xl-8 col-xxl-7 mx-auto text-center">
+                <h2 class="mb-10">
+                    {{ $contactInfoSection->title ? $contactInfoSection->title : 'Jika Anda Punya Pertanyaan atau Saran, Silahkan Menghubungi Kami' }}
+                </h2>
+            </div>
+            <!-- /column -->
+        </div>
+        <!-- /.row --> --}}
+        <div class="row mb-15">
+            <div class="col">
+                <div class="card">
+                    <div class="row gx-0">
+                        <div class="col-lg-6 align-self-stretch">
+                            <div
+                                class="map map-full rounded-top rounded-lg-start"
+                            >
+                                <iframe
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63066.36855697905!2d116.36290450000001!3d-8.9122754!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dcd00f256982d81%3A0x6729802b0161a7d8!2sMertak%2C%20Kec.%20Pujut%2C%20Kabupaten%20Lombok%20Tengah%2C%20Nusa%20Tenggara%20Bar.!5e0!3m2!1sid!2sid!4v1664888299176!5m2!1sid!2sid"
+                                    style="width: 100%; height: 100%; border: 0"
+                                    allowfullscreen=""
+                                ></iframe>
+                            </div>
+                            <!-- /.map -->
+                        </div>
+                        <!--/column -->
+                        <div class="col-lg-6">
+                            <div class="p-10 p-md-11 p-lg-14">
+                                <div class="d-flex flex-row">
+                                    <div>
+                                        <div class="icon text-green fs-28 me-6 mt-n1">
+                                            <i class="uil uil-location-pin-alt"></i>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <h5 class="mb-1">Lokasi</h5>
+                                        <address>
+                                            {{ $profile->location }}
+                                        </address>
+                                    </div>
+                                </div>
+                                <div class="d-flex flex-row">
+                                    <div>
+                                        <div class="icon text-green fs-28 me-6 mt-n1">
+                                            <i class="uil uil-phone-volume"></i>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <h5 class="mb-1">Telepon</h5>
+                                        <p>{{ $profile->telephone }}</p>
+                                    </div>
+                                </div>
+                                <div class="d-flex flex-row">
+                                    <div>
+                                        <div class="icon text-green fs-28 me-6 mt-n1">
+                                            <i class="uil uil-envelope"></i>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <h5 class="mb-1">E-mail</h5>
+                                        <p class="mb-0">
+                                            {{ $profile->email }}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/div -->
+                        </div>
+                        <!--/column -->
+                    </div>
+                    <!--/.row -->
+                </div>
+                <!-- /.card -->
+            </div>
+        </div>
+        <!-- /.row -->
+    </div>
 </section>
 <!-- /.content-wrapper -->
 

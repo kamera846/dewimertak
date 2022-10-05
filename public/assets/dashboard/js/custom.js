@@ -151,3 +151,99 @@ $(document).ready(function () {
         });
     });
 });
+
+// select gallery type
+$(document).ready(function () {
+    $("#type").on("change", function () {
+        if ($(this).val() == "image") {
+            $(".video-field").addClass("d-none");
+            $(".image-field").removeClass("d-none");
+            $("#image").attr("required", "");
+            $("#video_link").removeAttr("required");
+            $("#video_link").val("");
+        } else {
+            $("#video_link").attr("required", "");
+            $("#image").removeAttr("required");
+            $(".image-field").addClass("d-none");
+            $(".video-field").removeClass("d-none");
+            $("#image").val("");
+        }
+    });
+});
+
+// post content editor
+tinymce.init({
+    selector: "#post-content",
+    // width: 600,
+    // height: 300,
+    plugins: [
+        "advlist",
+        "autolink",
+        "link",
+        "image",
+        "lists",
+        "charmap",
+        "preview",
+        "anchor",
+        "pagebreak",
+        "searchreplace",
+        "wordcount",
+        "visualblocks",
+        "code",
+        "fullscreen",
+        "insertdatetime",
+        "media",
+        "table",
+        "emoticons",
+        "template",
+        "help",
+    ],
+    toolbar:
+        "undo redo | styles | bold italic | alignleft aligncenter alignright alignjustify | " +
+        "bullist numlist outdent indent | link image | print preview media fullscreen | " +
+        "forecolor backcolor emoticons | help",
+    menu: {
+        favs: {
+            title: "My Favorites",
+            items: "code visualaid | searchreplace | emoticons",
+        },
+    },
+    menubar: "favs file edit view insert format tools table help",
+    content_style:
+        "body { font-family:Helvetica,Arial,sans-serif; font-size:16px }",
+});
+
+// preview gallery video
+
+// detail carousel
+$(document).ready(function () {
+    $(document).on("click", ".gallery-detail", function () {
+        const video_link = $(this).data("video_link");
+        const caption = $(this).data("caption") ? $(this).data("caption") : "-";
+
+        $("#gallery-video_link").html(video_link);
+        $("#gallery-caption").text(caption);
+
+        $("#gallery-edit").attr(
+            "href",
+            "/dashboard/galleries/" + $(this).data("id") + "/edit"
+        );
+        $("#gallery-delete").attr(
+            "action",
+            "/dashboard/galleries/" + $(this).data("id")
+        );
+    });
+});
+
+// filter gallery type
+$(document).ready(function () {
+    $("#image-filter").on("click", function () {
+        // $(".").parentElement().addClass("active");
+        $(".image-lists").removeClass("d-none");
+        $(".video-lists").addClass("d-none");
+    });
+    $("#video-filter").on("click", function () {
+        $(".video-lists").removeClass("d-none");
+        $(".image-lists").addClass("d-none");
+    });
+});

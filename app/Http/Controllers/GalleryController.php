@@ -18,7 +18,7 @@ class GalleryController extends Controller
     {
         return view('dashboard.gallery', [
             'profile' => Profile::get()[0],
-            'galleries' => Gallery::latest()->get(),
+            'galleries' => Gallery::latest('created_at')->get(),
             'galleryPage' => true,
         ]);
     }
@@ -45,12 +45,18 @@ class GalleryController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'image' => 'required|file|image|max:2048',
-            'caption' => 'max:255'
+            'type' => 'required',
+            'image' => 'file|image|max:4096',
+            'caption' => 'max:500'
         ]);
-        
-        $validated['image'] = $request->file('image')->store('/');
 
+        $validated['video_link'] = $request->video_link;
+        
+        if($request->image)
+        {
+            $validated['image'] = $request->file('image')->store('/');
+        }
+            
         Gallery::create($validated);
 
         return redirect('/dashboard/galleries')->with('success', 'Berhasil menambah galeri baru!');
@@ -92,14 +98,32 @@ class GalleryController extends Controller
     public function update(Request $request, Gallery $gallery)
     {
         $validated = $request->validate([
-            'image' => 'file|image|max:2048',
-            'caption' => 'max:255'
+            'type' => 'required',
+            'image' => 'file|image|max:4096',
+            'caption' => 'max:500'
         ]);
 
         if($request->file('image'))
         {
             $validated['image'] = $request->file('image')->store('/');
-            Storage::delete($gallery->image);
+            if($gallery->image)
+            {
+                Storage::delete($gallery->image);
+            }
+            if($gallery->video_link)
+            {
+                $validated['video_link'] = null;
+            }
+        }
+
+        if($request->video_link)
+        {   
+            $validated['video_link'] = $request->video_link;
+            if($gallery->image)
+            {
+                $validated['image'] = null;
+                Storage::delete($gallery->image);
+            }
         }
         
         Gallery::where('id', $gallery->id)
@@ -118,7 +142,10 @@ class GalleryController extends Controller
     {
         Gallery::destroy($gallery->id);
 
-        Storage::delete($gallery->image);
+        if($gallery->image)
+        {
+            Storage::delete($gallery->image);
+        }
 
         return redirect('/dashboard/galleries')->with('success', 'Berhasil menghapus galeri!');
     }

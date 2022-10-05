@@ -70,7 +70,7 @@
 <div class="container-fluid mt--6">
     <div class="card">
         <!-- Card header -->
-        <div class="card-header border-0">
+        <div class="card-header">
             <div class="row">
                 <div class="col">
                     <h3 class="mb-0">Data Postingan</h3>
@@ -78,10 +78,11 @@
             </div>
         </div>
         <!-- Light table -->
-        <div class="table-responsive table-hover">
-            <table class="table align-items-center table-flush">
+        <div class="table-responsive table-hover py-4">
+            <table class="table table-flush " id="datatable-basic">
                 <thead class="thead-light">
                     <tr>
+                        <th>No</th>
                         <th>Foto</th>
                         <th>Judul</th>
                         <th>Kategori</th>
@@ -96,6 +97,7 @@
                         @foreach($posts as $post)
                         
                         <tr>
+                            <td>{{ $loop->iteration }}</td>
                             <td>
                                 <img
                                     src="{{ asset('storage/'. $post->image) }}"
@@ -104,7 +106,7 @@
                                 />
                             </td>
                             <td>
-                                {{ $post->title }}
+                                {{ strlen($post->title) <= 30 ? $post->title : substr($post->title, 0, 30).'..' }}
                             </td>
                             <td>
                                 {{ ucwords($post->category->name) }}

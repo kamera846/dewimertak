@@ -5,17 +5,23 @@
 @php
     $title = $pageTitleSection->title;
 
-    if(request('category')) {
-        $title = 'Artikel Tentang ' . App\Models\PostCategory::where('slug', request('category'))->get()[0]->name;
+    if(request('search')) {
+        $title = 'Cari : ' . request('search');
+    }
+    elseif(request('category')) {
+        $categoryName = App\Models\PostCategory::where('slug', request('category'))->get();
+        if(!empty($categoryName[0])){
+            $title = 'Artikel Tentang ' . $categoryName[0]->name;
+        }
     }
     elseif(request('author')) {
-        $title = 'Artikel Oleh ' . App\Models\User::where('slug', request('author'))->get()[0]->name;
+        $authorName = App\Models\User::where('slug', request('author'))->get();
+        if(!empty($authorName[0])){
+            $title = 'Artikel Oleh ' . $authorName[0]->name;
+        }
     }
     elseif(request('tag')) {
         $title = 'Artikel Dengan #' . request('tag');
-    }
-    elseif(request('search')) {
-        $title = 'Cari : ' . request('search');
     }
 @endphp
 
@@ -46,7 +52,7 @@
 <section class="wrapper bg-light angled upper-end lower-end">
     <div class="container py-14 py-md-16">
         
-        @if($posts->count() || request('search'))
+        @if($posts->count() || request(['search', 'author', 'category']))
 
             <div class="row gx-lg-8 gx-xl-12">
                 <div class="col-lg-8">
@@ -189,7 +195,8 @@
                         <h4 class="widget-title mb-3">Kategori</h4>
                         <ul class="unordered-list bullet-primary text-reset">
                             @foreach($categories as $category)
-                            <li class="{{ request('category') == $category->slug ? 'text-green': '' }}"><a href="/posts?category={{ $category->slug }}">{{ ucwords($category->name) }} ({{ App\Models\Post::where('category_id', $category->id)->count() }})</a></li>
+                            @php $postsCount = App\Models\Post::where('category_id', $category->id)->count(); @endphp
+                            <li class="{{ $postsCount ? '' : 'd-none' }} {{ request('category') == $category->slug ? 'text-green': '' }}"><a href="/posts?category={{ $category->slug }}">{{ ucwords($category->name) }} ({{ $postsCount }})</a></li>
                             @endforeach
                         </ul>
                     </div>

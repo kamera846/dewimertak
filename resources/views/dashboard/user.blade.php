@@ -134,7 +134,7 @@
                     @else
                         
                         <tr >
-                            <td colspan="5" class="text-center">Belum ada data.</td>
+                            <td colspan="5" class="text-center">Belum ada pengguna selain anda.</td>
                         </tr>
 
                     @endif

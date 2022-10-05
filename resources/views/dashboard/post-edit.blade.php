@@ -135,14 +135,14 @@
                             
                             <div class="form-group">
                                 <label
-                                    for="content"
+                                    for="post-content"
                                     class="form-control-label"
                                     >Konten <span class="text-danger">*</span></label
                                 >
                                 @error('content')
                                     <div class="text-danger text-sm mb-2">{{ $message }}</div>   
                                 @enderror
-                                <textarea name="content" id="content" class=" @error('content') is-invalid @enderror">{{ old('content', $post->content) }}</textarea>
+                                <textarea name="content" id="post-content" class=" @error('content') is-invalid @enderror">{{ old('content', $post->content) }}</textarea>
                             </div>
                             
                             <div class="form-group mt-3">

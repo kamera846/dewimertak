@@ -15,13 +15,31 @@ use App\Models\Feature;
 use App\Models\About;
 use App\Models\Event;
 use App\Models\Section;
+// use Awssat\Visits\Visits;
 use Illuminate\Support\Str;
+use App\Models\Visitor;
 
 class HomeController extends Controller
 {
     public function home()
     {
+        // $visitorIp = $_SERVER['REMOTE_ADDR'];
+        
+        
+        // return $visitorIp;
+        // $visitors = Visitor::pluck('visitor_ip');
+
+        // $visitors = $visitors->toArray();
+
+        // if(!in_array($visitorIp, $visitors)){
+        //     Visitor::create([
+        //         'visitor_ip' => $visitorIp
+        //     ]);
+        // }
+
         return view('home', [
+            'ipAddressCount' => Visitor::count(),
+
             'homePage' => true,
             'profile' => Profile::get()[0],
             'socials' => Social::all(),
@@ -29,13 +47,12 @@ class HomeController extends Controller
             'features' => Feature::all(),
             'carousels' => Carousel::all(),
             
-            'latestGalleries' => Gallery::latest()->limit(5)->get(), 
-            'latestPosts' => Post::latest()->limit(3)->get(),
+            'latestGalleries' => Gallery::where('type', 'image')->latest('created_at')->limit(6)->get(), 
+            'latestPosts' => Post::latest('created_at')->limit(3)->get(),
 
             'featureSection' => Section::where('code', 'layanan-dan-produk')->where('on_page', 'Beranda')->get()[0],
             'latestGallerySection' => Section::where('code', 'galeri-terbaru')->where('on_page', 'Beranda')->get()[0],
-            'latestPostSection' => Section::where('code', 'artikel-terbaru')->where('on_page', 'Beranda')->get()[0],
-            'contactInfoSection' => Section::where('code', 'info-kontak')->where('on_page', 'Kontak')->get()[0]
+            'latestPostSection' => Section::where('code', 'artikel-terbaru')->where('on_page', 'Beranda')->get()[0]
         ]);
     }
     
@@ -66,7 +83,7 @@ class HomeController extends Controller
             'profile' => Profile::get()[0],
             'about' => About::get()[0],
             'socials' => Social::get(),
-            'posts' => Post::latest()->filter(request(['search', 'category', 'author', 'tag']))->paginate(10),
+            'posts' => Post::latest('created_at')->filter(request(['search', 'category', 'author', 'tag']))->paginate(10),
             'categories' => PostCategory::get(),
             'recentPosts' => Post::latest()->limit(4)->get(),
 
@@ -101,7 +118,9 @@ class HomeController extends Controller
             'profile' => Profile::get()[0],
             'about' => About::get()[0],
             'socials' => Social::get(),
-            'galleries' => Gallery::latest()->paginate(15),
+            'galleries' => Gallery::latest('created_at')->paginate(20),
+            // 'iGalleries' => Gallery::where('type', 'image')->latest('created_at')->get(),
+            // 'vGalleries' => Gallery::where('type', 'video_link')->latest('created_at')->get(),
             // section langsung panggil fieldnya ga perlu pakek perulangan karena sudah memanggil indeks pertama
             'pageTitleSection' => Section::where('code', 'judul-halaman')->where('on_page', 'Galeri')->get()[0],
             'allGalleriesSection' => Section::where('code', 'semua-galeri')->where('on_page', 'Galeri')->get()[0],

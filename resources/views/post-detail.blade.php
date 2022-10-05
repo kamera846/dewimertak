@@ -130,7 +130,8 @@
                         <h4 class="widget-title mb-3">Kategori</h4>
                         <ul class="unordered-list bullet-primary text-reset">
                             @foreach($categories as $category)
-                            <li class="{{ request('category') == $category->slug ? 'text-green': '' }}"><a href="/posts?category={{ $category->slug }}">{{ ucwords($category->name) }} ({{ App\Models\Post::where('category_id', $category->id)->count() }})</a></li>
+                            @php $postsCount = App\Models\Post::where('category_id', $category->id)->count(); @endphp
+                            <li class="{{ $postsCount ? '' : 'd-none' }}"><a href="/posts?category={{ $category->slug }}">{{ ucwords($category->name) }} ({{ $postsCount }})</a></li>
                             @endforeach
                         </ul>
                     </div>

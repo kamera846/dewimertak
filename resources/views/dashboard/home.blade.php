@@ -39,7 +39,7 @@
             <!-- Card stats -->
             <div class="row">
                 @if(Auth::user()->role == 'super-admin')
-                <div class="col-lg-4 ol-md-6">
+                <div class="col-lg-4 col-md-6">
                     <div class="card card-stats">
                         <a href="/dashboard/users">
                             <!-- Card body -->
@@ -58,7 +58,7 @@
                                     </div>
                                     <div class="col-auto">
                                         <div
-                                            class="icon icon-shape bg-gradient-red text-white rounded-circle shadow"
+                                            class="icon icon-shape bg-gradient-blue text-white rounded-circle shadow"
                                         >
                                             <i
                                                 class="ni ni-circle-08"
@@ -71,7 +71,7 @@
                     </div>
                 </div>
                 @endif
-                <div class="col-lg-4 ol-md-6">
+                <div class="col-lg-4 col-md-6">
                     <div class="card card-stats">
                         <a href="/dashboard/posts">
                             <!-- Card body -->
@@ -90,7 +90,7 @@
                                     </div>
                                     <div class="col-auto">
                                         <div
-                                            class="icon icon-shape bg-gradient-orange text-white rounded-circle shadow"
+                                            class="icon icon-shape bg-gradient-yellow text-white rounded-circle shadow"
                                         >
                                             <i
                                                 class="ni ni-align-left-2"
@@ -102,7 +102,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="col-lg-4 ol-md-6">
+                <div class="col-lg-4 col-md-6">
                     <div class="card card-stats">
                         <a href="/dashboard/galleries">
                             <!-- Card body -->
@@ -133,6 +133,39 @@
                         </a>
                     </div>
                 </div>
+                @if(Auth::user()->role == 'super-admin')
+                <div class="col-lg-4 col-md-6">
+                    <div class="card card-stats">
+                        {{-- <a href="/dashboard/posts"> --}}
+                            <!-- Card body -->
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col">
+                                        <h5
+                                            class="card-title text-uppercase text-muted mb-0"
+                                        >
+                                            Pengunjung
+                                        </h5>
+                                        <span
+                                            class="h2 font-weight-bold mb-0"
+                                            >{{ $ipAddressCount }}</span
+                                        >
+                                    </div>
+                                    <div class="col-auto">
+                                        <div
+                                            class="icon icon-shape bg-gradient-orange text-white rounded-circle shadow"
+                                        >
+                                            <i
+                                                class="ni ni-chart-pie-35"
+                                            ></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {{-- </a> --}}
+                    </div>
+                </div>
+                @endif
             </div>
         </div>
     </div>

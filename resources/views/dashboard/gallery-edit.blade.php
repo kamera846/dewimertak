@@ -51,12 +51,29 @@
             <div class="card-body pt-4 pb-2">
                 <div class="row justify-content-center">
                     <div class="col-lg-8">
-                        <form method="post" action="/dashboard/galleries/{{ $gallery->id }}" enctype="multipart/form-data">
+                        <form method="post" action="/dashboard/galleries/{{ $gallery->id }}" enctype="multipart/form-data" autocomplete="off">
         
                             @method('put')
                             @csrf
                             
                             <div class="form-group row">
+                                <label
+                                    for="type"
+                                    class="col-md-3 col-form-label form-control-label text-md-right"
+                                    >Jenis <span class="text-danger">*</span></label
+                                >
+                                <div class="col-md-9">
+                                    <select name="type" id="type" class="form-control" required @error('type') is-invalid @enderror required>
+                                        <option value="image" {{ old('type', $gallery->type) == 'image' ? 'selected' : '' }}>Foto</option>
+                                        <option value="video_link"  {{ old('type', $gallery->type) == 'video_link' ? 'selected' : '' }}>Video</option>
+                                    </select>
+                                    @error('type')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+                            
+                            <div class="form-group row image-field {{ $gallery->type == 'video_link' ? 'd-none' : '' }}">
                                 <label
                                     for="image"
                                     class="col-md-3 col-form-label form-control-label text-md-right"
@@ -72,11 +89,37 @@
                                     @error('image')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
+                                    @if($gallery->image)
                                     <img
                                         src="{{ asset('storage/'.$gallery->image) }}"
                                         class="rounded mt-2"
                                         height="100px"
+                                    >
+                                    @endif
+                                </div>
+                            </div>
+                            
+                            <div class="form-group row video-field {{ $gallery->type == 'image' ? 'd-none' : '' }}">
+                                <label
+                                    for="video_link"
+                                    class="col-md-3 col-form-label form-control-label text-md-right"
+                                    >Semat Video <span class="text-danger">*</span></label
+                                >
+                                <div class="col-md-9">
+                                    <textarea name="video_link" id="video_link" rows="4" class="form-control @error('video_link') is-invalid @enderror">{{ old('video_link', $gallery->video_link) }}</textarea>
+                                    @error('video_link')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                    {{-- <input
+                                        class="form-control @error('video_link') is-invalid @enderror"
+                                        type="text"
+                                        id="video_link"
+                                        name="video_link"
+                                        value="{{ old('video_link', $gallery->video_link) }}"
                                     />
+                                    @error('video_link')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror --}}
                                 </div>
                             </div>
                             
@@ -101,6 +144,7 @@
                                     <a href="/dashboard/galleries" class="btn btn-secondary">Batal</a>
                                 </div>
                             </div>
+        
                         </form>
                     </div>
                 </div>

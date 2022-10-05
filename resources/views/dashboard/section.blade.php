@@ -57,7 +57,7 @@
         <div class="card-header border-0">
             <div class="row">
                 <div class="col">
-                    <h3 class="mb-0">Bagian Halaman Beranda</h3>
+                    <h3 class="mb-0">Halaman Beranda</h3>
                 </div>
             </div>
         </div>
@@ -109,7 +109,7 @@
         <div class="card-header border-0">
             <div class="row">
                 <div class="col">
-                    <h3 class="mb-0">Bagian Halaman Tentang</h3>
+                    <h3 class="mb-0">Halaman Tentang</h3>
                 </div>
             </div>
         </div>
@@ -161,7 +161,7 @@
         <div class="card-header border-0">
             <div class="row">
                 <div class="col">
-                    <h3 class="mb-0">Bagian Halaman Artikel</h3>
+                    <h3 class="mb-0">Halaman Artikel</h3>
                 </div>
             </div>
         </div>
@@ -207,7 +207,7 @@
         <div class="card-header border-0">
             <div class="row">
                 <div class="col">
-                    <h3 class="mb-0">Bagian Halaman Galeri</h3>
+                    <h3 class="mb-0">Halaman Galeri</h3>
                 </div>
             </div>
         </div>
@@ -253,7 +253,7 @@
         <div class="card-header border-0">
             <div class="row">
                 <div class="col">
-                    <h3 class="mb-0">Bagian Halaman Kontak</h3>
+                    <h3 class="mb-0">Halaman Kontak</h3>
                 </div>
             </div>
         </div>

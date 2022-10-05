@@ -21,7 +21,7 @@ class PostController extends Controller
     {
         return view('dashboard.post', [
             'profile' => Profile::get()[0],
-            'posts' => Post::latest()->get(),
+            'posts' => Post::latest('created_at')->get(),
             'postPage' => true,
         ]);
     }
@@ -73,6 +73,8 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
+        // $post->visitsCounter()->increment();
+
         return view('dashboard.post-detail', [
             'profile' => Profile::get()[0],
             'post' => $post,
